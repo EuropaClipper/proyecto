@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-/// <summary>
-/// Descripción breve de Mapeo
-/// </summary>
-public class Mapeo
+﻿using System.Data.Entity;
+public class Mapeo : DbContext
 {
-    public Mapeo()
+    static Mapeo()
     {
-        //
-        // TODO: Agregar aquí la lógica del constructor
-        //
+        Database.SetInitializer<Mapeo>(null);
     }
+    public Mapeo() : base("name=mercado") { }
+    private readonly string schema;
+    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    {
+        modelBuilder.HasDefaultSchema(this.schema);
+        base.OnModelCreating(modelBuilder);
+    }
+    public virtual DbSet<EUsuario> usuario { get; set; }
 }
