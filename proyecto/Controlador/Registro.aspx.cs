@@ -19,7 +19,7 @@ public partial class View_Registro : System.Web.UI.Page
 
         if(!(new DAOUsuario().EstaRegistrado(nuevo_usuario)))
         {
-            nuevo_usuario.Nombre = TB_Nombre.Text.Trim();
+            nuevo_usuario.Nombre = (TB_Nombre.Text.Trim()+TB_Apellidos.Text.Trim());
             nuevo_usuario.Usuario = TB_Usuario.Text.Trim();
             nuevo_usuario.Clave = TB_Contrasena.Text.Trim();
             nuevo_usuario.Correo = TB_CorreoElectronico.Text.Trim();
