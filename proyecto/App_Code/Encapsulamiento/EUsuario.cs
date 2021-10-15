@@ -14,7 +14,7 @@ public class EUsuario
     private string telefono;
     private string direccion;
     private string cvv;
-    private string id_rol;
+    private int id_rol;
     private string session;
     private DateTime fecha_modificacion;
     [Key,Column("cedula")]
@@ -34,7 +34,7 @@ public class EUsuario
     [Column("cvv")]
     public string Cvv { get => cvv; set => cvv = value; }
     [Column("id_rol")]
-    public string Id_rol { get => id_rol; set => id_rol = value; }
+    public int Id_rol { get => id_rol; set => id_rol = value; }
     [Column("session")]
     public string Session { get => session; set => session = value; }
     [Column("fecha_modificacion")]

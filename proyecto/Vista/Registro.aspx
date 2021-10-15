@@ -40,9 +40,9 @@
             <asp:Label ID="LB_Nombre" runat="server" Text="Nombre:"></asp:Label>
         </td>
         <td class="auto-style7">
-            <asp:TextBox ID="TB_Nombre" runat="server"></asp:TextBox>
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TB_Nombre" ErrorMessage="*" ForeColor="Red" ValidationGroup="VG_Registrar"></asp:RegularExpressionValidator>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TB_Nombre" ErrorMessage="*" ValidationGroup="VG_Registrar"></asp:RequiredFieldValidator>
+            <asp:TextBox ID="TB_Nombre" runat="server" MaxLength="30"></asp:TextBox>
+            <asp:RegularExpressionValidator ID="REV_Nombre" runat="server" ControlToValidate="TB_Nombre" ErrorMessage="*" ForeColor="Red" ValidationGroup="VG_Registrar" SetFocusOnError="True" ValidationExpression="^[A-Za-z ]{3,30}"></asp:RegularExpressionValidator>
+            <asp:RequiredFieldValidator ID="RFV_Nombre" runat="server" ControlToValidate="TB_Nombre" ErrorMessage="*" ValidationGroup="VG_Registrar" ForeColor="Red" SetFocusOnError="True"></asp:RequiredFieldValidator>
         </td>
     </tr>
     <tr>
@@ -50,9 +50,9 @@
             <asp:Label ID="LB_Apellidos" runat="server" Text="Apellidos:"></asp:Label>
         </td>
         <td class="auto-style5">
-            <asp:TextBox ID="TB_Apellidos" runat="server"></asp:TextBox>
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TB_Apellidos" ErrorMessage="*" ForeColor="Red" ValidationGroup="VG_Registrar"></asp:RegularExpressionValidator>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TB_Apellidos" ErrorMessage="*" ValidationGroup="VG_Registrar"></asp:RequiredFieldValidator>
+            <asp:TextBox ID="TB_Apellidos" runat="server" MaxLength="30"></asp:TextBox>
+            <asp:RegularExpressionValidator ID="REV_Apellidos" runat="server" ControlToValidate="TB_Apellidos" ErrorMessage="*" ForeColor="Red" ValidationGroup="VG_Registrar" SetFocusOnError="True" ValidationExpression="^[A-Za-z ]{3,30}"></asp:RegularExpressionValidator>
+            <asp:RequiredFieldValidator ID="RFV_Apellidos" runat="server" ControlToValidate="TB_Apellidos" ErrorMessage="*" ValidationGroup="VG_Registrar" ForeColor="Red" SetFocusOnError="True"></asp:RequiredFieldValidator>
         </td>
     </tr>
     <tr>
@@ -60,9 +60,9 @@
             <asp:Label ID="LB_Cedula" runat="server" Text="Cedula:"></asp:Label>
         </td>
         <td class="auto-style5">
-            <asp:TextBox ID="TB_Cedula" runat="server"></asp:TextBox>
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="TB_Cedula" ErrorMessage="*" ForeColor="Red" ValidationGroup="VG_Registrar"></asp:RegularExpressionValidator>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TB_Cedula" ErrorMessage="*" ValidationGroup="VG_Registrar"></asp:RequiredFieldValidator>
+            <asp:TextBox ID="TB_Cedula" runat="server" MaxLength="10"></asp:TextBox>
+            <asp:RegularExpressionValidator ID="REV_Cedula" runat="server" ControlToValidate="TB_Cedula" ErrorMessage="*" ForeColor="Red" ValidationGroup="VG_Registrar" SetFocusOnError="True" ValidationExpression="^[0-9]{3,10}"></asp:RegularExpressionValidator>
+            <asp:RequiredFieldValidator ID="RFV_Cedula" runat="server" ControlToValidate="TB_Cedula" ErrorMessage="*" ValidationGroup="VG_Registrar" ForeColor="Red" SetFocusOnError="True"></asp:RequiredFieldValidator>
         </td>
     </tr>
     <tr>
@@ -70,9 +70,9 @@
             <asp:Label ID="LB_Dirrecion" runat="server" Text="Dirrecion:"></asp:Label>
         </td>
         <td class="auto-style5">
-            <asp:TextBox ID="TB_Dirrecion" runat="server"></asp:TextBox>
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="TB_Dirrecion" ErrorMessage="*" ForeColor="Red" ValidationGroup="VG_Registrar"></asp:RegularExpressionValidator>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TB_Dirrecion" ErrorMessage="*" ValidationGroup="VG_Registrar"></asp:RequiredFieldValidator>
+            <asp:TextBox ID="TB_Dirrecion" runat="server" MaxLength="30"></asp:TextBox>
+            <asp:RegularExpressionValidator ID="REV_Direccion" runat="server" ControlToValidate="TB_Dirrecion" ErrorMessage="*" ForeColor="Red" ValidationGroup="VG_Registrar" SetFocusOnError="True" ValidationExpression="^[A-Za-z0-9\#\- ]{7,30}"></asp:RegularExpressionValidator>
+            <asp:RequiredFieldValidator ID="RFV_Direccion" runat="server" ControlToValidate="TB_Dirrecion" ErrorMessage="*" ValidationGroup="VG_Registrar" ForeColor="Red" SetFocusOnError="True"></asp:RequiredFieldValidator>
         </td>
     </tr>
     <tr>
@@ -80,9 +80,9 @@
             <asp:Label ID="LB_Telefono" runat="server" Text="Telefono:"></asp:Label>
         </td>
         <td class="auto-style5">
-            <asp:TextBox ID="TB_Telefono" runat="server"></asp:TextBox>
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="TB_Telefono" ErrorMessage="*" ForeColor="Red" ValidationGroup="VG_Registrar"></asp:RegularExpressionValidator>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="TB_Telefono" ErrorMessage="*" ValidationGroup="VG_Registrar"></asp:RequiredFieldValidator>
+            <asp:TextBox ID="TB_Telefono" runat="server" MaxLength="10"></asp:TextBox>
+            <asp:RegularExpressionValidator ID="REV_Telefono" runat="server" ControlToValidate="TB_Telefono" ErrorMessage="*" ForeColor="Red" ValidationGroup="VG_Registrar" SetFocusOnError="True" ValidationExpression="^[0-9]{10}"></asp:RegularExpressionValidator>
+            <asp:RequiredFieldValidator ID="RFV_Telefono" runat="server" ControlToValidate="TB_Telefono" ErrorMessage="*" ValidationGroup="VG_Registrar" ForeColor="Red" SetFocusOnError="True"></asp:RequiredFieldValidator>
         </td>
     </tr>
     <tr>
@@ -90,9 +90,9 @@
             <asp:Label ID="LB_Correo" runat="server" Text="Correo Electronico:"></asp:Label>
         </td>
         <td class="auto-style5">
-            <asp:TextBox ID="TB_CorreoElectronico" runat="server"></asp:TextBox>
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="TB_CorreoElectronico" ErrorMessage="*" ForeColor="Red" ValidationGroup="VG_Registrar"></asp:RegularExpressionValidator>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="TB_CorreoElectronico" ErrorMessage="*" ValidationGroup="VG_Registrar"></asp:RequiredFieldValidator>
+            <asp:TextBox ID="TB_CorreoElectronico" runat="server" MaxLength="100" TextMode="Email"></asp:TextBox>
+            <asp:RegularExpressionValidator ID="REV_Correo" runat="server" ControlToValidate="TB_CorreoElectronico" ErrorMessage="*" ForeColor="Red" ValidationGroup="VG_Registrar" SetFocusOnError="True" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+            <asp:RequiredFieldValidator ID="RFV_Correo" runat="server" ControlToValidate="TB_CorreoElectronico" ErrorMessage="*" ValidationGroup="VG_Registrar" ForeColor="Red" SetFocusOnError="True"></asp:RequiredFieldValidator>
         </td>
     </tr>
     <tr>
@@ -100,19 +100,19 @@
             <asp:Label ID="LB_Usuario" runat="server" Text="Usuario:"></asp:Label>
         </td>
         <td class="auto-style5">
-            <asp:TextBox ID="TB_Usuario" runat="server"></asp:TextBox>
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="TB_Usuario" ErrorMessage="*" ForeColor="Red" ValidationGroup="VG_Registrar"></asp:RegularExpressionValidator>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="TB_Usuario" ErrorMessage="*" ValidationGroup="VG_Registrar"></asp:RequiredFieldValidator>
+            <asp:TextBox ID="TB_Usuario" runat="server" MaxLength="30"></asp:TextBox>
+            <asp:RegularExpressionValidator ID="REV_Usuario" runat="server" ControlToValidate="TB_Usuario" ErrorMessage="*" ForeColor="Red" ValidationGroup="VG_Registrar" SetFocusOnError="True" ValidationExpression="[A-Za-z0-9_]{3,30}"></asp:RegularExpressionValidator>
+            <asp:RequiredFieldValidator ID="RFV_Usuario" runat="server" ControlToValidate="TB_Usuario" ErrorMessage="*" ValidationGroup="VG_Registrar" ForeColor="Red" SetFocusOnError="True"></asp:RequiredFieldValidator>
         </td>
     </tr>
     <tr>
-        <td class="auto-style4">
+        <td class="auto-style6">
             <asp:Label ID="LB_Contraseña" runat="server" Text="Contraseña:"></asp:Label>
         </td>
-        <td class="auto-style5">
-            <asp:TextBox ID="TB_Contraseña" runat="server"></asp:TextBox>
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator8" runat="server" ControlToValidate="TB_Contraseña" ErrorMessage="*" ForeColor="Red" ValidationGroup="VG_Registrar"></asp:RegularExpressionValidator>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="TB_Contraseña" ErrorMessage="*" ValidationGroup="VG_Registrar"></asp:RequiredFieldValidator>
+        <td class="auto-style7">
+            <asp:TextBox ID="TB_Contrasena" runat="server" MaxLength="60" TextMode="Password"></asp:TextBox>
+            <asp:RegularExpressionValidator ID="REV_Contrasena" runat="server" ControlToValidate="TB_Contrasena" ErrorMessage="*" ForeColor="Red" ValidationGroup="VG_Registrar" SetFocusOnError="True" ValidationExpression="[A-Za-z0-9_]{3,60}"></asp:RegularExpressionValidator>
+            <asp:RequiredFieldValidator ID="RFV_Contrasena" runat="server" ControlToValidate="TB_Contrasena" ErrorMessage="*" ValidationGroup="VG_Registrar" ForeColor="Red" SetFocusOnError="True"></asp:RequiredFieldValidator>
         </td>
     </tr>
     <tr>
@@ -120,14 +120,14 @@
             <asp:Label ID="LB_ConfirmarContraseña" runat="server" Text="Confirmar Contraseña:"></asp:Label>
         </td>
         <td class="auto-style5">
-            <asp:TextBox ID="TB_ConfirmarContraseña" runat="server"></asp:TextBox>
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator9" runat="server" ControlToValidate="TB_ConfirmarContraseña" ErrorMessage="*" ForeColor="Red" ValidationGroup="VG_Registrar"></asp:RegularExpressionValidator>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="TB_ConfirmarContraseña" ErrorMessage="*" ValidationGroup="VG_Registrar"></asp:RequiredFieldValidator>
+            <asp:TextBox ID="TB_ConfirmarContrasena" runat="server" MaxLength="60" TextMode="Password"></asp:TextBox>
+            <asp:RegularExpressionValidator ID="REV_Confirmacion" runat="server" ControlToValidate="TB_ConfirmarContrasena" ErrorMessage="*" ForeColor="Red" ValidationGroup="VG_Registrar" SetFocusOnError="True" ValidationExpression="[A-Za-z0-9_]{3,60}"></asp:RegularExpressionValidator>
+            <asp:RequiredFieldValidator ID="RFV_Confirmar" runat="server" ControlToValidate="TB_ConfirmarContrasena" ErrorMessage="*" ValidationGroup="VG_Registrar" ForeColor="Red" SetFocusOnError="True"></asp:RequiredFieldValidator>
         </td>
     </tr>
     <tr>
         <td class="auto-style2" colspan="2">
-            <asp:Button ID="BTN_Registrar" runat="server" Text="Registrar" ValidationGroup="VG_Registrar" />
+            <asp:Button ID="BTN_Registrar" runat="server" Text="Registrar" ValidationGroup="VG_Registrar" OnClick="BTN_Registrar_Click" />
         </td>
     </tr>
 </table>
