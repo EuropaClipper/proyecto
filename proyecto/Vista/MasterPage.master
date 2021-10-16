@@ -8,10 +8,35 @@
     <title></title>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 1077px;
+        }
+        .auto-style2 {
+            text-align: center;
+        }
+        .auto-style3 {
+            font-size: xx-large;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
+        <table style="width:100%">
+            <tr>
+                <td class="auto-style2">
+                    <asp:Label ID="Label1" runat="server" Text="Venta en linea JP&amp;M" CssClass="auto-style3" ForeColor="#0000CC"></asp:Label>
+                </td>
+                <td class="auto-style2">
+                    <asp:Button ID="Button1" runat="server" Text="Inicio Sesion" ForeColor="#0000CC" />
+                    <asp:Button ID="Button2" runat="server" Text="Registrarse" ForeColor="#000099" />
+                </td>
+                <td class="auto-style2">
+                    <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Imagenes/pagina_web/carrito.jpg" Width="80px" />
+                </td>
+            </tr>
+        </table>
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         
         </asp:ContentPlaceHolder>
