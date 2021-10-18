@@ -1,21 +1,30 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vista/MasterPage.master" AutoEventWireup="true" CodeFile="~/Controlador/IniciarSesion.aspx.cs" Inherits="Vista_IniciarSesion" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <table class="auto-style1">
         <tr>
-            <td style="width:33%">&nbsp;</td>
-            <td style="width:33%;justify-items:center">
+            <td style="width: 100%" colspan="3">&nbsp;</td>
+        </tr>
+        <tr>
+            <td style="width: 100%" colspan="3">&nbsp;</td>
+        </tr>
+        <tr>
+            <td style="width: 100%" colspan="3">&nbsp;</td>
+        </tr>
+        <tr>
+            <td style="width: 33%">&nbsp;</td>
+            <td style="width: 33%; justify-items: center">
                 <asp:Login ID="Login" runat="server" BackColor="#F7F6F3" BorderColor="#E6E2D8" BorderPadding="4" BorderStyle="Solid" BorderWidth="1px" CssClass="auto-style2" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#333333" OnAuthenticate="Login_Authenticate" Width="100%">
                     <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
                     <LayoutTemplate>
-                        <table cellpadding="4" cellspacing="0" style="border-collapse:collapse;">
+                        <table cellpadding="4" cellspacing="0" style="border-collapse: collapse;">
                             <tr>
                                 <td>
-                                    <table cellpadding="0" style="width:100%;">
+                                    <table cellpadding="0" style="width: 100%;">
                                         <tr>
-                                            <td align="center" colspan="2" style="color:White;background-color:#5D7B9D;font-size:1em; font-weight:bold;">Iniciar sesión</td>
+                                            <td align="center" colspan="2" style="color: White; background-color: #5D7B9D; font-size: 1em; font-weight: bold;">Iniciar sesión</td>
                                         </tr>
                                         <tr>
                                             <td align="right">
@@ -41,18 +50,18 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td align="center" colspan="2" style="color:Red;">
+                                            <td align="center" colspan="2" style="color: Red;">
                                                 <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td align="center" colspan="2" style="color:Red;">
+                                            <td align="center" colspan="2" style="color: Red;">
                                                 <asp:HyperLink ID="H_RContraseña" runat="server" ForeColor="#003366">Recuperar contraseña</asp:HyperLink>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td align="right" colspan="2">
-                                                <asp:Button ID="LoginButton" runat="server"  BackColor="#FFFBFF" BorderColor="#CCCCCC" BorderStyle="Solid" BorderWidth="1px" CommandName="Login" Font-Names="Verdana" Font-Size="Small" ForeColor="#284775" Text="Inicio de sesión" ValidationGroup="Login" />
+                                                <asp:Button ID="LoginButton" runat="server" BackColor="#FFFBFF" BorderColor="#CCCCCC" BorderStyle="Solid" BorderWidth="1px" CommandName="Login" Font-Names="Verdana" Font-Size="Small" ForeColor="#284775" Text="Inicio de sesión" ValidationGroup="Login" />
                                             </td>
                                         </tr>
                                     </table>
@@ -65,7 +74,16 @@
                     <TitleTextStyle BackColor="#5D7B9D" Font-Bold="True" Font-Size="0.9em" ForeColor="White" />
                 </asp:Login>
             </td>
-            <td style="width:33%">&nbsp;</td>
+            <td style="width: 33%">&nbsp;</td>
+        </tr>
+        <tr>
+            <td style="width:100%" colspan="3">&nbsp;</td>
+        </tr>
+        <tr>
+            <td style="width:100%" colspan="3">&nbsp;</td>
+        </tr>
+        <tr>
+            <td style="width:100%" colspan="3">&nbsp;</td>
         </tr>
     </table>
 </asp:Content>

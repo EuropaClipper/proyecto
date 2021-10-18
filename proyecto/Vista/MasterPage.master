@@ -36,19 +36,36 @@
                             <DynamicSelectedStyle BackColor="#507CD1" />
                             <Items>
                                 <asp:MenuItem NavigateUrl="~/Vista/Inicio.aspx" Text="Inicio" Value="Inicio"></asp:MenuItem>
-                                <asp:MenuItem Text="Quienes somos" Value="Quienes somos"></asp:MenuItem>
-                                <asp:MenuItem Text="Catalogo" Value="Catalogo"></asp:MenuItem>
+                                <asp:MenuItem Text="Quienes somos" Value="Quienes somos" NavigateUrl="~/Vista/Quienes_somos.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="Catalogo" Value="Catalogo" NavigateUrl="~/Vista/Catalogo.aspx"></asp:MenuItem>
                                 <asp:MenuItem Text="Filtros" Value="Filtros" NavigateUrl="~/Vista/Filtros.aspx"></asp:MenuItem>
-                                <asp:MenuItem Text="Ubicación" Value="Ubicación"></asp:MenuItem>
+                                <asp:MenuItem Text="Ubicación" Value="Ubicación" NavigateUrl="~/Vista/ubicacion.aspx"></asp:MenuItem>
                             </Items>
                             <StaticHoverStyle BackColor="#284E98" ForeColor="White" />
                             <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
                             <StaticSelectedStyle BackColor="#507CD1" />
                         </asp:Menu>
                     </td>
-                    <td class="col90" colspan="2">
+                    <td class="col90">
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                         </asp:ContentPlaceHolder>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 100%" colspan="2">
+                        <center style="background-color: #CCCCCC">
+                            <em>
+                                <br />
+                                CONTACTENOS</em></center>
+                        <center style="background-color: #CCCCCC; height: 115px">
+                            <em>TELEFONO: 3138465493
+                                <br />
+                                <br />
+                            </em>
+                            <img alt="contacto" style="width: 127px; height: 62px" src="../Imagenes/pagina_web/contactenos.jpg" /></center>
+                        <center style="background-color: #CCCCCC"><em>HOARIO DE ATENCIÓN</em></center>
+                        <center style="background-color: #CCCCCC"><em>Lunes a viernes 7am a  8pm</em></center>
+                        <center style="background-color: #CCCCCC"><em>Sabado a Domingo  8:30am a  4pm</em></center>
                     </td>
                 </tr>
             </table>

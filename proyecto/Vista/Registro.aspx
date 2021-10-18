@@ -126,6 +126,14 @@
             <asp:Button ID="BTN_Registrar" runat="server" Text="Completar registro" ValidationGroup="VG_Registrar" OnClick="BTN_Registrar_Click" Font-Size="Medium" />
         </td>
     </tr>
+    <tr>
+        <td style="width:100%;text-align:center" colspan="3">
+            &nbsp;</td>
+    </tr>
+    <tr>
+        <td style="width:100%;text-align:center" colspan="3">
+            &nbsp;</td>
+    </tr>
 </table>
 </asp:Content>
 
