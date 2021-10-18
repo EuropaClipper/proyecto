@@ -88,3 +88,39 @@ contenedor_Vision {
     margin: 10px;
     background-color: rgba(0,0,0,0.2);
 }
+.col50 {
+    text-align: center;
+}
+.col35{
+    width:35%;
+    text-align:right;
+}
+.col15{
+    width:15%;
+    text-align:right;
+}
+.col10{
+    width:10%;
+    text-align:center;
+}
+.col90{
+    width:90%;
+}
+.col100_texto_centrado_xlarge{
+    width:100%;
+    text-align:center;
+    font-size:x-large;
+}
+.col40_textoDerecha{
+    width:40%;
+    text-align:right;
+}
+.col40{
+    width:40%;
+}
+.col20{
+    width:20%;
+}
+.LNombre {
+    font-size: xx-large;
+}
