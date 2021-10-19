@@ -25,7 +25,7 @@ public class EProducto
     public string Descripcion { get => descripcion; set => descripcion = value; }
     [Column("imagen")]
     public string Imagen { get => imagen; set => imagen = value; }
-    [Column("precion_venta")]
+    [Column("precio_venta")]
     public double Precio_venta { get => precio_venta; set => precio_venta = value; }
     [Column("id_proveedor")]
     public string Id_proveedor { get => id_proveedor; set => id_proveedor = value; }
