@@ -50,9 +50,10 @@
                 <asp:CheckBox ID="CB_Categoria" runat="server" OnCheckedChanged="CB_Categoria_CheckedChanged" Text="CATEGORIA" AutoPostBack="True" />
             </td>
             <td style="width:25%;text-align:center">
-                <asp:DropDownList ID="DDL_Categorias" runat="server" Width="90%" Enabled="False">
+                <asp:DropDownList ID="DDL_Categorias" runat="server" Width="90%" Enabled="False" DataSourceID="ObjectDataSource1" DataTextField="Categoria" DataValueField="Id">
                 </asp:DropDownList>
                 <asp:RangeValidator ID="RV_DDL" runat="server" ControlToValidate="DDL_Categorias" ErrorMessage="*" MaximumValue="20" MinimumValue="1" Type="Integer" ValidationGroup="VG_Filtros" Enabled="False" ForeColor="Red"></asp:RangeValidator>
+                <asp:ObjectDataSource ID="ODS_Categorias" runat="server" SelectMethod="obtenerCategoriasDDL" TypeName="DAOProducto"></asp:ObjectDataSource>
             </td>
             <td style="width:50%" colspan="2"></td>
         </tr>
@@ -64,6 +65,41 @@
         <tr>
             <td colspan="4" style="width:100%;text-align:center">
                 &nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="4" style="width:100%;text-align:center">
+                <asp:DataList ID="DL_Filtros" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" CellSpacing="20" DataKeyField="Id" DataSourceID="ODSPFiltrados" ForeColor="Black" GridLines="Horizontal" HorizontalAlign="Center" RepeatColumns="4" RepeatDirection="Horizontal">
+                    <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
+                    <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
+                    <ItemTemplate>
+                        Nombre:
+                        <asp:Label ID="NombreLabel" runat="server" Text='<%# Eval("Nombre") %>' />
+                        <br />
+                        <asp:Image ID="Image1" runat="server" ImageAlign="Baseline" ImageUrl='<%# Eval("Imagen") %>' Width="150px" />
+                        <br />
+                        Descripcion:
+                        <asp:Label ID="DescripcionLabel" runat="server" Text='<%# Eval("Descripcion") %>' />
+                        <br />
+                        Precio:
+                        <asp:Label ID="Precio_ventaLabel" runat="server" Text='<%# Eval("Precio_venta") %>' />
+                        <br />
+                        Categoria:
+                        <asp:Label ID="Nombre_categoriaLabel" runat="server" Text='<%# Eval("Nombre_categoria") %>' />
+                        <br />
+                        <br />
+                        <asp:Button ID="Button1" runat="server" Text="Agregar al carrito" />
+                        <br />
+                    </ItemTemplate>
+                    <SelectedItemStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
+                </asp:DataList>
+                <asp:ObjectDataSource ID="ODSPFiltrados" runat="server" SelectMethod="obtenerProductosFiltrados" TypeName="DAOProducto">
+                    <SelectParameters>
+                        <asp:SessionParameter Name="nombre" SessionField="nombre" Type="String" />
+                        <asp:SessionParameter Name="precio" SessionField="precio" Type="Object" />
+                        <asp:SessionParameter Name="categoria" SessionField="categoria" Type="Int32" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
+            </td>
         </tr>
     </table>
 </asp:Content>

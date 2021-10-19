@@ -15,5 +15,8 @@ public class Mapeo : DbContext
     public virtual DbSet<EUsuario> usuario { get; set; }
     public virtual DbSet<ENegocio> negocio { get; set; }
     public virtual DbSet<EDatosBancarios> datosBancarios { get; set; }
+    public virtual DbSet<ECategoria> categoria { get; set; }
+    public virtual DbSet<EProducto> producto { get; set; }
+
 
 }

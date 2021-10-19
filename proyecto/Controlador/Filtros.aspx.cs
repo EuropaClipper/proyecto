@@ -88,6 +88,6 @@ public partial class Vista_Filtros : System.Web.UI.Page
             Session["precio"] = new int[2];
             Session["precio"] = null;
         }
-        //DL_Filtros.DataBind();
+        DL_Filtros.DataBind();
     }
 }

@@ -16,6 +16,7 @@ public class EProducto
     private Boolean estado;
     private string session;
     private DateTime fecha_modificacion;
+    private string nombre_categoria;
     [Key,Column("id")]
     public int Id { get => id; set => id = value; }
     [Column("nombre")]
@@ -36,4 +37,6 @@ public class EProducto
     public string Session { get => session; set => session = value; }
     [Column("fecha_modificacion")]
     public DateTime Fecha_modificacion { get => fecha_modificacion; set => fecha_modificacion = value; }
+    [NotMapped]
+    public string Nombre_categoria { get => Nombre_categoria; set => Nombre_categoria = value; }
 }
