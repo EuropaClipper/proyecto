@@ -11,5 +11,4 @@ public partial class Vista_RecuperarContraseña : System.Web.UI.Page
     {
 
     }
-
 }

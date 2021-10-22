@@ -11,5 +11,4 @@ public partial class Vista_Catalogo : System.Web.UI.Page
     {
 
     }
-
 }
