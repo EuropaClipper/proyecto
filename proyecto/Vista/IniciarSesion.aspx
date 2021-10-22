@@ -56,7 +56,7 @@
                                         </tr>
                                         <tr>
                                             <td align="center" colspan="2" style="color: Red;">
-                                                <asp:HyperLink ID="H_RContraseña" runat="server" ForeColor="#003366">Recuperar contraseña</asp:HyperLink>
+                                                <asp:LinkButton ID="LB_RContrasena" runat="server" OnClick="LB_RContrasena_Click">Recuperar contraseña</asp:LinkButton>
                                             </td>
                                         </tr>
                                         <tr>
@@ -77,14 +77,43 @@
             <td style="width: 33%">&nbsp;</td>
         </tr>
         <tr>
-            <td style="width:100%" colspan="3">&nbsp;</td>
+            <td style="width: 100%" colspan="3">&nbsp;</td>
         </tr>
         <tr>
-            <td style="width:100%" colspan="3">&nbsp;</td>
+            <td style="width: 100%" colspan="3">
+
+                <asp:Panel ID="P_RContrasena" runat="server" HorizontalAlign="Center" Width="100%" Visible="False">
+                    <table style="width: 100%">
+                        <tr>
+                            <td style="width: 16.67%">&nbsp;</td>
+                            <td style="width: 16.67%">
+                                <asp:Label ID="L_Correo" runat="server" Text="Digite su correo:"></asp:Label>
+                            </td>
+                            <td style="width: 33.33%">
+                                <asp:TextBox ID="TextBox1" runat="server" MaxLength="100" TextMode="Email" Width="95%"></asp:TextBox>
+                            </td>
+                            <td style="width: 16.67%">&nbsp;</td>
+                            <td style="width: 16.67%">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 100%" colspan="5">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 16.67%">&nbsp;</td>
+                            <td style="width: 16.67%">&nbsp;</td>
+                            <td style="width: 33.33%; text-align: center">
+                                <asp:Button ID="B_RecuperarContrasena" runat="server" Text="Recuperar contraseña" />
+                            </td>
+                            <td style="width: 16.67%">&nbsp;</td>
+                            <td style="width: 16.67%">&nbsp;</td>
+                        </tr>
+                    </table>
+                </asp:Panel>
+
+            </td>
         </tr>
         <tr>
-            <td style="width:100%" colspan="3">&nbsp;</td>
+            <td style="width: 100%" colspan="3">&nbsp;</td>
         </tr>
     </table>
 </asp:Content>
-
