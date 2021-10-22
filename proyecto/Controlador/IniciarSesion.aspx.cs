@@ -35,4 +35,9 @@ public partial class Vista_IniciarSesion : System.Web.UI.Page
             }
         }
     }
+
+    protected void LB_RContrasena_Click(object sender, EventArgs e)
+    {
+        P_RContrasena.Visible = true;
+    }
 }
