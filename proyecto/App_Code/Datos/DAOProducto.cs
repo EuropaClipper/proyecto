@@ -3,6 +3,10 @@ using System.Linq;
 
 public class DAOProducto
 {
+    //public EProducto obtenerProducto()
+    //{
+
+    //}
     public List<EProducto> obtenerProductos()
     {
         using (var db = new Mapeo())
@@ -20,7 +24,9 @@ public class DAOProducto
                         Nombre = m.producto.Nombre,
                         Precio_venta = m.producto.Precio_venta,
                         Descripcion = m.producto.Descripcion,
-                        Imagen = m.producto.Imagen,
+                        Imagen_uno = m.producto.Imagen_uno,
+                        Imagen_dos = m.producto.Imagen_dos,
+                        Imagen_tres = m.producto.Imagen_tres,
                         Id_categoria = m.producto.Id_categoria,
                         Nombre_categoria = m.categoria.Categoria
                     }).OrderBy(x => x.Nombre).ToList();

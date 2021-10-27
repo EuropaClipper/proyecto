@@ -11,4 +11,10 @@ public partial class Vista_Catalogo : System.Web.UI.Page
     {
 
     }
+
+
+    protected void DL_Productos_ItemCommand(object source, DataListCommandEventArgs e)
+    {
+
+    }
 }

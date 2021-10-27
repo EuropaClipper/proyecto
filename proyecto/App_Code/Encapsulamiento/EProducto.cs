@@ -9,7 +9,9 @@ public class EProducto
     private int id;
     private string nombre;
     private string descripcion;
-    private string imagen;
+    private string imagen_uno;
+    private string imagen_dos;
+    private string imagen_tres;
     private double precio_venta;
     private string id_proveedor;
     private int id_categoria;
@@ -23,8 +25,6 @@ public class EProducto
     public string Nombre { get => nombre; set => nombre = value; }
     [Column("descripcion")]
     public string Descripcion { get => descripcion; set => descripcion = value; }
-    [Column("imagen")]
-    public string Imagen { get => imagen; set => imagen = value; }
     [Column("precio_venta")]
     public double Precio_venta { get => precio_venta; set => precio_venta = value; }
     [Column("id_proveedor")]
@@ -37,6 +37,12 @@ public class EProducto
     public string Session { get => session; set => session = value; }
     [Column("fecha_modificacion")]
     public DateTime Fecha_modificacion { get => fecha_modificacion; set => fecha_modificacion = value; }
+    [Column("imagen_uno")]
+    public string Imagen_uno { get => imagen_uno; set => imagen_uno = value; }
+    [Column("imagen_dos")]
+    public string Imagen_dos { get => imagen_dos; set => imagen_dos = value; }
+    [Column("imagen_tres")]
+    public string Imagen_tres { get => imagen_tres; set => imagen_tres = value; }
     [NotMapped]
-    public string Nombre_categoria { get => Nombre_categoria; set => Nombre_categoria = value; }
+    public string Nombre_categoria { get => nombre_categoria; set => nombre_categoria = value; }
 }
