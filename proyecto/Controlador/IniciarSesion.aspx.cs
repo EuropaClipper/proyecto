@@ -39,4 +39,14 @@ public partial class Vista_IniciarSesion : System.Web.UI.Page
     {
         P_RContrasena.Visible = true;
     }
+
+    protected void B_RecuperarContrasena_Click(object sender, EventArgs e)
+    {
+        EUsuario correo = new EUsuario();
+        correo.Correo = TB_Correo.Text;
+        EToken token = new EToken();
+        token = new RecuperarContraseña().Enviar_token(correo);
+        ClientScriptManager cm = this.ClientScript;
+        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('"+token.Msj_error+"');</script>");
+    }
 }

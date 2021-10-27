@@ -8,12 +8,19 @@
             <td style="font-size:x-large;width:100%"><center><em>UBICACIÓN</td>
         </tr>
         <tr>
-            <td style="width: 100%"></td>
+            <td style="width: 100%">&nbsp;</td>
         </tr>
         <tr>
             <td style="text-align:center;width:100%">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1671.5001716500744!2d-74.2702908480917!3d4.85217549486916!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f7e35f92e0301%3A0x8a8fd6b20f655082!2zNMKwNTEnMDUuMyJOIDc0wrAxNicxMy4zIlc!5e0!3m2!1ses!2sco!4v1509759698298"
-                    frameborder="0" allowfullscreen="true" style="width: 976px;height: 399px"></iframe>
+                <div class="mapouter">
+                    <div class="gmap_canvas">
+                        <iframe width="100%" height="400" id="gmap_canvas" 
+                            src="https://maps.google.com/maps?q=4.807549967751974,%20-74.34871883647857&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                            frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                        </iframe>
+                        <style>.gmap_canvas {overflow:hidden;background:none!important;height:400px;width:100%;}</style>
+                    </div>
+                </div>
             </td>
         </tr>
         <tr>

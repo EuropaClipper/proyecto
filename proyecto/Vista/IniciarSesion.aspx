@@ -82,7 +82,7 @@
         <tr>
             <td style="width: 100%" colspan="3">
 
-                <asp:Panel ID="P_RContrasena" runat="server" HorizontalAlign="Center" Width="100%" Visible="False">
+                <asp:Panel ID="P_RContrasena" runat="server" Width="100%" Visible="False">
                     <table style="width: 100%">
                         <tr>
                             <td style="width: 16.67%">&nbsp;</td>
@@ -90,7 +90,8 @@
                                 <asp:Label ID="L_Correo" runat="server" Text="Digite su correo:"></asp:Label>
                             </td>
                             <td style="width: 33.33%">
-                                <asp:TextBox ID="TextBox1" runat="server" MaxLength="100" TextMode="Email" Width="95%"></asp:TextBox>
+                                <asp:TextBox ID="TB_Correo" runat="server" MaxLength="100" TextMode="Email" Width="90%"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RFV_Correo" runat="server" ControlToValidate="TB_Correo" ErrorMessage="*" ForeColor="Maroon" SetFocusOnError="True" ValidationGroup="VG_RContrasena"></asp:RequiredFieldValidator>
                             </td>
                             <td style="width: 16.67%">&nbsp;</td>
                             <td style="width: 16.67%">&nbsp;</td>
@@ -102,7 +103,7 @@
                             <td style="width: 16.67%">&nbsp;</td>
                             <td style="width: 16.67%">&nbsp;</td>
                             <td style="width: 33.33%; text-align: center">
-                                <asp:Button ID="B_RecuperarContrasena" runat="server" Text="Recuperar contraseña" />
+                                <asp:Button ID="B_RecuperarContrasena" runat="server" Text="Recuperar contraseña" OnClick="B_RecuperarContrasena_Click" ValidationGroup="VG_RContrasena" />
                             </td>
                             <td style="width: 16.67%">&nbsp;</td>
                             <td style="width: 16.67%">&nbsp;</td>
