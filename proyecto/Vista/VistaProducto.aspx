@@ -33,25 +33,44 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <table class="auto-style1">
+
+            <tr>
+
+            <td style="100%" colspan="3">
+                <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/Imagenes/pagina_web/imgAtras.png" OnClick="ImageButton2_Click" />
+                </td>
+
+        </tr>
+            <tr>
+
+            <td style="100%" colspan="3">
+                &nbsp;</td>
+
+        </tr>
+        
+            <td style="100%" colspan="3">
+                &nbsp;</td>
+
+        </tr>
         <tr>
             <td class="auto-style6">
-                <asp:Image runat="server" BorderColor="Black" BorderStyle="NotSet" Height="110px" ImageUrl="~/Imagenes/productos/cocacola.jpg" Width="173px" />
+                <asp:Image runat="server" BorderColor="Black" BorderStyle="NotSet" Height="110px" Width="173px" ID="Image1" />
             </td>
             <td class="auto-style6">
-                <asp:Image ID="Image2" runat="server" BorderStyle="None" Height="110px" ImageUrl="~/Imagenes/productos/cocacola.jpg" Width="173px" />
+                <asp:Image ID="Image2" runat="server" BorderStyle="None" Height="110px" Width="173px" />
             </td>
             <td class="auto-style13">
-                <asp:Image ID="Image3" runat="server" Height="110px" ImageUrl="~/Imagenes/productos/cocacola.jpg" Width="173px" />
+                <asp:Image ID="Image3" runat="server" Height="110px" Width="173px" />
             </td>
         </tr>
         <tr>
             <td class="auto-style8" colspan="2">
                 <h1 class="col50">
-                    <asp:Label ID="Label2" runat="server" Text="CocaCola"></asp:Label>
+                    <asp:Label ID="L_Nombre" runat="server"></asp:Label>
                 </h1>
             </td>
             <td class="auto-style12">
-                <asp:Label ID="Label1" runat="server" Text="$1000" CssClass="auto-style5" Font-Size="XX-Large"></asp:Label></td>
+                <asp:Label ID="L_Precio" runat="server" CssClass="auto-style5" Font-Size="XX-Large"></asp:Label></td>
         </tr>
         <tr>
             <td class="col50" colspan="3">

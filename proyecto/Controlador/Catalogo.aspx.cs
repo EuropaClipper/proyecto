@@ -15,6 +15,15 @@ public partial class Vista_Catalogo : System.Web.UI.Page
 
     protected void DL_Productos_ItemCommand(object source, DataListCommandEventArgs e)
     {
-
+        if(e.CommandName.ToString() == "detalles")
+        {
+            Session["producto"] = int.Parse(e.CommandArgument.ToString());
+            Response.Redirect("VistaProducto.aspx");
+        }
+        else
+        {
+            //agregar a carrito
+        }
     }
+
 }

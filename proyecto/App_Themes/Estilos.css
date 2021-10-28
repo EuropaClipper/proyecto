@@ -1,42 +1,54 @@
 ﻿.nombre_l {
     color: blue;
 }
+
 .col50 {
     text-align: center;
+    width:50%;
 }
-.col35{
-    width:35%;
-    text-align:right;
+
+.col35 {
+    width: 35%;
+    text-align: right;
 }
-.col15{
-    width:15%;
-    text-align:right;
+
+.col15 {
+    width: 15%;
+    text-align: right;
 }
-.col10{
-    width:10%;
-    text-align:center;
+
+.col10 {
+    width: 10%;
+    text-align: center;
 }
-.col90{
-    width:90%;
+
+.col90 {
+    width: 90%;
 }
-.col100_texto_centrado_xlarge{
-    width:100%;
-    text-align:center;
-    font-size:x-large;
+
+.col100_texto_centrado_xlarge {
+    width: 100%;
+    text-align: center;
+    font-size: x-large;
 }
-.col40_textoDerecha{
-    width:40%;
-    text-align:right;
+
+.col40_textoDerecha {
+    width: 40%;
+    text-align: right;
 }
-.col40{
-    width:40%;
+
+.col40 {
+    width: 40%;
 }
-.col20{
-    width:20%;
+
+.col20 {
+    width: 20%;
 }
+
 .LNombre {
     font-size: xx-large;
 }
+
 .button {
     background-color: #4CAF50; /* Green */
     border: none;
@@ -46,5 +58,22 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+}
+
+.buttonAgg {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    border-radius: 2px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.buttonAgg:hover {
+   color: black;
+   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 

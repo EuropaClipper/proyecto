@@ -3,10 +3,31 @@ using System.Linq;
 
 public class DAOProducto
 {
-    //public EProducto obtenerProducto()
-    //{
+    public EProducto obtenerProducto(int id_producto)
+    {
+        using (var db = new Mapeo())
+        {
+            return (from producto in db.producto
+                    join categoria in db.categoria on producto.Id_categoria equals categoria.Id
 
-    //}
+                    select new
+                    {
+                        producto,
+                        categoria
+                    }).Where(x=> x.producto.Id.Equals(id_producto)).ToList().Select(m => new EProducto
+                    {
+                        Id = m.producto.Id,
+                        Nombre = m.producto.Nombre,
+                        Precio_venta = m.producto.Precio_venta,
+                        Descripcion = m.producto.Descripcion,
+                        Imagen_uno = m.producto.Imagen_uno,
+                        Imagen_dos = m.producto.Imagen_dos,
+                        Imagen_tres = m.producto.Imagen_tres,
+                        Id_categoria = m.producto.Id_categoria,
+                        Nombre_categoria = m.categoria.Categoria
+                    }).First();
+        }
+    }
     public List<EProducto> obtenerProductos()
     {
         using (var db = new Mapeo())
