@@ -34,7 +34,6 @@ public class DAOProducto
         {
             return (from producto in db.producto
                     join categoria in db.categoria on producto.Id_categoria equals categoria.Id
-
                     select new
                     {
                         producto,

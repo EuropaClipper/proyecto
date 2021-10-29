@@ -19,6 +19,7 @@ public class EProducto
     private string session;
     private DateTime fecha_modificacion;
     private string nombre_categoria;
+    private int cantidad_inventario;
     [Key,Column("id")]
     public int Id { get => id; set => id = value; }
     [Column("nombre")]
@@ -45,4 +46,6 @@ public class EProducto
     public string Imagen_tres { get => imagen_tres; set => imagen_tres = value; }
     [NotMapped]
     public string Nombre_categoria { get => nombre_categoria; set => nombre_categoria = value; }
+    [NotMapped]
+    public int Cantidad_inventario { get => cantidad_inventario; set => cantidad_inventario = value; }
 }

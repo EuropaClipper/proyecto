@@ -40,7 +40,7 @@
                             <tr>
                                 <td style="width:50%;text-align:end">Precio:</td>
                                 <td style="width:50%;text-align:start">
-                                    <asp:Label ID="Precio_ventaLabel" runat="server" Text='<%# Eval("Precio_venta") %>' />
+                                    <asp:Label ID="Precio_ventaLabel" runat="server" Text='<%# Eval("Precio_venta", "{0}") %>' />
                                 </td>
                             </tr>
                             <tr>
@@ -52,7 +52,8 @@
                             <tr>
                                 <td style="width:50%;text-align:end">Cantidad</td>
                                 <td style="width:50%;text-align:start">
-                                    <asp:TextBox ID="TextBox1" runat="server" MaxLength="3" TextMode="Number" Width="3em"></asp:TextBox>
+                                    <asp:TextBox ID="TB_Cantidad" runat="server" MaxLength="3" TextMode="Number" Width="3em"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RFV_Cantidad" runat="server" ControlToValidate="TB_Cantidad" ErrorMessage="*" Font-Size="Large" ForeColor="Red" ValidationGroup='<%# Container.ItemIndex +1 %>'></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
@@ -65,13 +66,15 @@
                             </tr>
                             <tr>
                                 <td style="width:100%;text-align:center" colspan="2">
-                                    <asp:Button ID="B_Carrito" runat="server" CssClass="buttonAgg" Text="Agregar al carrito" CommandArgument='<%# Eval("id") %>' CommandName="carrito" />
+                                    <asp:Button ID="B_Carrito" runat="server" CssClass="buttonAgg" Text="Agregar al carrito" CommandArgument='<%# Eval("id") %>' CommandName="carrito" ValidationGroup= '<%# Container.ItemIndex +1 %>' />
                                 </td>
                             </tr>
                         </table>
                         <table style="width: 100%">
                             <tr>
-                                <td>&nbsp;</td>
+                                <td>
+                                    <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="No es posible agegar esta cantidad al carrito. ¡¡¡verifique!!!" ValidationGroup= '<%# Container.ItemIndex +1 %>' MinimumValue="1" MaximumValue="1" ControlToValidate="TB_Cantidad"></asp:RangeValidator>
+                                </td>
                             </tr>
                         </table>
                     </ItemTemplate>
