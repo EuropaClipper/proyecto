@@ -74,7 +74,7 @@
                         <table style="width: 100%">
                             <tr>
                                 <td style="text-align:center">
-                                    <asp:RangeValidator ID="RV_Cantidad" runat="server" ErrorMessage="No es posible agegar esta cantidad al carrito. ¡¡¡verifique!!!" ValidationGroup= '<%# Container.ItemIndex %>' MinimumValue="1" MaximumValue='<%# Eval("Cantidad_inventario", "{0}") %>' ControlToValidate="TB_Cantidad" ForeColor="Red"></asp:RangeValidator>
+                                    <asp:RangeValidator ID="RV_Cantidad" runat="server" ErrorMessage="No es posible agegar esta cantidad al carrito. ¡¡¡verifique!!!" ValidationGroup= '<%# Container.ItemIndex %>' MinimumValue="1" MaximumValue='<%# Eval("Cantidad_inventario") %>' ControlToValidate="TB_Cantidad" ForeColor="Red" Type="Integer"></asp:RangeValidator>
                                 </td>
                             </tr>
                         </table>
