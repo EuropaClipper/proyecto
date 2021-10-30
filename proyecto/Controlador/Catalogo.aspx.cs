@@ -22,7 +22,12 @@ public partial class Vista_Catalogo : System.Web.UI.Page
         }
         else
         {
-            //agregar a carrito
+            int cantidadReservada = int.Parse(((TextBox)e.Item.FindControl("TB_Cantidad")).Text);
+
+            ECarrito carrito = new ECarrito();
+            carrito.Cantidad = cantidadReservada;
+            new DAOCarrito().InsertarCarrito(carrito);
+            Response.Redirect("VistaCarrito.aspx");
         }
     }
 

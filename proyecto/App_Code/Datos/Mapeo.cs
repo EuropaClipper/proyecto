@@ -18,6 +18,7 @@ public class Mapeo : DbContext
     public virtual DbSet<ECategoria> categoria { get; set; }
     public virtual DbSet<EProducto> producto { get; set; }
     public virtual DbSet<EToken> token { get; set; }
+    public virtual DbSet<ECarrito> carrito { get; set; }
 
 
 }
