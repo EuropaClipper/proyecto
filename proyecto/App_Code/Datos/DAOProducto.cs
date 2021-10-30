@@ -9,11 +9,13 @@ public class DAOProducto
         {
             return (from producto in db.producto
                     join categoria in db.categoria on producto.Id_categoria equals categoria.Id
+                    join inventario in db.inventario on producto.Id equals inventario.Id_producto
 
                     select new
                     {
                         producto,
-                        categoria
+                        categoria,
+                        inventario
                     }).Where(x=> x.producto.Id.Equals(id_producto)).ToList().Select(m => new EProducto
                     {
                         Id = m.producto.Id,
@@ -24,7 +26,10 @@ public class DAOProducto
                         Imagen_dos = m.producto.Imagen_dos,
                         Imagen_tres = m.producto.Imagen_tres,
                         Id_categoria = m.producto.Id_categoria,
-                        Nombre_categoria = m.categoria.Categoria
+                        Nombre_categoria = m.categoria.Categoria,
+                        Estado = m.producto.Estado,
+                        Cantidad_inventario = m.inventario.Cantidad,
+                        Id_proveedor = m.producto.Id_proveedor
                     }).First();
         }
     }
@@ -34,10 +39,12 @@ public class DAOProducto
         {
             return (from producto in db.producto
                     join categoria in db.categoria on producto.Id_categoria equals categoria.Id
+                    join inventario in db.inventario on producto.Id equals inventario.Id_producto
                     select new
                     {
                         producto,
-                        categoria
+                        categoria,
+                        inventario
                     }).ToList().Select(m => new EProducto
                     {
                         Id = m.producto.Id,
@@ -48,7 +55,10 @@ public class DAOProducto
                         Imagen_dos = m.producto.Imagen_dos,
                         Imagen_tres = m.producto.Imagen_tres,
                         Id_categoria = m.producto.Id_categoria,
-                        Nombre_categoria = m.categoria.Categoria
+                        Nombre_categoria = m.categoria.Categoria,
+                        Estado = m.producto.Estado,
+                        Cantidad_inventario = m.inventario.Cantidad,
+                        Id_proveedor = m.producto.Id_proveedor
                     }).OrderBy(x => x.Nombre).ToList();
         }
     }
