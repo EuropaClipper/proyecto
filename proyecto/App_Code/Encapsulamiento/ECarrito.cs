@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 [Serializable]
-[Table("carrito", Schema = "negocio")]
+[Table("carrito", Schema = "compras")]
 public class ECarrito
 {
     private int id;

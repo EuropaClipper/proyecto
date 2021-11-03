@@ -22,7 +22,17 @@
                         <asp:Button ID="B_Registro" runat="server" Text="Registrarse" ForeColor="#000099" PostBackUrl="~/Vista/Registro.aspx" />
                     </td>
                     <td class="col15">
-                        <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Imagenes/pagina_web/carrito.jpg" Width="80px" />
+                        <asp:Label ID="l_CantidadCarrito" runat="server" ForeColor="#000099"></asp:Label>
+                        <asp:ImageButton ID="IB_Carrito" runat="server" ImageUrl="~/Imagenes/pagina_web/carrito.jpg" Width="80px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col50">
+                        &nbsp;</td>
+                    <td class="col35">
+                        &nbsp;</td>
+                    <td class="col15">
+                        <asp:Button ID="B_CerrarSesion" runat="server" Text="Cerrar sesion" ForeColor="#000099" OnClick="B_CerrarSesion_Click" Visible="False" />
                     </td>
                 </tr>
             </table>

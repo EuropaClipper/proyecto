@@ -46,7 +46,7 @@
                             <tr>
                                 <td style="width:50%;text-align:end">Categoria:</td>
                                 <td style="width:50%;text-align:start">
-                                    <asp:Label ID="Nombre_categoriaLabel" runat="server" Text='<%# Eval("Cantidad_inventario") %>' />
+                                    <asp:Label ID="Nombre_categoriaLabel" runat="server" Text='<%# Eval("Nombre_categoria") %>' />
                                 </td>
                             </tr>
                             <tr>

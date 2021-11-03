@@ -23,7 +23,13 @@ public class DAOCarrito
             }
         }
     }
-
+    public int CantidadEnCarrito(string id_usuario)
+    {
+        using(var db = new Mapeo())
+        {
+            return db.carrito.Where(x => x.UserId.Equals(id_usuario)).Count();
+        }
+    }
     public void InsertarCarrito(ECarrito carrito)
     {
         using (var db = new Mapeo())
@@ -38,6 +44,25 @@ public class DAOCarrito
         using (var db = new Mapeo())
         {
             return db.carrito.Where(x => x.UserId.Equals(user_id)).Count();
+        }
+    }
+    public List<EProducto> ProductosEnCarrito(int id_usuario)
+    {
+        using(var db = new Mapeo())
+        {
+            return (from carrito in db.carrito
+                    join usuario in db.usuario on carrito.UserId equals usuario.Cedula
+                    join producto in db.producto on carrito.ProductoId equals producto.Id
+                    select new
+                    {
+                        carrito,
+                        usuario,
+                        producto
+                    }).ToList().Select(m => new EProducto
+                    {
+                        Id = m.producto.Id,
+
+                    }).ToList();
         }
     }
 }
