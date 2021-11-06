@@ -37,7 +37,18 @@ public partial class Vista_Catalogo : System.Web.UI.Page
             carrito.FechaAgregado = DateTime.Now;
             carrito.ProductoId = id_producto;
             carrito.UserId = ((EUsuario)Session["user"]).Cedula;
-            new DAOCarrito().InsertarCarrito(carrito);
+            ECarrito carrito_aux = new DAOCarrito().Existe(id_producto);
+            if(carrito_aux != null)
+            {
+                carrito.Id = carrito_aux.Id;
+                carrito.Cantidad = cantidadReservada + carrito_aux.Cantidad;
+                new DAOCarrito().ActualizarCarrito(carrito);
+            }
+            else
+            {
+                new DAOCarrito().InsertarCarrito(carrito);
+            }
+            
             Response.Redirect("Catalogo.aspx");
         }
     }

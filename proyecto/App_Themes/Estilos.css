@@ -49,8 +49,8 @@
     font-size: xx-large;
 }
 
-.button {
-    background-color: #4CAF50; /* Green */
+.buttonQuitar {
+    background-color:tomato;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -59,7 +59,10 @@
     display: inline-block;
     font-size: 16px;
 }
-
+.buttonQuitar:hover {
+    color: black;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
 .buttonAgg {
     background-color: #4CAF50;
     border: none;

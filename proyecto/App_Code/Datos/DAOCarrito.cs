@@ -25,7 +25,7 @@ public class DAOCarrito
     }
     public int CantidadEnCarrito(string id_usuario)
     {
-        using(var db = new Mapeo())
+        using (var db = new Mapeo())
         {
             return db.carrito.Where(x => x.UserId.Equals(id_usuario)).Count();
         }
@@ -38,31 +38,51 @@ public class DAOCarrito
             db.SaveChanges();
         }
     }
-
-    public int CantidadArticulos(string user_id)
+    public void ActualizarCarrito(ECarrito carrito)
     {
         using (var db = new Mapeo())
         {
-            return db.carrito.Where(x => x.UserId.Equals(user_id)).Count();
+            db.carrito.Attach(carrito);
+            var entry = db.Entry(carrito);
+            entry.State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
         }
     }
-    public List<EProducto> ProductosEnCarrito(int id_usuario)
+    public ECarrito Existe(int id_producto)
     {
-        using(var db = new Mapeo())
+        using (var db = new Mapeo())
+        {
+            return db.carrito.Where(x => x.ProductoId.Equals(id_producto)).FirstOrDefault();
+        }
+    }
+    public List<EProducto> ProductosEnCarrito(EUsuario user)
+    {
+        using (var db = new Mapeo())
         {
             return (from carrito in db.carrito
-                    join usuario in db.usuario on carrito.UserId equals usuario.Cedula
                     join producto in db.producto on carrito.ProductoId equals producto.Id
                     select new
                     {
                         carrito,
-                        usuario,
                         producto
-                    }).ToList().Select(m => new EProducto
+                    }).ToList().Where(x => x.carrito.UserId.Equals(user.Cedula)).Select(m => new EProducto
                     {
                         Id = m.producto.Id,
-
+                        Imagen_uno = m.producto.Imagen_uno,
+                        Nombre = m.producto.Nombre,
+                        Precio_venta = (m.producto.Precio_venta * m.carrito.Cantidad),
+                        Cantidad_inventario = m.carrito.Cantidad
                     }).ToList();
+        }
+    }
+    public void EliminarCarrito(ECarrito carrito)
+    {
+        using (var db = new Mapeo())
+        {
+            db.carrito.Attach(carrito);
+            var entry = db.Entry(carrito);
+            entry.State = System.Data.Entity.EntityState.Deleted;
+            db.SaveChanges();
         }
     }
 }

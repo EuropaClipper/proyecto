@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 public class DAOProducto
@@ -123,5 +124,21 @@ public class DAOProducto
             db.producto.Add(producto);
             db.SaveChanges();
         }
+    }
+    public void ModificarCantidad(int productoId, int cantidad)
+    {
+        using (var db = new Mapeo())
+        {
+            EProducto producto = db.producto.First(x => x.Id == productoId);
+
+            producto.Cantidad_inventario = producto.Cantidad_inventario - cantidad;
+
+            db.producto.Attach(producto);
+            var entry = db.Entry(producto);
+            entry.State = EntityState.Modified;
+            db.SaveChanges();
+
+        }
+
     }
 }

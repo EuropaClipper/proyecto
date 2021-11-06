@@ -23,7 +23,7 @@
                     </td>
                     <td class="col15">
                         <asp:Label ID="l_CantidadCarrito" runat="server" ForeColor="#000099"></asp:Label>
-                        <asp:ImageButton ID="IB_Carrito" runat="server" ImageUrl="~/Imagenes/pagina_web/carrito.jpg" Width="80px" />
+                        <asp:ImageButton ID="IB_Carrito" runat="server" ImageUrl="~/Imagenes/pagina_web/carrito.jpg" Width="80px" PostBackUrl="~/Vista/VistaCarrito.aspx" />
                     </td>
                 </tr>
                 <tr>

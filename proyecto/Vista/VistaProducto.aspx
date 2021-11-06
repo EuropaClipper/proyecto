@@ -74,7 +74,7 @@
         </tr>
         <tr>
             <td class="col50" colspan="3">
-                <asp:Button ID="Button1" runat="server" CssClass="button" Text="Agregar al carrito" />
+                <asp:Button ID="Button1" runat="server" CssClass="buttonAgg" Text="Agregar al carrito" />
             </td>
         </tr>
         <tr>
