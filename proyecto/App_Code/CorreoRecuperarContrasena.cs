@@ -53,6 +53,7 @@ public class CorreoRecuperarContrasena
         }
         catch (Exception ex)
         {
+            Console.WriteLine(ex);
             throw;
         }
         return enviado;

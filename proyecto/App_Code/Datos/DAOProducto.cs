@@ -61,6 +61,7 @@ public class DAOProducto
                         Cantidad_inventario = m.inventario.Cantidad,
                         Id_proveedor = m.producto.Id_proveedor
                     }).OrderBy(x => x.Nombre).ToList();
+            
         }
     }
 
@@ -140,5 +141,17 @@ public class DAOProducto
 
         }
 
+    }
+    public void estado(string nombre)
+    {
+        using (var db = new Mapeo())
+        {
+            EProducto producto = db.producto.First(x => x.Nombre == nombre);
+            producto.Estado = !producto.Estado;
+            db.producto.Attach(producto);
+            var entry = db.Entry(producto);
+            entry.State = EntityState.Modified;
+            db.SaveChanges();
+        }
     }
 }
