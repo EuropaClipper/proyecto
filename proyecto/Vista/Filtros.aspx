@@ -68,27 +68,62 @@
         </tr>
         <tr>
             <td colspan="4" style="width:100%;text-align:center">
-                <asp:DataList ID="DL_Filtros" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" CellSpacing="20" DataKeyField="Id" DataSourceID="ODSPFiltrados" ForeColor="Black" GridLines="Horizontal" HorizontalAlign="Center" RepeatColumns="4" RepeatDirection="Horizontal">
+                <asp:DataList ID="DL_Filtros" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" CellSpacing="20" DataKeyField="Id" DataSourceID="ODSPFiltrados" ForeColor="Black" GridLines="Horizontal" HorizontalAlign="Center" RepeatColumns="4" RepeatDirection="Horizontal" OnItemCommand="DL_Filtros_ItemCommand">
                     <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
                     <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
                     <ItemTemplate>
-                        Nombre:
-                        <asp:Label ID="NombreLabel" runat="server" Text='<%# Eval("Nombre") %>' />
-                        <br />
-                        <asp:Image ID="Image1" runat="server" ImageAlign="Baseline" ImageUrl='<%# Eval("Imagen") %>' Width="150px" />
-                        <br />
-                        Descripcion:
-                        <asp:Label ID="DescripcionLabel" runat="server" Text='<%# Eval("Descripcion") %>' />
-                        <br />
-                        Precio:
-                        <asp:Label ID="Precio_ventaLabel" runat="server" Text='<%# Eval("Precio_venta") %>' />
-                        <br />
-                        Categoria:
-                        <asp:Label ID="Nombre_categoriaLabel" runat="server" Text='<%# Eval("Nombre_categoria") %>' />
-                        <br />
-                        <br />
-                        <asp:Button ID="Button1" runat="server" Text="Agregar al carrito" />
-                        <br />
+                        <table style="width: 100%">
+                            <tr>
+                                <td  style="width: 100%;text-align:center" colspan="2">
+                                    <asp:Label ID="NombreLabel" runat="server" Text='<%# Eval("Nombre") %>' />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"  style="width: 100%;text-align:center;height:15em" >
+                                    <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("Imagen_uno") %>' Width="50%" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:50%;text-align:end">Precio:</td>
+                                <td style="width:50%;text-align:start">
+                                    <asp:Label ID="Precio_ventaLabel" runat="server" Text='<%# Eval("Precio_venta", "${0:N}") %>' />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:50%;text-align:end">Categoria:</td>
+                                <td style="width:50%;text-align:start">
+                                    <asp:Label ID="Nombre_categoriaLabel" runat="server" Text='<%# Eval("Nombre_categoria") %>' />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:50%;text-align:end">Cantidad</td>
+                                <td style="width:50%;text-align:start">
+                                    <asp:TextBox ID="TB_Cantidad" runat="server" MaxLength="3" TextMode="Number" Width="3em"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RFV_Cantidad" runat="server" ControlToValidate="TB_Cantidad" ErrorMessage="*" Font-Size="Large" ForeColor="Red" ValidationGroup='<%# Container.ItemIndex %>'></asp:RequiredFieldValidator>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:100%;text-align:center" colspan="2">
+                                    <asp:LinkButton ID="LB_VerDetalles" runat="server" CommandArgument='<%# Eval("id") %>' CommandName="detalles">Ver detalles</asp:LinkButton>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:100%" colspan="2">
+                                    &nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td style="width:100%;text-align:center" colspan="2">
+                                    <asp:Button ID="B_Carrito" runat="server" CssClass="buttonAgg" Text="Agregar al carrito" CommandArgument='<%# Eval("id") %>' CommandName="carrito" ValidationGroup= '<%# Container.ItemIndex%>' />
+                                </td>
+                            </tr>
+                        </table>
+                        <table style="width: 100%">
+                            <tr>
+                                <td style="text-align:center">
+                                    <asp:RangeValidator ID="RV_Cantidad" runat="server" ErrorMessage="No es posible agegar esta cantidad al carrito. ¡¡¡verifique!!!" ValidationGroup= '<%# Container.ItemIndex %>' MinimumValue="1" MaximumValue='<%# Eval("Cantidad_inventario") %>' ControlToValidate="TB_Cantidad" ForeColor="Red" Type="Integer"></asp:RangeValidator>
+                                </td>
+                            </tr>
+                        </table>
                     </ItemTemplate>
                     <SelectedItemStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
                 </asp:DataList>
