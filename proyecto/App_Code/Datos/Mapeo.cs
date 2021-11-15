@@ -7,6 +7,8 @@ public class Mapeo : DbContext
     }
     public Mapeo() : base("name=mercado") { }
     private readonly string schema;
+    internal object tabla_quejas;
+
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema(this.schema);
@@ -22,6 +24,8 @@ public class Mapeo : DbContext
     public virtual DbSet<ECarrito> carrito { get; set; }
     public virtual DbSet<ECompra> compra { get; set; }
     public virtual DbSet<EDetallesCompra> detalles_compra { get; set; }
+    public virtual DbSet<EInformacionNegocio> informacion { get; set; }
+    public virtual DbSet<EquejasReclamos> quejasR { get; set; }
 
 
 
