@@ -44,16 +44,16 @@ public partial class Vista_VistaCarrito : System.Web.UI.Page
             foreach (var item in lista_productos)
             {
                 EDetallesCompra detalles = new EDetallesCompra();
-                detalles.Id_compra = nueva_compra.Id;
+                detalles.Id_compra  = nueva_compra.Id;
                 detalles.Id_producto = item.Id;
                 detalles.Cantidad = item.Cantidad_inventario;
                 detalles.Precio_compra = (item.Precio_venta / detalles.Cantidad);
                 detalles.Total = item.Precio_venta;
                 new DAOCompra().InsertarDetallesCompra(detalles);
                 new DAOProducto().ModificarCantidad(item.Id, item.Cantidad_inventario);
-                new DAOCarrito().EliminarCarrito(new DAOCarrito().Existe(item.Id));
+                new DAOCarrito().EliminarCarrito(new DAOCarrito().Existe(item.Id));            
             }
-            Response.Redirect("VistaCarrito.aspx");
+            Response.Redirect("Vista_Compra.aspx?factura="+nueva_compra.Id);
         }
         else{
             ClientScriptManager cm = this.ClientScript;

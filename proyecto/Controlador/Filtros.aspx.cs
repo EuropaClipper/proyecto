@@ -133,7 +133,7 @@ public partial class Vista_Filtros : System.Web.UI.Page
                 new DAOCarrito().InsertarCarrito(carrito);
             }
 
-            Response.Redirect("Filtros.aspx");
+            //Response.Redirect("Filtros.aspx");
         }
     }
 }

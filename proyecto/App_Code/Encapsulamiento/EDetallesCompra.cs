@@ -16,8 +16,12 @@ public class EDetallesCompra
     public int Id { get => id; set => id = value; }
     [Column("id_compra")]
     public int Id_compra { get => id_compra; set => id_compra = value; }
+    [NotMapped]
+    public ECompra Compra { get { return new DAOCompra().ObtenerCompra(Id_compra); }set { } }
     [Column("id_producto")]
     public int Id_producto { get => id_producto; set => id_producto = value; }
+    [NotMapped]
+    public EProducto Producto { get { return new DAOProducto().obtenerProducto(id_producto); } set { } }
     [Column("cantidad")]
     public int Cantidad { get => cantidad; set => cantidad = value; }
     [Column("precio_compra")]

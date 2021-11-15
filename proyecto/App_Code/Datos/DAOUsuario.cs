@@ -12,11 +12,11 @@ public class DAOUsuario
             return db.usuario.Where(x => x.Usuario.Equals(usuario.Usuario) && x.Clave.Equals(usuario.Clave)).FirstOrDefault();
         }
     }
-    public EUsuario ObtenerUsuario(EUsuario usuario)
+    public EUsuario ObtenerUsuario(string usuario)
     {
-        using(var db = new Mapeo())
+        using (var db = new Mapeo())
         {
-            return db.usuario.Where(x => x.Cedula.Equals(usuario.Cedula)).First();
+            return db.usuario.Where(x => x.Cedula.Equals(usuario)).First();
         }
     }
     public bool EstaRegistrado(EUsuario usuario)

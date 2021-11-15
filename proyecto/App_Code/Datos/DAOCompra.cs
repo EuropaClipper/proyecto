@@ -23,4 +23,18 @@ public class DAOCompra
             db.SaveChanges();
         }
     }
+    public ECompra ObtenerCompra(int id_compra)
+    {
+        using(var db = new Mapeo())
+        {
+            return db.compra.Where(x => x.Id.Equals(id_compra)).FirstOrDefault();
+        }
+    }
+    public List<EDetallesCompra> ObtenerDetallesCompra(int id_compra)
+    {
+        using(var db = new Mapeo())
+        {
+            return db.detalles_compra.Where(x => x.Id_compra.Equals(id_compra)).ToList();
+        }
+    }
 }
