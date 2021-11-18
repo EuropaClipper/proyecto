@@ -24,7 +24,7 @@
                 <asp:RequiredFieldValidator ID="RFV_Nombre" runat="server" ControlToValidate="TB_Nombre" Enabled="False" ErrorMessage="*" ValidationGroup="VG_Filtros" ForeColor="Red"></asp:RequiredFieldValidator>
             </td>
             <td style="width:50%" colspan="2">
-            <asp:RegularExpressionValidator ID="REV_Nombre" runat="server" ControlToValidate="TB_Nombre" ErrorMessage="*" ForeColor="Red" ValidationGroup="VG_Filtros" SetFocusOnError="True" ValidationExpression="^[A-Za-z ]{3,45}">Este campo sólo permite caracteres alfabéticos</asp:RegularExpressionValidator>
+            <asp:RegularExpressionValidator ID="REV_Nombre" runat="server" ControlToValidate="TB_Nombre" ErrorMessage="*" ForeColor="Red" ValidationGroup="VG_Filtros" SetFocusOnError="True" ValidationExpression="^[A-Za-z ]{1,45}">Este campo sólo permite caracteres alfabéticos</asp:RegularExpressionValidator>
             </td>
         </tr>
         <tr>

@@ -11,75 +11,113 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <table style="width: 100%">
-                <tr>
-                    <td class="col50">
-                        <asp:Label ID="Label1" runat="server" Text="Venta en linea JP&amp;M" CssClass="LNombre" ForeColor="#0000CC"></asp:Label>
-                    </td>
-                    <td class="col35">
-                        <asp:Button ID="B_ISesion" runat="server" Text="Inicio Sesion" ForeColor="#0000CC" PostBackUrl="~/Vista/IniciarSesion.aspx" />
-                        <asp:Button ID="B_Registro" runat="server" Text="Registrarse" ForeColor="#000099" PostBackUrl="~/Vista/Registro.aspx" />
-                    </td>
-                    <td class="col15">
-                        <asp:Label ID="l_CantidadCarrito" runat="server" ForeColor="#000099"></asp:Label>
-                        <asp:ImageButton ID="IB_Carrito" runat="server" ImageUrl="~/Imagenes/pagina_web/carrito.jpg" Width="80px" PostBackUrl="~/Vista/VistaCarrito.aspx" style="border-radius:3em"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col50">
-                        &nbsp;</td>
-                    <td class="col35">
-                        &nbsp;</td>
-                    <td class="col15">
-                        <asp:Button ID="B_CerrarSesion" runat="server" Text="Cerrar sesion" ForeColor="#000099" OnClick="B_CerrarSesion_Click" Visible="False" />
-                    </td>
-                </tr>
-            </table>
-            <table style="width: 100%">
-                <tr>
-                    <td class="col10">
-                        <asp:Menu ID="Menu1" runat="server" BackColor="#B5C7DE" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="Large" ForeColor="#284E98" StaticSubMenuIndent="10px">
-                            <DynamicHoverStyle BackColor="#284E98" ForeColor="White" />
-                            <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
-                            <DynamicMenuStyle BackColor="#B5C7DE" />
-                            <DynamicSelectedStyle BackColor="#507CD1" />
-                            <Items>
-                                <asp:MenuItem NavigateUrl="~/Vista/Inicio.aspx" Text="Inicio" Value="Inicio"></asp:MenuItem>
-                                <asp:MenuItem Text="Quienes somos" Value="Quienes somos" NavigateUrl="~/Vista/Quienes_somos.aspx"></asp:MenuItem>
-                                <asp:MenuItem Text="Catalogo" Value="Catalogo" NavigateUrl="~/Vista/Catalogo.aspx"></asp:MenuItem>
-                                <asp:MenuItem Text="Filtros" Value="Filtros" NavigateUrl="~/Vista/Filtros.aspx"></asp:MenuItem>
-                                <asp:MenuItem Text="Ubicación" Value="Ubicación" NavigateUrl="~/Vista/ubicacion.aspx"></asp:MenuItem>
-                            </Items>
-                            <StaticHoverStyle BackColor="#284E98" ForeColor="White" />
-                            <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
-                            <StaticSelectedStyle BackColor="#507CD1" />
-                        </asp:Menu>
-                    </td>
-                    <td class="col90">
-                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                        </asp:ContentPlaceHolder>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width: 100%" colspan="2">
-                        <center style="background-color: #CCCCCC">
-                            <em>
-                                <br />
-                                CONTACTENOS</em></center>
-                        <center style="background-color: #CCCCCC; height: 115px">
-                            <em>TELEFONO: 3138465493
-                                <br />
-                                <br />
-                            </em>
-                            <img alt="contacto" style="width: 127px; height: 62px" src="../Imagenes/pagina_web/contactenos.jpg" /></center>
-                        <center style="background-color: #CCCCCC"><em>HOARIO DE ATENCIÓN</em></center>
-                        <center style="background-color: #CCCCCC"><em>Lunes a viernes 7am a  8pm</em></center>
-                        <center style="background-color: #CCCCCC"><em>Sabado a Domingo  8:30am a  4pm</em></center>
-                    </td>
-                </tr>
-            </table>
-        </div>
+        <header>
+            <nav>
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width: 95%">
+                            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Imagenes/pagina_web/JP&amp;M.png" PostBackUrl="~/Vista/Inicio.aspx" />
+                        </td>
+                        <td style="width: 5%; text-align: end">
+                            <asp:ImageButton ID="IB_Carrito" runat="server" ImageUrl="~/Imagenes/pagina_web/carrito.jpg" Width="80px" PostBackUrl="~/Vista/VistaCarrito.aspx" Style="border-radius: 3em" />
+                            <br />
+                            <asp:Label ID="l_CantidadCarrito" runat="server" ForeColor="#000099"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: end" colspan="2">
+                            <asp:Button ID="B_CerrarSesion" runat="server" Text="Cerrar sesion" ForeColor="#000099" OnClick="B_CerrarSesion_Click" Visible="False" />
+                        </td>
+                    </tr>
+                </table>
+            </nav>
+        </header>
+        <table style="width: 100%">
+            <tr>
+                <!-- menu para los usuarios-->
+                <td style="width: 15%; vertical-align: top; padding-top: 3em">
+                    <asp:MultiView ID="MV_Menu" runat="server">
+                        <asp:View ID="menu_usuarioV" runat="server">
+                            <asp:Menu ID="M_UVisitante" runat="server" BackColor="#B5C7DE" DynamicHorizontalOffset="2" Style="border-radius: 1em" DynamicVerticalOffset="0" Font-Names="Verdana" Font-Size="Large" ForeColor="#284E98" StaticSubMenuIndent="10px">
+                                <DynamicHoverStyle BackColor="#284E98" ForeColor="White" />
+                                <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                                <DynamicMenuStyle BackColor="#B5C7DE" />
+                                <DynamicSelectedStyle BackColor="#507CD1" />
+                                <Items>
+                                    <asp:MenuItem NavigateUrl="~/Vista/Inicio.aspx" Text="Inicio" Value="Inicio"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/Vista/IniciarSesion.aspx" Text="Iniciar sesión" Value="Iniciar sesión"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/Vista/Registro.aspx" Text="Registrarse" Value="Regístrate"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/Vista/Catalogo.aspx" Text="Catalogo" Value="Catalogo"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/Vista/Quienes_somos.aspx" Text="Quienes somos" Value="Quienes somos"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/Vista/ubicacion.aspx" Text="Ubicación" Value="Ubicación"></asp:MenuItem>
+                                </Items>
+                                <StaticHoverStyle BackColor="#284E98" ForeColor="White" />
+                                <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                                <StaticSelectedStyle BackColor="#507CD1" />
+                            </asp:Menu>
+                        </asp:View>
+                        <asp:View ID="menu_usuarioR" runat="server">
+                            <asp:Menu ID="M_URegistrado" runat="server" BackColor="#B5C7DE" DynamicHorizontalOffset="2" DynamicVerticalOffset="0" Font-Names="Verdana" Font-Size="Large" ForeColor="#284E98" StaticSubMenuIndent="10px" Style="border-radius: 1em">
+                                <DynamicHoverStyle BackColor="#284E98" ForeColor="White" />
+                                <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                                <DynamicMenuStyle BackColor="#B5C7DE" />
+                                <DynamicSelectedStyle BackColor="#507CD1" />
+                                <Items>
+                                    <asp:MenuItem NavigateUrl="~/Vista/Inicio.aspx" Text="Inicio" Value="Inicio"></asp:MenuItem>
+                                    <asp:MenuItem Text="Ver perfil" Value="Ver perfil"></asp:MenuItem>
+                                    <asp:MenuItem Text="Historial de compras" Value="Ver historial de compras"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/Vista/Catalogo.aspx" Text="Catalogo" Value="Catalogo"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/Vista/Quienes_somos.aspx" Text="Quienes somos" Value="Quienes somos"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/Vista/ubicacion.aspx" Text="Ubicación" Value="Ubicación"></asp:MenuItem>
+                                </Items>
+                                <StaticHoverStyle BackColor="#284E98" ForeColor="White" />
+                                <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                                <StaticSelectedStyle BackColor="#507CD1" />
+                            </asp:Menu>
+                        </asp:View>
+                        <asp:View ID="menu_usuarioA" runat="server">
+                            <asp:Menu ID="M_UAdmin" runat="server" BackColor="#B5C7DE" DynamicHorizontalOffset="2" DynamicVerticalOffset="0" Font-Names="Verdana" Font-Size="Large" ForeColor="#284E98" StaticSubMenuIndent="10px" Style="border-radius: 1em">
+                                <DynamicHoverStyle BackColor="#284E98" ForeColor="White" />
+                                <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                                <DynamicMenuStyle BackColor="#B5C7DE" />
+                                <DynamicSelectedStyle BackColor="#507CD1" />
+                                <Items>
+                                    <asp:MenuItem NavigateUrl="~/Vista/Inicio.aspx" Text="Inicio" Value="Inicio"></asp:MenuItem>
+                                    <asp:MenuItem Text="Ver perfil" Value="Ver perfil"></asp:MenuItem>
+                                    <asp:MenuItem Text="Admin. pedidos" Value="Ver historial de compras" NavigateUrl="~/Vista/VistaPedidos.aspx"></asp:MenuItem>
+                                    <asp:MenuItem Text="Admin. proveedores" Value="Admin. proveedores" NavigateUrl="~/Vista/VistaProveedores.aspx"></asp:MenuItem>
+                                    <asp:MenuItem Text="Inventario" Value="Inventario"></asp:MenuItem>
+                                    <asp:MenuItem Text="Consular reportes" Value="Consular reportes" NavigateUrl="~/Vista/VistaReportes.aspx"></asp:MenuItem>
+                                    <asp:MenuItem Text="Informacion del negocio" Value="Modificar informacion del negocio" NavigateUrl="~/Vista/InformacionNegocio.aspx"></asp:MenuItem>
+                                </Items>
+                                <StaticHoverStyle BackColor="#284E98" ForeColor="White" />
+                                <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                                <StaticSelectedStyle BackColor="#507CD1" />
+                            </asp:Menu>
+                        </asp:View>
+                    </asp:MultiView>
+                </td>
+                <td style="85%">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+        </table>
     </form>
+    <footer>
+        <center style="background-color: #CCCCCC">
+            <em>
+                <br />
+                CONTACTENOS</em></center>
+        <center style="background-color: #CCCCCC; height: 115px">
+            <em>TELEFONO: 3138465493
+                                <br />
+                <br />
+            </em>
+            <img alt="contacto" style="width: 127px; height: 62px" src="../Imagenes/pagina_web/contactenos.jpg" /></center>
+        <center style="background-color: #CCCCCC"><em>HOARIO DE ATENCIÓN</em></center>
+        <center style="background-color: #CCCCCC"><em>Lunes a viernes 7am a  8pm</em></center>
+        <center style="background-color: #CCCCCC"><em>Sabado a Domingo  8:30am a  4pm</em></center>
+    </footer>
 </body>
 </html>

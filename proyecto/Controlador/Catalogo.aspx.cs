@@ -60,4 +60,9 @@ public partial class Vista_Catalogo : System.Web.UI.Page
         }
     }
 
+
+    protected void filtros_ServerClick(object sender, EventArgs e)
+    {
+        Response.Redirect("Filtros.aspx");
+    }
 }

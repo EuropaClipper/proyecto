@@ -130,15 +130,13 @@ public class DAOProducto
     {
         using (var db = new Mapeo())
         {
-            EProducto producto = db.producto.First(x => x.Id == productoId);
-
-            producto.Cantidad_inventario = producto.Cantidad_inventario - cantidad;
-
-            db.producto.Attach(producto);
-            var entry = db.Entry(producto);
+            EInventario inventario = db.inventario.Where(x => x.Id_producto.Equals(productoId)).First();
+            inventario.Cantidad = inventario.Cantidad - cantidad;
+            inventario.Fecha_modificacion = System.DateTime.Now;
+            db.inventario.Attach(inventario);
+            var entry = db.Entry(inventario);
             entry.State = EntityState.Modified;
             db.SaveChanges();
-
         }
 
     }

@@ -40,6 +40,7 @@ public partial class Vista_VistaCarrito : System.Web.UI.Page
             nueva_compra.Id_comprador = ((EUsuario)Session["user"]).Cedula;
             nueva_compra.Fecha_compra = DateTime.Now;
             nueva_compra.Total = lista_productos.Sum(x => x.Precio_venta);
+            nueva_compra.Id_estado = 2;
             nueva_compra = new DAOCompra().InsertarCompra(nueva_compra);
             foreach (var item in lista_productos)
             {

@@ -21,4 +21,8 @@ public class ECompra
     public double Total { get => total; set => total = value; }
     [Column("fecha_compra")]
     public DateTime Fecha_compra { get => fecha_compra; set => fecha_compra = value; }
+    [Column("estado")]
+    public int Id_estado { get; set; }
+    [NotMapped]
+    public EEstadoCompra Estado { get { return new DAOCompra().ObtenerEstadoCompra(Id_estado); } set { } }
 }

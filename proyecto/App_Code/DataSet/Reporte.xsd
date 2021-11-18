@@ -12,7 +12,7 @@
   <xs:element name="Reporte" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="Reporte" msprop:Generator_UserDSName="Reporte">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Compra_Factura" msprop:Generator_TableClassName="Compra_FacturaDataTable" msprop:Generator_TableVarName="tableCompra_Factura" msprop:Generator_RowChangedName="Compra_FacturaRowChanged" msprop:Generator_TablePropName="Compra_Factura" msprop:Generator_RowDeletingName="Compra_FacturaRowDeleting" msprop:Generator_RowChangingName="Compra_FacturaRowChanging" msprop:Generator_RowEvHandlerName="Compra_FacturaRowChangeEventHandler" msprop:Generator_RowDeletedName="Compra_FacturaRowDeleted" msprop:Generator_RowClassName="Compra_FacturaRow" msprop:Generator_UserTableName="Compra_Factura" msprop:Generator_RowEvArgName="Compra_FacturaRowChangeEvent">
+        <xs:element name="Compra_Factura" msprop:Generator_TableClassName="Compra_FacturaDataTable" msprop:Generator_TableVarName="tableCompra_Factura" msprop:Generator_TablePropName="Compra_Factura" msprop:Generator_RowDeletingName="Compra_FacturaRowDeleting" msprop:Generator_RowChangingName="Compra_FacturaRowChanging" msprop:Generator_RowEvHandlerName="Compra_FacturaRowChangeEventHandler" msprop:Generator_RowDeletedName="Compra_FacturaRowDeleted" msprop:Generator_UserTableName="Compra_Factura" msprop:Generator_RowChangedName="Compra_FacturaRowChanged" msprop:Generator_RowEvArgName="Compra_FacturaRowChangeEvent" msprop:Generator_RowClassName="Compra_FacturaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="No" msprop:Generator_ColumnVarNameInTable="columnNo" msprop:Generator_ColumnPropNameInRow="No" msprop:Generator_ColumnPropNameInTable="NoColumn" msprop:Generator_UserColumnName="No" type="xs:int" minOccurs="0" />
@@ -25,6 +25,7 @@
               <xs:element name="precio_unidad" msprop:Generator_ColumnVarNameInTable="columnprecio_unidad" msprop:Generator_ColumnPropNameInRow="precio_unidad" msprop:Generator_ColumnPropNameInTable="precio_unidadColumn" msprop:Generator_UserColumnName="precio_unidad" type="xs:double" minOccurs="0" />
               <xs:element name="precio_total" msprop:Generator_ColumnVarNameInTable="columnprecio_total" msprop:Generator_ColumnPropNameInRow="precio_total" msprop:Generator_ColumnPropNameInTable="precio_totalColumn" msprop:Generator_UserColumnName="precio_total" type="xs:double" minOccurs="0" />
               <xs:element name="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" msprop:Generator_UserColumnName="Descripcion" type="xs:string" minOccurs="0" />
+              <xs:element name="estado" msprop:Generator_ColumnVarNameInTable="columnestado" msprop:Generator_ColumnPropNameInRow="estado" msprop:Generator_ColumnPropNameInTable="estadoColumn" msprop:Generator_UserColumnName="estado" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -37,4 +37,19 @@ public class DAOCompra
             return db.detalles_compra.Where(x => x.Id_compra.Equals(id_compra)).ToList();
         }
     }
+    public List<EDetallesCompra> ObtenerCompras()
+    {
+        using(var db = new Mapeo())
+        {
+            return db.detalles_compra.ToList();
+        }
+    }
+    public EEstadoCompra ObtenerEstadoCompra(int id_estado)
+    {
+        using (var db = new Mapeo())
+        {
+            return db.estado_compra.Where(x => x.Id.Equals(id_estado)).FirstOrDefault();
+        }
+    }
+
 }
