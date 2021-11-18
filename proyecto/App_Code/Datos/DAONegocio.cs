@@ -5,22 +5,22 @@ using System.Linq;
 using System.Web;
 
 /// <summary>
-/// Descripción breve de DAOInformacion
+/// Descripción breve de DAONegocio
 /// </summary>
-public class DAOInformacion
+public class DAONegocio
 {
-    public List<EInformacionNegocio>obtener(EInformacionNegocio InformacionNegocio)
+    public List<ENegocio> obtener(ENegocio InformacionNegocio)
     {
         using (var db = new Mapeo())
         {
-            return db.informacion.ToList();
+            return db.negocio.ToList();
         }
-    } 
-    public void actualizarInformacion(EInformacionNegocio InformacionNegocio)
+    }
+    public void actualizarInformacion(ENegocio InformacionNegocio)
     {
-        using(var db = new Mapeo())
+        using (var db = new Mapeo())
         {
-            db.informacion.Attach(InformacionNegocio);
+            db.negocio.Attach(InformacionNegocio);
 
             var entry = db.Entry(InformacionNegocio);
             entry.State = EntityState.Modified;
