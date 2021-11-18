@@ -11,4 +11,9 @@ public partial class Vista_InformacionNegocio : System.Web.UI.Page
     {
 
     }
+
+    protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
+    {
+        e.Keys[5] = DateTime.Now;
+    }
 }

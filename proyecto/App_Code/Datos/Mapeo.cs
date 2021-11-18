@@ -22,7 +22,6 @@ public class Mapeo : DbContext
     public virtual DbSet<ECarrito> carrito { get; set; }
     public virtual DbSet<ECompra> compra { get; set; }
     public virtual DbSet<EDetallesCompra> detalles_compra { get; set; }
-    public virtual DbSet<EInformacionNegocio> informacion { get; set; }
     public virtual DbSet<EquejasReclamos> quejasR { get; set; }
     public virtual DbSet<EProveedor> proveedor { get; set; }
     public virtual DbSet<EEstadoCompra> estado_compra { get; set; }

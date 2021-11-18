@@ -50,4 +50,8 @@ public class EProducto
     public string Nombre_categoria { get => nombre_categoria; set => nombre_categoria = value; }
     [NotMapped]
     public int Cantidad_inventario { get => cantidad_inventario; set => cantidad_inventario = value; }
+    [NotMapped]
+    public int id_inventario{ get; set; }
+    [NotMapped]
+    public string nombre_proveedor { get; set; }
 }

@@ -41,11 +41,13 @@ public class DAOProducto
             return (from producto in db.producto
                     join categoria in db.categoria on producto.Id_categoria equals categoria.Id
                     join inventario in db.inventario on producto.Id equals inventario.Id_producto
+                    join proveedor in db.proveedor on producto.Id_proveedor equals proveedor.Id
                     select new
                     {
                         producto,
                         categoria,
-                        inventario
+                        inventario,
+                        proveedor
                     }).ToList().Select(m => new EProducto
                     {
                         Id = m.producto.Id,
@@ -58,8 +60,12 @@ public class DAOProducto
                         Id_categoria = m.producto.Id_categoria,
                         Nombre_categoria = m.categoria.Categoria,
                         Estado = m.producto.Estado,
+                        Session = m.producto.Session,
                         Cantidad_inventario = m.inventario.Cantidad,
-                        Id_proveedor = m.producto.Id_proveedor
+                        Id_proveedor = m.producto.Id_proveedor,
+                        id_inventario = m.inventario.Id,
+                        Fecha_modificacion = m.inventario.Fecha_modificacion,
+                        nombre_proveedor = m.proveedor.Nombre
                     }).OrderBy(x => x.Nombre).ToList();
             
         }
@@ -125,6 +131,20 @@ public class DAOProducto
             db.producto.Add(producto);
             db.SaveChanges();
         }
+        using (var db = new Mapeo())
+        {
+            EInventario inventario = new EInventario()
+            {
+                Cantidad = producto.Cantidad_inventario,
+                Fecha_modificacion = producto.Fecha_modificacion,
+                Id_producto = producto.Id,
+                Precio_compra = producto.Precio_venta,
+                Session = producto.Session
+
+            };
+            db.inventario.Add(inventario);
+            db.SaveChanges();
+        }
     }
     public void ModificarCantidad(int productoId, int cantidad)
     {
@@ -152,4 +172,34 @@ public class DAOProducto
             db.SaveChanges();
         }
     }
+    public void actualizar(EProducto producto)
+    {
+        using (var db = new Mapeo())
+        {
+            db.producto.Attach(producto);
+
+            var entry = db.Entry(producto);
+            entry.State = EntityState.Modified;
+            db.SaveChanges();
+        }
+        using (var db = new Mapeo())
+        {
+            EInventario inventario = new EInventario()
+            {
+                Id = producto.id_inventario,
+                Cantidad = producto.Cantidad_inventario,
+                Fecha_modificacion = System.DateTime.Now,
+                Id_producto = producto.Id,
+                Precio_compra=producto.Precio_venta,
+                Session= producto.Session     
+
+            };
+            db.inventario.Attach(inventario);
+
+             var entry = db.Entry(inventario);
+            entry.State = EntityState.Modified;
+            db.SaveChanges();
+        }
+    }
+
 }
