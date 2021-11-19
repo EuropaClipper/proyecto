@@ -8,6 +8,11 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="../App_Themes/Estilos.css" rel="stylesheet" type="text/css" />
+    <script src="../JS/jquery-1.10.2.min.js"></script>
+    <script src="../JS/jquery.mousewheel-3.0.6.min.js"></script>
+    <script src="../JS/jquery.rondell.min.js"></script>
+    <script src="../JS/modernizr-2.0.6.min.js"></script>
+    <link href="../App_Themes/jquery.rondell.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -81,5 +86,12 @@
             </table>
         </div>
     </form>
+    <script type="text/javascript">
+        $(function () {
+            $("#rondellCarousel").rondell({
+                preset: "carousel",
+            });
+        });
+    </script>
 </body>
 </html>
