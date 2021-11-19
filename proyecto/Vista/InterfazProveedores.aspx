@@ -64,10 +64,7 @@
                         <asp:CommandField HeaderText="Eliminar" ShowDeleteButton="True" />
                     </Columns>
                 </asp:GridView>
-                <asp:ObjectDataSource ID="ODSProveedor" runat="server" DataObjectTypeName="EProveedor" DeleteMethod="elimnarProveedor" SelectMethod="ObtenerProvedor" TypeName="DAOProveedor" UpdateMethod="actualizarproveedor">
-                    <SelectParameters>
-                        <asp:Parameter Name="proveedor" Type="Object" />
-                    </SelectParameters>
+                <asp:ObjectDataSource ID="ODSProveedor" runat="server" DataObjectTypeName="EProveedor" DeleteMethod="elimnarProveedor" SelectMethod="ObtenerProveedores" TypeName="DAOProveedor" UpdateMethod="actualizarproveedor">
                 </asp:ObjectDataSource>
             </td>
         </tr>

@@ -7,7 +7,13 @@ using System.Web;
 
 public class DAOProveedor
 {
-
+    public List<EProveedor> ObtenerProveedores()
+    {
+        using(var db = new Mapeo())
+        {
+            return db.proveedor.ToList();
+        }
+    }
     public EProveedor ObtenerProveedor(string id)
     {
         using (var db = new Mapeo())
