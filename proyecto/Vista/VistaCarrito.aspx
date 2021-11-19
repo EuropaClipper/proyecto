@@ -48,8 +48,8 @@
                                         <asp:Label ID="nombre" runat="server" Text='<%# Eval("Nombre") %>'></asp:Label>
                                         <br />
                                         <br />
-                                        Precio: $
-                                        <asp:Label ID="precio" runat="server" Text='<%# Eval("Precio_venta") %>'></asp:Label>
+                                        Precio:
+                                        <asp:Label ID="precio" runat="server" Text='<%# Eval("Precio_venta", "{0:C}") %>'></asp:Label>
                                         <br />
                                         Cantidad:
                                         <asp:Label ID="cantidad" runat="server" Text='<%# Eval("Cantidad_inventario") %>'></asp:Label>

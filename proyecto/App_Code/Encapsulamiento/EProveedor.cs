@@ -5,6 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 [Serializable]
 [Table("proveedor", Schema = "negocio")]
 
+
+
 public class EProveedor
 {
     private string id;
@@ -13,7 +15,7 @@ public class EProveedor
     private string session;
     private string telefono;
     private DateTime fecha_modificacion;
-    [Key,Column("id")]
+    [Key, Column("id")]
     public string Id { get => id; set => id = value; }
     [Column("nombre")]
     public string Nombre { get => nombre; set => nombre = value; }

@@ -14,15 +14,13 @@
             <td style="width: 100%">&nbsp;</td>
         </tr>
         <tr>
-            <td style="width: 100%">
-                &nbsp;</td>
-        </tr>
-        <tr>
-            <td style="width: 100%">&nbsp;</td>
+            <td style="width: 100%;text-align:center">
+                <button class="buttonFiltro" runat="server" id="filtros" onserverclick="filtros_ServerClick" style="vertical-align:middle"><span>Filtrar productos</span></button>
+            </td>
         </tr>
         <tr>
             <td style="width: 100%">
-                <asp:ObjectDataSource ID="ODSCatalogo" runat="server" SelectMethod="obtenerProductos" TypeName="DAOProducto"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODSCatalogo" runat="server" SelectMethod="obtenerProductosCatalogo" TypeName="DAOProducto"></asp:ObjectDataSource>
                 <asp:DataList ID="DL_Productos" runat="server" CellPadding="5" CellSpacing="5" DataSourceID="ODSCatalogo" GridLines="Both" HorizontalAlign="Center" RepeatColumns="4" RepeatDirection="Horizontal" OnItemCommand="DL_Productos_ItemCommand" Width="90%" DataKeyField="Id">
                     <ItemStyle HorizontalAlign="Center" />
                     <ItemTemplate>
@@ -38,15 +36,21 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width:50%;text-align:end">Precio:</td>
+                                <td style="width:50%;text-align:end">Precio</td>
                                 <td style="width:50%;text-align:start">
-                                    <asp:Label ID="Precio_ventaLabel" runat="server" Text='<%# Eval("Precio_venta", "${0:N}") %>' />
+                                    <asp:Label ID="Precio_ventaLabel" runat="server" Text='<%# Eval("Precio_venta", "{0:C}") %>' />
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width:50%;text-align:end">Categoria:</td>
+                                <td style="width:50%;text-align:end">Categoria</td>
                                 <td style="width:50%;text-align:start">
                                     <asp:Label ID="Nombre_categoriaLabel" runat="server" Text='<%# Eval("Nombre_categoria") %>' />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:50%;text-align:end">Cantidad disponible</td>
+                                <td style="width:50%;text-align:start">
+                                    <asp:Label ID="Cantidad_disponible" runat="server" Text='<%# Eval("Cantidad_inventario", "{0}") %>'></asp:Label>
                                 </td>
                             </tr>
                             <tr>

@@ -30,6 +30,8 @@ public class EProducto
     public double Precio_venta { get => precio_venta; set => precio_venta = value; }
     [Column("id_proveedor")]
     public string Id_proveedor { get => id_proveedor; set => id_proveedor = value; }
+    [NotMapped]
+    public EProveedor proveedor { get { return new DAOProveedor().ObtenerProveedor(Id_proveedor); } set { } }
     [Column("id_categoria")]
     public int Id_categoria { get => id_categoria; set => id_categoria = value; }
     [Column("estado")]

@@ -7,13 +7,18 @@ using System.Web;
 
 public class DAOProveedor
 {
-
-    public List<EProveedor> ObtenerProvedor(EProveedor proveedor)
+    public List<EProveedor> ObtenerProveedores()
+    {
+        using(var db = new Mapeo())
+        {
+            return db.proveedor.ToList();
+        }
+    }
+    public EProveedor ObtenerProveedor(string id)
     {
         using (var db = new Mapeo())
         {
-            return db.proveedor.ToList();
-
+            return db.proveedor.Where(x => x.Id.Equals(id)).FirstOrDefault();
         }
     }
     public void actualizarproveedor(EProveedor proveedor)

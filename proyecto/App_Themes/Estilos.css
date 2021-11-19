@@ -4,7 +4,7 @@
 
 .col50 {
     text-align: center;
-    width:50%;
+    width: 50%;
 }
 
 .col35 {
@@ -50,7 +50,7 @@
 }
 
 .buttonQuitar {
-    background-color:tomato;
+    background-color: tomato;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -59,10 +59,12 @@
     display: inline-block;
     font-size: 16px;
 }
-.buttonQuitar:hover {
-    color: black;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-}
+
+    .buttonQuitar:hover {
+        color: black;
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+
 .buttonAgg {
     background-color: #4CAF50;
     border: none;
@@ -75,9 +77,24 @@
     font-size: 16px;
 }
 
-.buttonAgg:hover {
-   color: black;
-   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    .buttonAgg:hover {
+        color: black;
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+
+.buttonFiltro {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #aeaeae;
+    border: none;
+    color: #000000;
+    text-align: center;
+    font-size: 20px;
+    padding: 20px;
+    width: 250px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
 }
 .col20 {
     width: 20%;
@@ -89,3 +106,27 @@
 }
 
 
+    .buttonFiltro span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+
+        .buttonFiltro span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+
+    .buttonFiltro:hover span {
+        padding-right: 25px;
+    }
+
+        .buttonFiltro:hover span:after {
+            opacity: 1;
+            right: 0;
+        }

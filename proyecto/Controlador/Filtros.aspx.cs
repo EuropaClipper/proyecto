@@ -40,6 +40,8 @@ public partial class Vista_Filtros : System.Web.UI.Page
             RFV_PMin.Enabled = true;
             TB_Max.Enabled = true;
             RFV_PMax.Enabled = true;
+            TB_Max.Text = "2147483647";
+            TB_Min.Text = "0";
         }
         else
         {
@@ -80,8 +82,19 @@ public partial class Vista_Filtros : System.Web.UI.Page
         if (CB_Precio.Checked)
         {
             Session["precio"] = new int[2];
-            ((int[])Session["precio"])[0] = int.Parse(TB_Min.Text);
-            ((int[])Session["precio"])[1] = int.Parse(TB_Max.Text);
+            if(int.Parse(TB_Min.Text) > int.Parse(TB_Max.Text))
+            {
+                int aux = int.Parse(TB_Min.Text);
+                TB_Min.Text = TB_Max.Text;
+                TB_Max.Text = aux.ToString();
+                ((int[])Session["precio"])[0] = int.Parse(TB_Min.Text);
+                ((int[])Session["precio"])[1] = int.Parse(TB_Max.Text);
+            }
+            else
+            {
+                ((int[])Session["precio"])[0] = int.Parse(TB_Min.Text);
+                ((int[])Session["precio"])[1] = int.Parse(TB_Max.Text);
+            }
         }
         else
         {
@@ -89,6 +102,8 @@ public partial class Vista_Filtros : System.Web.UI.Page
             Session["precio"] = null;
         }
         DL_Filtros.DataBind();
+        if (DL_Filtros.Items.Count == 0) L_Filtro.Visible = true;
+        else L_Filtro.Visible = false;
     }
 
     protected void DL_Filtros_ItemCommand(object source, DataListCommandEventArgs e)
@@ -133,7 +148,7 @@ public partial class Vista_Filtros : System.Web.UI.Page
                 new DAOCarrito().InsertarCarrito(carrito);
             }
 
-            Response.Redirect("Filtros.aspx");
+            //Response.Redirect("Filtros.aspx");
         }
     }
 }

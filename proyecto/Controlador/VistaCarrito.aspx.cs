@@ -40,20 +40,21 @@ public partial class Vista_VistaCarrito : System.Web.UI.Page
             nueva_compra.Id_comprador = ((EUsuario)Session["user"]).Cedula;
             nueva_compra.Fecha_compra = DateTime.Now;
             nueva_compra.Total = lista_productos.Sum(x => x.Precio_venta);
+            nueva_compra.Id_estado = 2;
             nueva_compra = new DAOCompra().InsertarCompra(nueva_compra);
             foreach (var item in lista_productos)
             {
                 EDetallesCompra detalles = new EDetallesCompra();
-                detalles.Id_compra = nueva_compra.Id;
+                detalles.Id_compra  = nueva_compra.Id;
                 detalles.Id_producto = item.Id;
                 detalles.Cantidad = item.Cantidad_inventario;
                 detalles.Precio_compra = (item.Precio_venta / detalles.Cantidad);
                 detalles.Total = item.Precio_venta;
                 new DAOCompra().InsertarDetallesCompra(detalles);
                 new DAOProducto().ModificarCantidad(item.Id, item.Cantidad_inventario);
-                new DAOCarrito().EliminarCarrito(new DAOCarrito().Existe(item.Id));
+                new DAOCarrito().EliminarCarrito(new DAOCarrito().Existe(item.Id));            
             }
-            Response.Redirect("VistaCarrito.aspx");
+            Response.Redirect("Vista_Compra.aspx?factura="+nueva_compra.Id);
         }
         else{
             ClientScriptManager cm = this.ClientScript;

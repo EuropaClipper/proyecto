@@ -24,7 +24,7 @@
                 <asp:RequiredFieldValidator ID="RFV_Nombre" runat="server" ControlToValidate="TB_Nombre" Enabled="False" ErrorMessage="*" ValidationGroup="VG_Filtros" ForeColor="Red"></asp:RequiredFieldValidator>
             </td>
             <td style="width:50%" colspan="2">
-            <asp:RegularExpressionValidator ID="REV_Nombre" runat="server" ControlToValidate="TB_Nombre" ErrorMessage="*" ForeColor="Red" ValidationGroup="VG_Filtros" SetFocusOnError="True" ValidationExpression="^[A-Za-z ]{3,45}">Este campo sólo permite caracteres alfabéticos</asp:RegularExpressionValidator>
+            <asp:RegularExpressionValidator ID="REV_Nombre" runat="server" ControlToValidate="TB_Nombre" ErrorMessage="*" ForeColor="Red" ValidationGroup="VG_Filtros" SetFocusOnError="True" ValidationExpression="^[A-Za-z ]{1,45}">Este campo sólo permite caracteres alfabéticos</asp:RegularExpressionValidator>
             </td>
         </tr>
         <tr>
@@ -36,12 +36,14 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:TextBox ID="TB_Min" runat="server" TextMode="Number" Enabled="False" MaxLength="6"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RFV_PMin" runat="server" ControlToValidate="TB_Min" Enabled="False" ErrorMessage="*" ValidationGroup="VG_Filtros" ForeColor="Red"></asp:RequiredFieldValidator>
+                <asp:RangeValidator ID="RV_Min" runat="server" ControlToValidate="TB_Min" ErrorMessage="*" ForeColor="Red" MaximumValue="2147483647" MinimumValue="0" Type="Integer" ValidationGroup="VG_Filtros"></asp:RangeValidator>
             </td>
             <td style="width:25%;text-align:center">
                 <asp:Label ID="Label2" runat="server" Text="MAX"></asp:Label>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:TextBox ID="TB_Max" runat="server" TextMode="Number" Enabled="False" MaxLength="6"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RFV_PMax" runat="server" ControlToValidate="TB_Max" Enabled="False" ErrorMessage="*" ValidationGroup="VG_Filtros" ForeColor="Red"></asp:RequiredFieldValidator>
+                <asp:RangeValidator ID="RV_Max" runat="server" ControlToValidate="TB_Max" ErrorMessage="*" ForeColor="Red" MaximumValue="2147483647" MinimumValue="0" Type="Integer" ValidationGroup="VG_Filtros"></asp:RangeValidator>
             </td>
             <td style="width:25%"></td>
         </tr>
@@ -68,6 +70,11 @@
         </tr>
         <tr>
             <td colspan="4" style="width:100%;text-align:center">
+                <asp:Label ID="L_Filtro" runat="server" Text="No se encontraron productos" Visible="False"></asp:Label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" style="width:100%;text-align:center">
                 <asp:DataList ID="DL_Filtros" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" CellSpacing="20" DataKeyField="Id" DataSourceID="ODSPFiltrados" ForeColor="Black" GridLines="Horizontal" HorizontalAlign="Center" RepeatColumns="4" RepeatDirection="Horizontal" OnItemCommand="DL_Filtros_ItemCommand">
                     <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
                     <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
@@ -86,7 +93,7 @@
                             <tr>
                                 <td style="width:50%;text-align:end">Precio:</td>
                                 <td style="width:50%;text-align:start">
-                                    <asp:Label ID="Precio_ventaLabel" runat="server" Text='<%# Eval("Precio_venta", "${0:N}") %>' />
+                                    <asp:Label ID="Precio_ventaLabel" runat="server" Text='<%# Eval("Precio_venta", "{0:C}") %>' />
                                 </td>
                             </tr>
                             <tr>
@@ -96,10 +103,16 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td style="width:50%;text-align:end">Cantidad disponible</td>
+                                <td style="width:50%;text-align:start">
+                                    <asp:Label ID="Label3" runat="server" Text='<%# Eval("Cantidad_inventario") %>'></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td style="width:50%;text-align:end">Cantidad</td>
                                 <td style="width:50%;text-align:start">
                                     <asp:TextBox ID="TB_Cantidad" runat="server" MaxLength="3" TextMode="Number" Width="3em"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RFV_Cantidad" runat="server" ControlToValidate="TB_Cantidad" ErrorMessage="*" Font-Size="Large" ForeColor="Red" ValidationGroup='<%# Container.ItemIndex %>'></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RFV_Cantidad" runat="server" ControlToValidate="TB_Cantidad" ErrorMessage="*" Font-Size="Large" ForeColor="Red" ValidationGroup="<%# Container.ItemIndex %>"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>

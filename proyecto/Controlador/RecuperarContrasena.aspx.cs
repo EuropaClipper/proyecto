@@ -48,9 +48,9 @@ public partial class Vista_RecuperarContraseña : System.Web.UI.Page
     {
         EUsuario usuario = new EUsuario();
         usuario.Cedula = Session["userId"].ToString();
-        usuario = new DAOUsuario().ObtenerUsuario(usuario);
+        usuario = new DAOUsuario().ObtenerUsuario(usuario.Cedula);
         usuario.Clave = TB_CContrasena.Text;
         new DAOUsuario().ActualizarUsuario(usuario);
-        this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Clave actualizada');window.location=\"IniciarSesion.aspx\"</script>");
+        this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Clave actualizada');window.location=\"IniciarSesion.aspx\"</script>");
     }
 }

@@ -15,6 +15,8 @@ public class EInventario
     public int Id { get => id; set => id = value; }
     [Column("id_producto")]
     public int Id_producto { get => id_producto; set => id_producto = value; }
+    [NotMapped]
+    public EProducto Producto { get { return new DAOProducto().obtenerProducto(id_producto); } set { } }
     [Column("precio_compra")]
     public double Precio_compra { get => precio_compra; set => precio_compra = value; }
     [Column("cantidad")]

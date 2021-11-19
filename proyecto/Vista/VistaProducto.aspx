@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vista/MasterPage.master" AutoEventWireup="true" CodeFile="~/Controlador/VistaProducto.aspx.cs" Inherits="Vista_VistaProducto" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <style type="text/css">
         .auto-style1 {
             width: 100%;
@@ -22,6 +22,7 @@
         .auto-style7 {
             text-align: left;
         }
+
         .auto-style12 {
             text-align: center;
             font-size: x-large;
