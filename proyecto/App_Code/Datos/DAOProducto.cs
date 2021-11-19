@@ -70,10 +70,45 @@ public class DAOProducto
             
         }
     }
+    public List<EProducto> obtenerProductosCatalogo()
+    {
+        using (var db = new Mapeo())
+        {
+            return (from producto in db.producto
+                    join categoria in db.categoria on producto.Id_categoria equals categoria.Id
+                    join inventario in db.inventario on producto.Id equals inventario.Id_producto
+                    join proveedor in db.proveedor on producto.Id_proveedor equals proveedor.Id
+                    select new
+                    {
+                        producto,
+                        categoria,
+                        inventario,
+                        proveedor
+                    }).ToList().Select(m => new EProducto
+                    {
+                        Id = m.producto.Id,
+                        Nombre = m.producto.Nombre,
+                        Precio_venta = m.producto.Precio_venta,
+                        Descripcion = m.producto.Descripcion,
+                        Imagen_uno = m.producto.Imagen_uno,
+                        Imagen_dos = m.producto.Imagen_dos,
+                        Imagen_tres = m.producto.Imagen_tres,
+                        Id_categoria = m.producto.Id_categoria,
+                        Nombre_categoria = m.categoria.Categoria,
+                        Estado = m.producto.Estado,
+                        Session = m.producto.Session,
+                        Cantidad_inventario = m.inventario.Cantidad,
+                        Id_proveedor = m.producto.Id_proveedor,
+                        id_inventario = m.inventario.Id,
+                        Fecha_modificacion = m.inventario.Fecha_modificacion,
+                        nombre_proveedor = m.proveedor.Nombre
+                    }).OrderBy(x => x.Nombre).ToList().Where(x=> x.Cantidad_inventario>0).ToList();
 
+        }
+    }
     public List<EProducto> obtenerProductosFiltrados(string nombre, int[] precio, int categoria)
     {
-        List<EProducto> lista = obtenerProductos();
+        List<EProducto> lista = obtenerProductosCatalogo();
         int minimo = 0, maximo = 0;
         if (precio != null)
         {

@@ -11,4 +11,16 @@ public partial class Vista_VistaPedidos : System.Web.UI.Page
     {
 
     }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        new DAOPedidos().ObtenerPedidosPendientes();
+    }
+
+    protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        new DAOCompra().CambiarEstado(int.Parse(e.CommandArgument.ToString()));
+        GV_PPendientes.DataBind();
+        GV_HPedidos.DataBind();
+    }
 }

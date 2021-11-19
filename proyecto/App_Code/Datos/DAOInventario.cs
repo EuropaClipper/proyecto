@@ -12,11 +12,5 @@ public class DAOInventario
             return db.inventario.ToList();
         }
     }
-    public EProveedor ObtenerProveedor(string id)
-    {
-        using(var db = new Mapeo())
-        {
-            return db.proveedor.Where(x => x.Id.Equals(id)).FirstOrDefault();
-        }
-    }
+
 }

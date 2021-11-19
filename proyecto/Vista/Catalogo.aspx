@@ -20,7 +20,7 @@
         </tr>
         <tr>
             <td style="width: 100%">
-                <asp:ObjectDataSource ID="ODSCatalogo" runat="server" SelectMethod="obtenerProductos" TypeName="DAOProducto"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODSCatalogo" runat="server" SelectMethod="obtenerProductosCatalogo" TypeName="DAOProducto"></asp:ObjectDataSource>
                 <asp:DataList ID="DL_Productos" runat="server" CellPadding="5" CellSpacing="5" DataSourceID="ODSCatalogo" GridLines="Both" HorizontalAlign="Center" RepeatColumns="4" RepeatDirection="Horizontal" OnItemCommand="DL_Productos_ItemCommand" Width="90%" DataKeyField="Id">
                     <ItemStyle HorizontalAlign="Center" />
                     <ItemTemplate>
@@ -38,7 +38,7 @@
                             <tr>
                                 <td style="width:50%;text-align:end">Precio</td>
                                 <td style="width:50%;text-align:start">
-                                    <asp:Label ID="Precio_ventaLabel" runat="server" Text='<%# Eval("Precio_venta", "${0:N}") %>' />
+                                    <asp:Label ID="Precio_ventaLabel" runat="server" Text='<%# Eval("Precio_venta", "{0:C}") %>' />
                                 </td>
                             </tr>
                             <tr>

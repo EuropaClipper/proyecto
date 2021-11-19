@@ -31,7 +31,7 @@ public class EProducto
     [Column("id_proveedor")]
     public string Id_proveedor { get => id_proveedor; set => id_proveedor = value; }
     [NotMapped]
-    public EProveedor proveedor { get { return new DAOInventario().ObtenerProveedor(Id_proveedor); } set { } }
+    public EProveedor proveedor { get { return new DAOProveedor().ObtenerProveedor(Id_proveedor); } set { } }
     [Column("id_categoria")]
     public int Id_categoria { get => id_categoria; set => id_categoria = value; }
     [Column("estado")]

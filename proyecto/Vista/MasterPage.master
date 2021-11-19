@@ -85,8 +85,8 @@
                                     <asp:MenuItem NavigateUrl="~/Vista/Inicio.aspx" Text="Inicio" Value="Inicio"></asp:MenuItem>
                                     <asp:MenuItem Text="Ver perfil" Value="Ver perfil"></asp:MenuItem>
                                     <asp:MenuItem Text="Admin. pedidos" Value="Ver historial de compras" NavigateUrl="~/Vista/VistaPedidos.aspx"></asp:MenuItem>
-                                    <asp:MenuItem Text="Admin. proveedores" Value="Admin. proveedores" NavigateUrl="~/Vista/VistaProveedores.aspx"></asp:MenuItem>
-                                    <asp:MenuItem Text="Inventario" Value="Inventario"></asp:MenuItem>
+                                    <asp:MenuItem Text="Admin. proveedores" Value="Admin. proveedores" NavigateUrl="~/Vista/InterfazProveedores.aspx"></asp:MenuItem>
+                                    <asp:MenuItem Text="Inventario" Value="Inventario" NavigateUrl="~/Vista/CRUD.aspx"></asp:MenuItem>
                                     <asp:MenuItem Text="Consular reportes" Value="Consular reportes" NavigateUrl="~/Vista/VistaReportes.aspx"></asp:MenuItem>
                                     <asp:MenuItem Text="Informacion del negocio" Value="Modificar informacion del negocio" NavigateUrl="~/Vista/InformacionNegocio.aspx"></asp:MenuItem>
                                 </Items>
