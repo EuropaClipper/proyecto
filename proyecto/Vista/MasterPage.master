@@ -109,6 +109,13 @@
             </tr>
         </table>
     </form>
+    <script type="text/javascript">
+        $(function () {
+            $("#rondellCarousel").rondell({
+                preset: "carousel",
+            });
+        });
+    </script>
     <footer>
         <center style="background-color: #CCCCCC">
             <em>
