@@ -69,7 +69,7 @@
                                 <DynamicSelectedStyle BackColor="#507CD1" />
                                 <Items>
                                     <asp:MenuItem NavigateUrl="~/Vista/Inicio.aspx" Text="Inicio" Value="Inicio"></asp:MenuItem>
-                                    <asp:MenuItem Text="Ver perfil" Value="Ver perfil"></asp:MenuItem>
+                                    <asp:MenuItem Text="Ver perfil" Value="Ver perfil" NavigateUrl="~/Vista/Informacion_Usuario.aspx"></asp:MenuItem>
                                     <asp:MenuItem Text="Historial de compras" Value="Ver historial de compras" NavigateUrl="~/Vista/HistorialCompras.aspx"></asp:MenuItem>
                                     <asp:MenuItem NavigateUrl="~/Vista/Catalogo.aspx" Text="Catalogo" Value="Catalogo"></asp:MenuItem>
                                     <asp:MenuItem NavigateUrl="~/Vista/Quienes_somos.aspx" Text="Quienes somos" Value="Quienes somos"></asp:MenuItem>
@@ -88,7 +88,7 @@
                                 <DynamicSelectedStyle BackColor="#507CD1" />
                                 <Items>
                                     <asp:MenuItem NavigateUrl="~/Vista/Inicio.aspx" Text="Inicio" Value="Inicio"></asp:MenuItem>
-                                    <asp:MenuItem Text="Ver perfil" Value="Ver perfil"></asp:MenuItem>
+                                    <asp:MenuItem Text="Ver perfil" Value="Ver perfil" NavigateUrl="~/Vista/Informacion_Usuario.aspx"></asp:MenuItem>
                                     <asp:MenuItem Text="Admin. pedidos" Value="Ver historial de compras" NavigateUrl="~/Vista/VistaPedidos.aspx"></asp:MenuItem>
                                     <asp:MenuItem Text="Admin. proveedores" Value="Admin. proveedores" NavigateUrl="~/Vista/InterfazProveedores.aspx"></asp:MenuItem>
                                     <asp:MenuItem Text="Inventario" Value="Inventario" NavigateUrl="~/Vista/CRUD.aspx"></asp:MenuItem>

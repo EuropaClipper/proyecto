@@ -146,19 +146,6 @@ public class DAOProducto
         }
         return null;
     }
-
-    public List<ECategoria> obtenerCategoriasDDL()
-    {
-        using (var db = new Mapeo())
-        {
-            List<ECategoria> lista = db.categoria.ToList();
-            ECategoria cat_cero = new ECategoria();
-            cat_cero.Id = 0;
-            cat_cero.Categoria = "--> Seleccione una categoria <--";
-            lista.Add(cat_cero);
-            return lista.OrderBy(x => x.Categoria).ToList();
-        }
-    }
     public void insertarProducto(EProducto producto)
     {
         using (var db = new Mapeo())

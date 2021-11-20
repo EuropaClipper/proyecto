@@ -26,7 +26,7 @@ public partial class Vista_VistaCarrito : System.Web.UI.Page
 
     protected void LV_Carrito_ItemCommand(object sender, ListViewCommandEventArgs e)
     {
-        new DAOCarrito().EliminarCarrito(new DAOCarrito().Existe(int.Parse(e.CommandArgument.ToString())));
+        new DAOCarrito().EliminarCarrito(new DAOCarrito().Existe(int.Parse(e.CommandArgument.ToString()), ((EUsuario)Session["user"]).Cedula));
         LV_Carrito.DataBind();
         Response.Redirect("VistaCarrito.aspx");
     }
@@ -52,7 +52,7 @@ public partial class Vista_VistaCarrito : System.Web.UI.Page
                 detalles.Total = item.Precio_venta;
                 new DAOCompra().InsertarDetallesCompra(detalles);
                 new DAOProducto().ModificarCantidad(item.Id, item.Cantidad_inventario);
-                new DAOCarrito().EliminarCarrito(new DAOCarrito().Existe(item.Id));            
+                new DAOCarrito().EliminarCarrito(new DAOCarrito().Existe(item.Id, ((EUsuario)Session["user"]).Cedula));            
             }
             Response.Redirect("Vista_Compra.aspx?factura="+nueva_compra.Id);
         }

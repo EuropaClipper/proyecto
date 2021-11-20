@@ -33,11 +33,13 @@ public partial class Vista_ReporteDia : System.Web.UI.Page
         fila = detalles_informe.NewRow();
         fila["fecha"] = fecha;  
         List<EDetallesCompra> compras = new DAOCompra().ObtenerCompras().Where(x => x.Compra.Fecha_compra.Date.Equals(fecha.Date)).ToList();
-        List<EInventario> gastos = new DAOInventario().ObtenerInventario().Where(x => x.Fecha_modificacion.Date.Equals(fecha.Date)).ToList();
-        double ingresos = compras.Sum(x => x.Total);
-        double costos = gastos.Sum(x => x.Precio_compra * x.Cantidad);
-        double utilidad = ingresos - costos;
-        fila["utilidad"] = utilidad;
+        List<EInventario> inventario = new DAOInventario().ObtenerInventario();
+        List<EInventario> gastos_hoy = inventario.Where(x => x.Fecha_modificacion.Date.Equals(fecha.Date)).ToList();
+        double utilidad = 0.0;
+        //double ingresos = compras.Sum(x => x.Total);
+        //double costos = gastos.Sum(x => x.Precio_compra * x.Cantidad);//modificar
+        //double utilidad = ingresos - costos;
+        //fila["utilidad"] = utilidad;
         detalles_informe.Rows.Add(fila);
  
         DataTable detalles_ventas = reporte.reporte_ventas_dia;
@@ -46,15 +48,18 @@ public partial class Vista_ReporteDia : System.Web.UI.Page
             fila = detalles_ventas.NewRow();
             fila["n_factura"] = item.Id_compra;
             fila["nombre_producto"] = item.Producto.Nombre;
-            fila["descripcion"] = item.Producto.Descripcion;
             fila["cantidad"] = item.Cantidad;
-            fila["monto_venta"] = item.Total;
+            double precio_compra = inventario.Where(x => x.Id_producto.Equals(item.Id_producto)).First().Precio_compra;
+            fila["precio_compra"] = precio_compra;
+            fila["precio_venta"] = item.Producto.Precio_venta;
             fila["cantidad_R"] = item.Producto.Cantidad_inventario;
-            fila["ingresos"] = ingresos;
+            double utilidad_dia = item.Producto.Precio_venta - precio_compra;
+            fila["utilidad_unidad"] = utilidad_dia;
+            fila["utilidad_venta"] = utilidad_dia * item.Cantidad;
             detalles_ventas.Rows.Add(fila);
         }
         DataTable detalles_gastos = reporte.reporte_gastos_dia;
-        foreach (var item in gastos)
+        foreach (var item in gastos_hoy)
         {
             fila = detalles_gastos.NewRow();
             fila["producto"] = item.Producto.Nombre;
@@ -62,7 +67,6 @@ public partial class Vista_ReporteDia : System.Web.UI.Page
             fila["costo_unidad"] = item.Precio_compra;
             fila["total"] = item.Precio_compra * item.Cantidad;
             fila["proveedor"] = item.Producto.proveedor.Nombre;
-            fila["costos"] = costos;
             detalles_gastos.Rows.Add(fila);
         }
         return reporte;

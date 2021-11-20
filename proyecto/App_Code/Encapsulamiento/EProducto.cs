@@ -34,6 +34,8 @@ public class EProducto
     public EProveedor proveedor { get { return new DAOProveedor().ObtenerProveedor(Id_proveedor); } set { } }
     [Column("id_categoria")]
     public int Id_categoria { get => id_categoria; set => id_categoria = value; }
+    [NotMapped]
+    public ECategoria Categoria { get { return new DAOCategoria().obtenerCategoria(Id_categoria); } set { } }
     [Column("estado")]
     public bool Estado { get => estado; set => estado = value; }
     [Column("session")]

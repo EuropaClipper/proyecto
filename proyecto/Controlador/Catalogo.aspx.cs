@@ -30,7 +30,7 @@ public partial class Vista_Catalogo : System.Web.UI.Page
                 int disponible = new DAOCarrito().CantidadDisponible(id_producto);
                 if (disponible < cantidadReservada)
                 {
-                    this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('La cantidad seleccionada es mayor a la disponible.');</script>");
+                    this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Cantidad seleccionada no disponible.\\nCantidad que puede agregar: "+disponible+"');</script>");
                     return;
                 }
                 ECarrito carrito = new ECarrito();
@@ -38,7 +38,7 @@ public partial class Vista_Catalogo : System.Web.UI.Page
                 carrito.FechaAgregado = DateTime.Now;
                 carrito.ProductoId = id_producto;
                 carrito.UserId = ((EUsuario)Session["user"]).Cedula;
-                ECarrito carrito_aux = new DAOCarrito().Existe(id_producto);
+                ECarrito carrito_aux = new DAOCarrito().Existe(id_producto, ((EUsuario)Session["user"]).Cedula);
                 if (carrito_aux != null)
                 {
                     carrito.Id = carrito_aux.Id;

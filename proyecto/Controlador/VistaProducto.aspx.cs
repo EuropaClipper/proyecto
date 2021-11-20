@@ -54,7 +54,7 @@ public partial class Vista_VistaProducto : System.Web.UI.Page
         carrito.FechaAgregado = DateTime.Now;
         carrito.ProductoId = id_producto;
         carrito.UserId = ((EUsuario)Session["user"]).Cedula;
-        ECarrito carrito_aux = new DAOCarrito().Existe(id_producto);
+        ECarrito carrito_aux = new DAOCarrito().Existe(id_producto, ((EUsuario)Session["user"]).Cedula);
         if (carrito_aux != null)
         {
             carrito.Id = carrito_aux.Id;
