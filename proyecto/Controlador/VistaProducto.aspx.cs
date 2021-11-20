@@ -39,32 +39,40 @@ public partial class Vista_VistaProducto : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        EProducto eProducto = new DAOProducto().obtenerProducto((int)Session["producto"]);
-        int id_producto=eProducto.Id;
-        int cantidadReservada = int.Parse(TextBox1.Text);
-        int disponible = new DAOCarrito().CantidadDisponible(id_producto);
-        if (disponible < cantidadReservada)
+        if (Session["user"] != null)
         {
-            ClientScriptManager cm = this.ClientScript;
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('La cantidad seleccionada es mayor a la disponible.');</script>");
-            return;
-        }
-        ECarrito carrito = new ECarrito();
-        carrito.Cantidad = cantidadReservada;
-        carrito.FechaAgregado = DateTime.Now;
-        carrito.ProductoId = id_producto;
-        carrito.UserId = ((EUsuario)Session["user"]).Cedula;
-        ECarrito carrito_aux = new DAOCarrito().Existe(id_producto);
-        if (carrito_aux != null)
-        {
-            carrito.Id = carrito_aux.Id;
-            carrito.Cantidad = cantidadReservada + carrito_aux.Cantidad;
-            new DAOCarrito().ActualizarCarrito(carrito);
+            EProducto eProducto = new DAOProducto().obtenerProducto((int)Session["producto"]);
+            int id_producto = eProducto.Id;
+            int cantidadReservada = int.Parse(TB_Cantidad.Text);
+            int disponible = new DAOCarrito().CantidadDisponible(id_producto);
+            if (disponible < cantidadReservada)
+            {
+                ClientScriptManager cm = this.ClientScript;
+                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('La cantidad seleccionada es mayor a la disponible.');</script>");
+                return;
+            }
+            ECarrito carrito = new ECarrito();
+            carrito.Cantidad = cantidadReservada;
+            carrito.FechaAgregado = DateTime.Now;
+            carrito.ProductoId = id_producto;
+            carrito.UserId = ((EUsuario)Session["user"]).Cedula;
+            ECarrito carrito_aux = new DAOCarrito().Existe(id_producto, ((EUsuario)Session["user"]).Cedula);
+            if (carrito_aux != null)
+            {
+                carrito.Id = carrito_aux.Id;
+                carrito.Cantidad = cantidadReservada + carrito_aux.Cantidad;
+                new DAOCarrito().ActualizarCarrito(carrito);
+            }
+            else
+            {
+                new DAOCarrito().InsertarCarrito(carrito);
+            }
+            Response.Redirect("VistaProducto.aspx");
         }
         else
         {
-            new DAOCarrito().InsertarCarrito(carrito);
+            this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Inicie sesion para agregar productos al carrito');window.location.href=\"IniciarSesion.aspx\";</script>");
         }
-        Response.Redirect("VistaProducto.aspx");
     }
+       
 }

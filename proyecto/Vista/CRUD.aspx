@@ -1,26 +1,32 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vista/MasterPage.master" AutoEventWireup="true" CodeFile="~/Controlador/CRUD.aspx.cs" Inherits="Vista_CRUD" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <style type="text/css">
         .auto-style1 {
             width: 100%;
         }
+
         .auto-style2 {
             text-align: center;
         }
+
         .auto-style3 {
             text-align: left;
         }
-        .auto-style4 {
-            text-align: left;
-            height: 31px;
-        }
+
         .auto-style5 {
             text-align: justify;
+            height: 22px;
+        }
+        .auto-style6 {
+            height: 96px;
+        }
+        .auto-style7 {
+            width: 313px;
         }
     </style>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <table class="auto-style1">
         <tr>
             <td class="auto-style2">MODIFICAR INVENTARIO </td>
@@ -33,49 +39,114 @@
                         <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td colspan="3" class="auto-style3">Agregar producto</td>
+                        <td class="auto-style3" colspan="3">Agregar producto</td>
                         <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td colspan="3" class="auto-style3">&nbsp;</td>
+                        <td class="auto-style3" colspan="3">&nbsp;</td>
                         <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td class="auto-style4">Nombre producto <asp:TextBox ID="TB_NombreP" runat="server" Width="200px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TB_NombreP" ErrorMessage="*" ValidationGroup="validar"></asp:RequiredFieldValidator>
+                        <td class="auto-style3">Proveedor<asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="ODSProveedor" DataTextField="Nombre" DataValueField="Id" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="True">
+                        </asp:DropDownList>
+                            <asp:ObjectDataSource ID="ODSProveedor" runat="server" SelectMethod="obtenerProvedoresDDL" TypeName="DAOProveedor"></asp:ObjectDataSource>
                         </td>
-                        <td class="auto-style4">Descripcion <asp:TextBox ID="TB_Descripcion" runat="server" Width="200px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TB_Descripcion" ErrorMessage="*" ValidationGroup="validar"></asp:RequiredFieldValidator>
+                        <td class="auto-style3">
+                            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Nuevo" />
                         </td>
-                        <td class="auto-style4">Nombre proveedor<asp:TextBox ID="TB_NProveedor" runat="server"  Width="170px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TB_NProveedor" ErrorMessage="*" ValidationGroup="validar"></asp:RequiredFieldValidator>
+                        <td class="auto-style3">
+                            <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Existente" />
                         </td>
+                        <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td class="auto-style3">Categoria&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="TB_Categoria" runat="server" Width="193px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TB_Categoria" ErrorMessage="*" ValidationGroup="validar"></asp:RequiredFieldValidator>
-                        </td>
-                        <td class="auto-style3">Cantidad Inventario<asp:TextBox ID="TB_CantidaInventario" runat="server" TextMode="Number" Width="150px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="TB_CantidaInventario" ErrorMessage="*" ValidationGroup="validar"></asp:RequiredFieldValidator>
-                        </td>
-                        <td class="auto-style3">PrecioVenta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="TB_PrecioVenta" runat="server" TextMode="Number" Width="165px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="TB_PrecioVenta" ErrorMessage="*" ValidationGroup="validar"></asp:RequiredFieldValidator>
-                        </td>
+                        <td class="auto-style3">&nbsp;</td>
+                        <td class="auto-style3">&nbsp;</td>
+                        <td class="auto-style3">&nbsp;</td>
+                        <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td class="auto-style3">Imagen Uno&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:FileUpload ID="FU_Foto" runat="server" Width="200px" />
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="FU_Foto" ErrorMessage="*" ValidationGroup="validar"></asp:RequiredFieldValidator>
-                        </td>
-                        <td class="auto-style3">Imagen Dos&nbsp; <asp:FileUpload ID="FU_Foto2" runat="server" Width="200px" />
-                        </td>
-                        <td class="auto-style3">Imagen Tres <asp:FileUpload ID="FU_Foto3" runat="server" Width="200px" />
+                        <td class="auto-style3" colspan="3">
+                            <asp:MultiView ID="MultiView1" runat="server">
+                                <asp:View ID="View1" runat="server"></asp:View>
+                                <asp:View ID="View2" runat="server">
+                                    <table class="auto-style1">
+                                        <tr>
+                                            <td>Nombre&nbsp;<asp:TextBox ID="TB_Nombre" runat="server"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TB_Nombre" ErrorMessage="*" ValidationGroup="validar"></asp:RequiredFieldValidator>
+                                            </td>
+                                            <td class="auto-style7">Descripcion<asp:TextBox ID="TB_Descripcion" runat="server"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TB_Descripcion" ErrorMessage="*" ValidationGroup="validar"></asp:RequiredFieldValidator>
+                                            </td>
+                                            <td>Precio Venta<asp:TextBox ID="TB_Precio_venta" runat="server" TextMode="Number"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TB_Precio_venta" ErrorMessage="*" ValidationGroup="validar"></asp:RequiredFieldValidator>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Precio Compra<asp:TextBox ID="TB_Precio_Compra" runat="server" TextMode="Number"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="TB_Precio_Compra" ErrorMessage="*" ValidationGroup="validar"></asp:RequiredFieldValidator>
+                                            </td>
+                                            <td class="auto-style7">Cantidad<asp:TextBox ID="TB_Cantidad" runat="server" TextMode="Number"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TB_Cantidad" ErrorMessage="*" ValidationGroup="validar"></asp:RequiredFieldValidator>
+                                            </td>
+                                            <td>Categoria<asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="ObjectDataSource1" DataTextField="Categoria" DataValueField="Id">
+                                                </asp:DropDownList>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="DropDownList3" ErrorMessage="*" ValidationGroup="validar"></asp:RequiredFieldValidator>
+                                                <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="obtenerCategoriasDDL" TypeName="DAOCategoria"></asp:ObjectDataSource>
+                                                <asp:SqlDataSource ID="ODSCATEGORIA" runat="server"></asp:SqlDataSource>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Imagen 1<asp:FileUpload ID="FU_Foto" runat="server" />
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="FU_Foto" ErrorMessage="*" ValidationGroup="validar"></asp:RequiredFieldValidator>
+                                            </td>
+                                            <td class="auto-style7">Imagen 2<asp:FileUpload ID="FU_Foto2" runat="server" />
+                                            </td>
+                                            <td>Imagen 3<asp:FileUpload ID="FU_Foto3" runat="server" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </asp:View>
+                                <asp:View ID="View3" runat="server">
+                                    <table class="auto-style1">
+                                        <tr>
+                                            <td class="auto-style6">
+                                                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                                                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                                    <ContentTemplate>
+                                                        Producto<asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="ODSProducto" DataTextField="Nombre" DataValueField="Id">
+                                            </asp:DropDownList>
+                                                <asp:ObjectDataSource ID="ODSProducto" runat="server" SelectMethod="obtenerProductoDDL" TypeName="DAOProducto">
+                                                    <SelectParameters>
+                                                        <asp:SessionParameter Name="idProveedor" SessionField="id" Type="String" />
+                                                    </SelectParameters>
+                                                </asp:ObjectDataSource>
+                                                    </ContentTemplate>
+                                                    <Triggers>
+                                                        <asp:AsyncPostBackTrigger ControlID="DropDownList1" EventName="SelectedIndexChanged" />
+                                                    </Triggers>
+                                                </asp:UpdatePanel>
+                                            </td>
+                                            <td class="auto-style6">Cantidad<asp:TextBox ID="TB_Cantidad2" runat="server" TextMode="Number"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="TB_Cantidad2" ErrorMessage="*" ValidationGroup="validar"></asp:RequiredFieldValidator>
+                                            </td>
+                                            <td class="auto-style6">Precio Venta<asp:TextBox ID="TB_Precio_venta2" runat="server" TextMode="Number"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="TB_Precio_venta2" ErrorMessage="*" ValidationGroup="validar"></asp:RequiredFieldValidator>
+                                            </td>
+                                            <td class="auto-style6">Precio Compra<asp:TextBox ID="TB_PCmpra2" runat="server" TextMode="Number"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="TB_PCmpra2" ErrorMessage="*" ValidationGroup="validar"></asp:RequiredFieldValidator>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </asp:View>
+                            </asp:MultiView>
                         </td>
                     </tr>
                 </table>
             </td>
         </tr>
         <tr>
-            <td class="auto-style5">&nbsp;</td>
+            <td class="auto-style5"></td>
         </tr>
         <tr>
             <td>
@@ -97,34 +168,37 @@
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <Columns>
                         <asp:CheckBoxField DataField="Estado" HeaderText="Estado" SortExpression="Estado" />
-<asp:TemplateField HeaderText="Nombre" SortExpression="Nombre"><EditItemTemplate>
+                        <asp:TemplateField HeaderText="Nombre" SortExpression="Nombre">
+                            <EditItemTemplate>
                                 <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Nombre") %>'></asp:TextBox>
-                            
-</EditItemTemplate>
-<ItemTemplate>
+
+                            </EditItemTemplate>
+                            <ItemTemplate>
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("Nombre") %>'></asp:Label>
-                            
-</ItemTemplate>
-</asp:TemplateField>
-<asp:TemplateField HeaderText="Descripcion" SortExpression="Descripcion"><EditItemTemplate>
+
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Descripcion" SortExpression="Descripcion">
+                            <EditItemTemplate>
                                 <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Descripcion") %>'></asp:TextBox>
-                            
-</EditItemTemplate>
-<ItemTemplate>
+
+                            </EditItemTemplate>
+                            <ItemTemplate>
                                 <asp:Label ID="Label3" runat="server" Text='<%# Bind("Descripcion") %>'></asp:Label>
-                            
-</ItemTemplate>
-</asp:TemplateField>
+
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:BoundField DataField="Nombre_categoria" HeaderText="Categoria" SortExpression="Nombre_categoria" />
-<asp:TemplateField HeaderText="Precio unidad" SortExpression="Precio_venta"><EditItemTemplate>
+                        <asp:TemplateField HeaderText="Precio unidad" SortExpression="Precio_venta">
+                            <EditItemTemplate>
                                 <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Precio_venta") %>'></asp:TextBox>
-                            
-</EditItemTemplate>
-<ItemTemplate>
+
+                            </EditItemTemplate>
+                            <ItemTemplate>
                                 <asp:Label ID="Label4" runat="server" Text='<%# Bind("Precio_venta", "{0:C}") %>'></asp:Label>
-                            
-</ItemTemplate>
-</asp:TemplateField>
+
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Cantidad en inventario" SortExpression="Cantidad_inventario">
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("Cantidad_inventario") %>'></asp:TextBox>
@@ -174,6 +248,14 @@
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:CommandField HeaderText="Actualizar" ShowEditButton="True" />
+                        <asp:TemplateField HeaderText="precio_compra" SortExpression="precio_compra">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("precio_compra") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("precio_compra") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                     <EditRowStyle BackColor="#999999" />
                     <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />

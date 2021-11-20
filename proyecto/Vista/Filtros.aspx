@@ -55,7 +55,7 @@
                 <asp:DropDownList ID="DDL_Categorias" runat="server" Width="90%" Enabled="False" DataSourceID="ODS_Categorias" DataTextField="Categoria" DataValueField="Id">
                 </asp:DropDownList>
                 <asp:RangeValidator ID="RV_DDL" runat="server" ControlToValidate="DDL_Categorias" ErrorMessage="*" MaximumValue="20" MinimumValue="1" Type="Integer" ValidationGroup="VG_Filtros" Enabled="False" ForeColor="Red"></asp:RangeValidator>
-                <asp:ObjectDataSource ID="ODS_Categorias" runat="server" SelectMethod="obtenerCategoriasDDL" TypeName="DAOProducto"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_Categorias" runat="server" SelectMethod="obtenerCategoriasDDL" TypeName="DAOCategoria"></asp:ObjectDataSource>
             </td>
             <td style="width:50%" colspan="2"></td>
         </tr>

@@ -11,18 +11,31 @@
     <asp:TextBox class="txt_form" ID="TextBox_mensaje"  placeholder = "Mensaje" runat="server"></asp:TextBox>
             
           <br />
+    <img  ID="img" alt="" style="width:300px" />
     <br />
             
-          <div class="todo">
             <div class="bt_fu">
-                <asp:FileUpload ID="FileUpload1" runat="server" />
+                <asp:FileUpload ID="FileUpload1" runat="server" onchange="showimagepreview(this)" />
+                &nbsp;
+                <br />
+                <br />
                 <asp:Button ID="Button_guardar" runat="server" Text="Guardar" OnClick="Button_guardar_Click" />
-            &nbsp;<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <ItemTemplate>
-                        <asp:HyperLink ID="HyperLink1" NavigateUrl='<%# Eval("Direccion") %>' ImageUrl='<%# Eval("Direccion") %>' ImageWidth="100px" Text='<%# Eval("Direccion") %>' runat="server"></asp:HyperLink>
+                        
                     </ItemTemplate>
             </div>
-            <div class="c_datalist ">
+            <script type="text/javascript">
+        function showimagepreview(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementsByTagName("img")[0].setAttribute("src", e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+	}
+            </script>
+
                 </asp:Content>
 

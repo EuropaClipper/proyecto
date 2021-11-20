@@ -30,7 +30,8 @@ public class DAOProducto
                         Nombre_categoria = m.categoria.Categoria,
                         Estado = m.producto.Estado,
                         Cantidad_inventario = m.inventario.Cantidad,
-                        Id_proveedor = m.producto.Id_proveedor
+                        Id_proveedor = m.producto.Id_proveedor,
+                        id_inventario = m.inventario.Id
                     }).First();
         }
     }
@@ -65,7 +66,8 @@ public class DAOProducto
                         Id_proveedor = m.producto.Id_proveedor,
                         id_inventario = m.inventario.Id,
                         Fecha_modificacion = m.inventario.Fecha_modificacion,
-                        nombre_proveedor = m.proveedor.Nombre
+                        nombre_proveedor = m.proveedor.Nombre,
+                        precio_compra = m.inventario.Precio_compra
                     }).OrderBy(x => x.Nombre).ToList();
             
         }
@@ -146,19 +148,6 @@ public class DAOProducto
         }
         return null;
     }
-
-    public List<ECategoria> obtenerCategoriasDDL()
-    {
-        using (var db = new Mapeo())
-        {
-            List<ECategoria> lista = db.categoria.ToList();
-            ECategoria cat_cero = new ECategoria();
-            cat_cero.Id = 0;
-            cat_cero.Categoria = "--> Seleccione una categoria <--";
-            lista.Add(cat_cero);
-            return lista.OrderBy(x => x.Categoria).ToList();
-        }
-    }
     public void insertarProducto(EProducto producto)
     {
         using (var db = new Mapeo())
@@ -225,7 +214,7 @@ public class DAOProducto
                 Cantidad = producto.Cantidad_inventario,
                 Fecha_modificacion = System.DateTime.Now,
                 Id_producto = producto.Id,
-                Precio_compra=producto.Precio_venta,
+                Precio_compra=producto.precio_compra,
                 Session= producto.Session     
 
             };
@@ -236,5 +225,16 @@ public class DAOProducto
             db.SaveChanges();
         }
     }
-
+    public List<EProducto> obtenerProductoDDL(string idProveedor)
+    {
+        using (var db = new Mapeo())
+        {
+            List<EProducto> lista = db.producto.ToList().Where(x => x.Id_proveedor.Equals(idProveedor)).ToList();
+            EProducto cat_cero = new EProducto();
+            cat_cero.Id = 0;
+            cat_cero.Nombre = "--> Seleccione un producto <--";
+            lista.Add(cat_cero);
+            return lista.OrderBy(x => x.Nombre).ToList();
+        }
+    }
 }

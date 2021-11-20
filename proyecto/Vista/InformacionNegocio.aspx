@@ -31,7 +31,14 @@
                     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Nit,Nombre,Telefono,Direccion,Session,Fecha_modificacion" DataSourceID="ODSNegocio" ForeColor="#333333" GridLines="None" HorizontalAlign="Center" OnRowUpdating="GridView1_RowUpdating">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
-                            <asp:BoundField DataField="Nit" HeaderText="Nit" SortExpression="Nit" />
+                            <asp:TemplateField HeaderText="Nit" SortExpression="Nit">
+                                <EditItemTemplate>
+                                    <asp:Label ID="Label3" runat="server" Text='<%# Eval("Nit") %>'></asp:Label>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label2" runat="server" Text='<%# Bind("Nit") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                             <asp:BoundField DataField="Telefono" HeaderText="Telefono" SortExpression="Telefono" />
                             <asp:BoundField DataField="Direccion" HeaderText="Direccion" SortExpression="Direccion" />

@@ -27,7 +27,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Total" SortExpression="Total">
                             <ItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("Total") %>'></asp:Label>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("Total", "{0:C}") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="Estado" HeaderText="Estado" SortExpression="Estado" />

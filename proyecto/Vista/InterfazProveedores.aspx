@@ -45,24 +45,38 @@
         </tr>
         <tr>
             <td colspan="2">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ODSProveedor" HorizontalAlign="Center" DataKeyNames="Id">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ODSProveedor" HorizontalAlign="Center" CellPadding="4" ForeColor="#333333" GridLines="None"  Width="90%" OnRowCommand="GridView1_RowCommand">
+                    <AlternatingRowStyle BackColor="White" />
                     <Columns>
-                        <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" />
+                        <asp:TemplateField HeaderText="Id" SortExpression="Id">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Id") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("Id") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                         <asp:BoundField DataField="Empresa" HeaderText="Empresa" SortExpression="Empresa" />
                         <asp:BoundField DataField="Telefono" HeaderText="Telefono" SortExpression="Telefono" />
-                        <asp:BoundField DataField="Session" HeaderText="Session" SortExpression="Session" />
-                        <asp:TemplateField HeaderText="Fecha_modificacion" SortExpression="Fecha_modificacion">
-                            <EditItemTemplate>
-                                <asp:Label ID="Label2" runat="server" Text='<%# Eval("Fecha_modificacion")%>'></asp:Label>
-                            </EditItemTemplate>
+                        <asp:BoundField DataField="Fecha_modificacion" HeaderText="Fecha_modificacion" SortExpression="Fecha_modificacion" />
+                        <asp:BoundField DataField="estado_proveedor" HeaderText="estado_proveedor" SortExpression="estado_proveedor" />
+                        <asp:TemplateField HeaderText="Cambiar Estado" ShowHeader="False">
                             <ItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("Fecha_modificacion")%>'></asp:Label>
+                                <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="false" CommandArgument='<%# Bind("Id") %>' CommandName="Cambio" Text="Botón"></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:CommandField HeaderText="Actualizar" ShowEditButton="True" />
-                        <asp:CommandField HeaderText="Eliminar" ShowDeleteButton="True" />
                     </Columns>
+                    <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                    <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+                    <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+                    <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+                    <SortedAscendingCellStyle BackColor="#FDF5AC" />
+                    <SortedAscendingHeaderStyle BackColor="#4D0000" />
+                    <SortedDescendingCellStyle BackColor="#FCF6C0" />
+                    <SortedDescendingHeaderStyle BackColor="#820000" />
                 </asp:GridView>
                 <asp:ObjectDataSource ID="ODSProveedor" runat="server" DataObjectTypeName="EProveedor" DeleteMethod="elimnarProveedor" SelectMethod="ObtenerProveedores" TypeName="DAOProveedor" UpdateMethod="actualizarproveedor">
                 </asp:ObjectDataSource>

@@ -12,11 +12,6 @@ public partial class Vista_QuejasReclamos : System.Web.UI.Page
 
     }
 
-    protected void Button_enviar_Click(object sender, EventArgs e)
-    {
-
-    }
-
     protected void Button_guardar_Click(object sender, EventArgs e)
     {
 
@@ -28,17 +23,19 @@ public partial class Vista_QuejasReclamos : System.Web.UI.Page
         obj.Nombre = TextBox_nombre.Text;
         obj.Email = TextBox_email.Text; ;
         obj.Mensaje = TextBox_mensaje.Text; ;
- if (!(extension.Equals(".jpg")|| extension.Equals(".png")))
+        if (!(extension.Equals(".jpg") || extension.Equals(".png")))
         {
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('No se permite este archivo');</script> ");
             return;
         }
         obj.Imagen = "~\\Imagenes\\" + guid + extension;
-       
-               
+
+
         FileUpload1.PostedFile.SaveAs(SaveLocation);
         new DAOQuejasReclamos().guardarQuejasreclamos(obj);
         cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Se guardo Correctamente');</script> ");
-        
+
     }
+
+
 }

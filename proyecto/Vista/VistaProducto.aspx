@@ -114,8 +114,8 @@
             <td class="col20">
                 &nbsp;</td>
             <td class="col20" colspan="2">
-                <span class="auto-style14">Cantidad</span><asp:TextBox ID="TextBox1" runat="server" CssClass="auto-style14" Width="100px"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox1" CssClass="auto-style14" ErrorMessage="*" ValidationGroup="validar"></asp:RequiredFieldValidator>
+                <span class="auto-style14">Cantidad</span><asp:TextBox ID="TB_Cantidad" runat="server" CssClass="auto-style14" Width="100px" TextMode="Number"></asp:TextBox>
+                <br />
             </td>
             <td class="col20">
                 <asp:Button ID="Button1" runat="server" CssClass="buttonAgg" OnClick="Button1_Click" Text="Agregar Carrito " ValidationGroup="validar" />

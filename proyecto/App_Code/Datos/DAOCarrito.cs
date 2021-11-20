@@ -48,11 +48,11 @@ public class DAOCarrito
             db.SaveChanges();
         }
     }
-    public ECarrito Existe(int id_producto)
+    public ECarrito Existe(int id_producto,string cedula)
     {
         using (var db = new Mapeo())
         {
-            return db.carrito.Where(x => x.ProductoId.Equals(id_producto)).FirstOrDefault();
+            return db.carrito.Where(x => x.ProductoId.Equals(id_producto) && x.UserId.Equals(cedula)).FirstOrDefault();
         }
     }
     public List<EProducto> ProductosEnCarrito(EUsuario user)
