@@ -96,33 +96,39 @@
     cursor: pointer;
     margin: 5px;
 }
+
 .col20 {
     width: 20%;
     height: 20%;
 }
 
+.col70 {
+    text-align: center;
+    width: 70%;
+}
 
-    .buttonFiltro span {
-        cursor: pointer;
-        display: inline-block;
-        position: relative;
+
+.buttonFiltro span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+    .buttonFiltro span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
         transition: 0.5s;
     }
 
-        .buttonFiltro span:after {
-            content: '\00bb';
-            position: absolute;
-            opacity: 0;
-            top: 0;
-            right: -20px;
-            transition: 0.5s;
-        }
+.buttonFiltro:hover span {
+    padding-right: 25px;
+}
 
-    .buttonFiltro:hover span {
-        padding-right: 25px;
+    .buttonFiltro:hover span:after {
+        opacity: 1;
+        right: 0;
     }
-
-        .buttonFiltro:hover span:after {
-            opacity: 1;
-            right: 0;
-        }
