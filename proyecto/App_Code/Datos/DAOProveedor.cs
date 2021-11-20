@@ -51,4 +51,11 @@ public class DAOProveedor
             db.SaveChanges();
         }
     }
+    public EEstadoProveedor EstadoProveedor(int id_estado)
+    {
+        using(var db = new Mapeo())
+        {
+            return db.estado_proveedor.Where(x => x.Id.Equals(id_estado)).First();
+        }
+    }
 }

@@ -21,4 +21,10 @@ public partial class Vista_VistaReportes : System.Web.UI.Page
         Session["fecha_informe"] = TB_FReporte.Text;
         Response.Redirect("ReporteDia.aspx");
     }
+
+    protected void B_RProveedores_Click(object sender, EventArgs e)
+    {
+        Session["estado_proveedor"] = RBL_Estado.SelectedIndex;
+        Response.Redirect("Vista_ReporteProveedores.aspx");
+    }
 }

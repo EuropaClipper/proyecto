@@ -27,4 +27,8 @@ public class EProveedor
     public string Telefono { get => telefono; set => telefono = value; }
     [Column("fecha_modificacion")]
     public DateTime Fecha_modificacion { get => fecha_modificacion; set => fecha_modificacion = value; }
+    [Column("estado")]
+    public int  Id_estado{ get; set; }
+    [NotMapped]
+    public EEstadoProveedor Estado { get { return new DAOProveedor().EstadoProveedor(Id_estado); } set { } }
 }

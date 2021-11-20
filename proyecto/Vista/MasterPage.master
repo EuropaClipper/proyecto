@@ -65,7 +65,7 @@
                                 <Items>
                                     <asp:MenuItem NavigateUrl="~/Vista/Inicio.aspx" Text="Inicio" Value="Inicio"></asp:MenuItem>
                                     <asp:MenuItem Text="Ver perfil" Value="Ver perfil"></asp:MenuItem>
-                                    <asp:MenuItem Text="Historial de compras" Value="Ver historial de compras"></asp:MenuItem>
+                                    <asp:MenuItem Text="Historial de compras" Value="Ver historial de compras" NavigateUrl="~/Vista/HistorialCompras.aspx"></asp:MenuItem>
                                     <asp:MenuItem NavigateUrl="~/Vista/Catalogo.aspx" Text="Catalogo" Value="Catalogo"></asp:MenuItem>
                                     <asp:MenuItem NavigateUrl="~/Vista/Quienes_somos.aspx" Text="Quienes somos" Value="Quienes somos"></asp:MenuItem>
                                     <asp:MenuItem NavigateUrl="~/Vista/ubicacion.aspx" Text="Ubicación" Value="Ubicación"></asp:MenuItem>
@@ -88,6 +88,7 @@
                                     <asp:MenuItem Text="Admin. proveedores" Value="Admin. proveedores" NavigateUrl="~/Vista/InterfazProveedores.aspx"></asp:MenuItem>
                                     <asp:MenuItem Text="Inventario" Value="Inventario" NavigateUrl="~/Vista/CRUD.aspx"></asp:MenuItem>
                                     <asp:MenuItem Text="Consular reportes" Value="Consular reportes" NavigateUrl="~/Vista/VistaReportes.aspx"></asp:MenuItem>
+                                    <asp:MenuItem Text="Ver quejas y reclamos" Value="Ver quejas y reclamos"></asp:MenuItem>
                                     <asp:MenuItem Text="Informacion del negocio" Value="Modificar informacion del negocio" NavigateUrl="~/Vista/InformacionNegocio.aspx"></asp:MenuItem>
                                 </Items>
                                 <StaticHoverStyle BackColor="#284E98" ForeColor="White" />

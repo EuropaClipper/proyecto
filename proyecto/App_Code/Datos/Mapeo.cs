@@ -26,4 +26,6 @@ public class Mapeo : DbContext
     public virtual DbSet<EProveedor> proveedor { get; set; }
     public virtual DbSet<EEstadoCompra> estado_compra { get; set; }
 
+    public virtual DbSet<EEstadoProveedor> estado_proveedor { get; set; }
+
 }

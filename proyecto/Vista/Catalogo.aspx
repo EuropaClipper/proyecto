@@ -56,7 +56,7 @@
                             <tr>
                                 <td style="width:50%;text-align:end">Cantidad</td>
                                 <td style="width:50%;text-align:start">
-                                    <asp:TextBox ID="TB_Cantidad" runat="server" MaxLength="3" TextMode="Number" Width="3em"></asp:TextBox>
+                                    <asp:TextBox ID="TB_Cantidad" runat="server" MaxLength="3" TextMode="Number" Width="4em"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RFV_Cantidad" runat="server" ControlToValidate="TB_Cantidad" ErrorMessage="*" Font-Size="Large" ForeColor="Red" ValidationGroup='<%# Container.ItemIndex %>'></asp:RequiredFieldValidator>
                                 </td>
                             </tr>

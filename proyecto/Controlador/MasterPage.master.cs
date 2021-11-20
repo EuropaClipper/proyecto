@@ -11,10 +11,19 @@ public partial class View_MasterPage : System.Web.UI.MasterPage
     {
         if (Session["user"] != null)
         {
-            l_CantidadCarrito.Text = new DAOCarrito().CantidadEnCarrito(((EUsuario)Session["user"]).Cedula).ToString();
-            if (((EUsuario)Session["user"]).Id_rol == 1) MV_Menu.ActiveViewIndex = 2;
-            else MV_Menu.ActiveViewIndex = 1;
-            IB_Carrito.Visible = l_CantidadCarrito.Visible = B_CerrarSesion.Visible = true;
+           
+            if (((EUsuario)Session["user"]).Id_rol == 1)
+            {
+                MV_Menu.ActiveViewIndex = 2;
+                IB_Carrito.Visible = l_CantidadCarrito.Visible = false;
+            }
+            else 
+            {
+                MV_Menu.ActiveViewIndex = 1;
+                l_CantidadCarrito.Text = new DAOCarrito().CantidadEnCarrito(((EUsuario)Session["user"]).Cedula).ToString();
+                IB_Carrito.Visible = l_CantidadCarrito.Visible =  true;
+            }
+            B_CerrarSesion.Visible = true;
         }
         else
         {
