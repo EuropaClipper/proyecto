@@ -49,6 +49,7 @@
                     <tr>
                         <td class="auto-style3">Proveedor<asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="ODSProveedor" DataTextField="Nombre" DataValueField="Id" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="True">
                         </asp:DropDownList>
+                            <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="DropDownList1" ErrorMessage="Seleccionar" ForeColor="Red" MaximumValue="100" MinimumValue="1" Type="Integer" ValidationGroup="validar"></asp:RangeValidator>
                             <asp:ObjectDataSource ID="ODSProveedor" runat="server" SelectMethod="obtenerProvedoresDDL" TypeName="DAOProveedor"></asp:ObjectDataSource>
                         </td>
                         <td class="auto-style3">
@@ -91,9 +92,8 @@
                                             </td>
                                             <td>Categoria<asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="ObjectDataSource1" DataTextField="Categoria" DataValueField="Id">
                                                 </asp:DropDownList>
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="DropDownList3" ErrorMessage="*" ValidationGroup="validar"></asp:RequiredFieldValidator>
+                                                <asp:RangeValidator ID="RangeValidator2" runat="server" ControlToValidate="DropDownList3" ErrorMessage="Seleccione" ForeColor="Red" MaximumValue="100" MinimumValue="1" Type="Integer" ValidationGroup="validar"></asp:RangeValidator>
                                                 <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="obtenerCategoriasDDL" TypeName="DAOCategoria"></asp:ObjectDataSource>
-                                                <asp:SqlDataSource ID="ODSCATEGORIA" runat="server"></asp:SqlDataSource>
                                             </td>
                                         </tr>
                                         <tr>
@@ -172,6 +172,8 @@
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Nombre") %>'></asp:TextBox>
 
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="*" ForeColor="Red" ValidationGroup="val"></asp:RequiredFieldValidator>
+
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("Nombre") %>'></asp:Label>
@@ -182,16 +184,30 @@
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Descripcion") %>'></asp:TextBox>
 
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox2" ErrorMessage="*" ForeColor="Red" ValidationGroup="val"></asp:RequiredFieldValidator>
+
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label3" runat="server" Text='<%# Bind("Descripcion") %>'></asp:Label>
 
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="Nombre_categoria" HeaderText="Categoria" SortExpression="Nombre_categoria" />
-                        <asp:TemplateField HeaderText="Precio unidad" SortExpression="Precio_venta">
+                        <asp:TemplateField HeaderText="Categoria" SortExpression="Nombre_categoria">
+                            <EditItemTemplate>
+                                <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="ObjectDataSource1" DataTextField="Categoria" DataValueField="Id">
+                                </asp:DropDownList>
+                                <asp:RangeValidator ID="RangeValidator2" runat="server" ControlToValidate="DropDownList3" ErrorMessage="Seleccione" ForeColor="Red" MaximumValue="100" MinimumValue="1" Type="Integer" ValidationGroup="val"></asp:RangeValidator>
+                                <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="obtenerCategoriasDDL" TypeName="DAOCategoria"></asp:ObjectDataSource>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label7" runat="server" Text='<%# Bind("Nombre_categoria") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Precio Venta" SortExpression="Precio_venta">
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Precio_venta") %>'></asp:TextBox>
+
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBox3" ErrorMessage="*" ForeColor="Red" ValidationGroup="val"></asp:RequiredFieldValidator>
 
                             </EditItemTemplate>
                             <ItemTemplate>
@@ -199,9 +215,19 @@
 
                             </ItemTemplate>
                         </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Precio Compra" SortExpression="precio_compra">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("precio_compra") %>'></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="TextBox6" ErrorMessage="*" ForeColor="Red" ValidationGroup="val"></asp:RequiredFieldValidator>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("precio_compra") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Cantidad en inventario" SortExpression="Cantidad_inventario">
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("Cantidad_inventario") %>'></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TextBox5" ErrorMessage="*" ForeColor="Red" ValidationGroup="val"></asp:RequiredFieldValidator>
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label6" runat="server" Text='<%# Bind("Cantidad_inventario") %>'></asp:Label>
@@ -209,7 +235,10 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Proveedor" SortExpression="nombre_proveedor">
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("nombre_proveedor") %>'></asp:TextBox>
+                                <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="ODSProveedor" DataTextField="Nombre" DataValueField="Id" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                                </asp:DropDownList>
+                                <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="DropDownList1" ErrorMessage="Editar" ForeColor="Red" MaximumValue="100" MinimumValue="1" Type="Integer" ValidationGroup="val"></asp:RangeValidator>
+                                <asp:ObjectDataSource ID="ODSProveedor" runat="server" SelectMethod="obtenerProvedoresDDL" TypeName="DAOProveedor"></asp:ObjectDataSource>
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label5" runat="server" Text='<%# Bind("nombre_proveedor") %>'></asp:Label>
@@ -218,6 +247,7 @@
                         <asp:TemplateField HeaderText="Imagen" SortExpression="Imagen_uno">
                             <EditItemTemplate>
                                 <asp:FileUpload ID="FU_Imagen1" runat="server" />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="FU_Imagen1" ErrorMessage="*" ForeColor="Red" ValidationGroup="val"></asp:RequiredFieldValidator>
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("Imagen_uno") %>' Width="40%" />
@@ -247,13 +277,13 @@
                                 <asp:Label ID="Label8" runat="server" Text='<%# Eval("Fecha_modificacion", "{0:d}") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:CommandField HeaderText="Actualizar" ShowEditButton="True" />
-                        <asp:TemplateField HeaderText="precio_compra" SortExpression="precio_compra">
+                        <asp:TemplateField HeaderText="Actualizar" ShowHeader="False">
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("precio_compra") %>'></asp:TextBox>
+                                <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="True" CommandName="Update" Text="Actualizar" ValidationGroup="val"></asp:LinkButton>
+                                &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar"></asp:LinkButton>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("precio_compra") %>'></asp:Label>
+                                <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Edit" Text="Editar"></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

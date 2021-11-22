@@ -11,7 +11,7 @@
             <td style="width:80%">
                 <CR:CrystalReportViewer ID="CRV_Compra" runat="server" AutoDataBind="True"  Height="1202px" ReportSourceID="CRS_Compra"  ToolPanelWidth="200px" Width="1104px" />
                 <CR:CrystalReportSource ID="CRS_Compra" runat="server">
-                    <Report FileName="C:\Users\Benzoil M\source\repos\EuropaClipper\proyecto\proyecto\Reportes\Factura.rpt">
+                    <Report FileName="~\Reportes\Factura.rpt">
                     </Report>
                 </CR:CrystalReportSource>
             </td>
