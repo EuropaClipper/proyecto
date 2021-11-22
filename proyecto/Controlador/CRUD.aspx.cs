@@ -25,143 +25,151 @@ public partial class Vista_CRUD : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        EProducto producto = new EProducto();
-        if (ViewState["eleccion"].ToString() == "nuevo")
+         if(ViewState["eleccion"] != null)
         {
-            producto.Nombre = TB_Nombre.Text;
-            producto.Descripcion = TB_Descripcion.Text;
-            producto.Precio_venta = int.Parse(TB_Precio_venta.Text);
-            producto.Cantidad_inventario = int.Parse(TB_Cantidad.Text);
-            producto.Id_categoria = int.Parse(DropDownList3.SelectedValue);
-            producto.Id_proveedor = DropDownList1.SelectedValue;
-            producto.precio_compra = double.Parse(TB_Precio_Compra.Text);
-            producto.Fecha_modificacion = DateTime.Now;
-            producto.Estado = true;
-            producto.Session = ((EUsuario)Session["user"]).Nombre;
-            string extension = System.IO.Path.GetExtension(FU_Foto.PostedFile.FileName);
-            if (extension.Equals(".jpg") || extension.Equals(".jpeg") || extension.Equals(".png"))
+            EProducto producto = new EProducto();
+            if (ViewState["eleccion"].ToString() == "nuevo")
             {
-                var guid = Guid.NewGuid();//generar un nombre al azar.
-                producto.Imagen_uno = "~\\Imagenes\\productos\\" + guid + extension;
-                FU_Foto.PostedFile.SaveAs(Server.MapPath("~\\Imagenes\\productos\\") + guid + extension);
-            }
-            else
-            {
-                this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Imagen de perfil no valida: tipo de archivo erroneo');</script>");
-                return;
-            }
-            if (FU_Foto2.HasFile)
-            {
-                extension = System.IO.Path.GetExtension(FU_Foto2.PostedFile.FileName);
+                producto.Nombre = TB_Nombre.Text;
+                producto.Descripcion = TB_Descripcion.Text;
+                producto.Precio_venta = int.Parse(TB_Precio_venta.Text);
+                producto.Cantidad_inventario = int.Parse(TB_Cantidad.Text);
+                producto.Id_categoria = int.Parse(DropDownList3.SelectedValue);
+                producto.Id_proveedor = DropDownList1.SelectedValue;
+                producto.precio_compra = double.Parse(TB_Precio_Compra.Text);
+                producto.Fecha_modificacion = DateTime.Now;
+                producto.Estado = true;
+                producto.Session = ((EUsuario)Session["user"]).Nombre;
+                string extension = System.IO.Path.GetExtension(FU_Foto.PostedFile.FileName);
                 if (extension.Equals(".jpg") || extension.Equals(".jpeg") || extension.Equals(".png"))
                 {
-                    var guid = Guid.NewGuid();
-                    producto.Imagen_dos = "~\\Imagenes\\productos\\" + guid + extension;
-                    FU_Foto2.PostedFile.SaveAs(Server.MapPath("~\\Imagenes\\productos\\") + guid + extension);
+                    var guid = Guid.NewGuid();//generar un nombre al azar.
+                    producto.Imagen_uno = "~\\Imagenes\\productos\\" + guid + extension;
+                    FU_Foto.PostedFile.SaveAs(Server.MapPath("~\\Imagenes\\productos\\") + guid + extension);
                 }
                 else
                 {
                     this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Imagen de perfil no valida: tipo de archivo erroneo');</script>");
                     return;
                 }
-            }
-            else
-            {
-                producto.Imagen_dos = "~\\Imagenes\\pagina_web\\sin_imagen.jpg";
-            }
-            if (FU_Foto3.HasFile)
-            {
-                extension = System.IO.Path.GetExtension(FU_Foto3.PostedFile.FileName);
-                if (extension.Equals(".jpg") || extension.Equals(".jpeg") || extension.Equals(".png"))
+                if (FU_Foto2.HasFile)
                 {
-                    var guid = Guid.NewGuid();
-                    producto.Imagen_tres = "~\\Imagenes\\productos\\" + guid + extension;
-                    FU_Foto3.PostedFile.SaveAs(Server.MapPath("~\\Imagenes\\productos\\") + guid + extension);
+                    extension = System.IO.Path.GetExtension(FU_Foto2.PostedFile.FileName);
+                    if (extension.Equals(".jpg") || extension.Equals(".jpeg") || extension.Equals(".png"))
+                    {
+                        var guid = Guid.NewGuid();
+                        producto.Imagen_dos = "~\\Imagenes\\productos\\" + guid + extension;
+                        FU_Foto2.PostedFile.SaveAs(Server.MapPath("~\\Imagenes\\productos\\") + guid + extension);
+                    }
+                    else
+                    {
+                        this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Imagen de perfil no valida: tipo de archivo erroneo');</script>");
+                        return;
+                    }
                 }
                 else
                 {
-                    this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Imagen de perfil no valida: tipo de archivo erroneo');</script>");
-                    return;
+                    producto.Imagen_dos = "~\\Imagenes\\pagina_web\\sin_imagen.jpg";
                 }
-            }
-            else
-            {
-                producto.Imagen_tres = "~\\Imagenes\\pagina_web\\sin_imagen.jpg";
-            }
+                if (FU_Foto3.HasFile)
+                {
+                    extension = System.IO.Path.GetExtension(FU_Foto3.PostedFile.FileName);
+                    if (extension.Equals(".jpg") || extension.Equals(".jpeg") || extension.Equals(".png"))
+                    {
+                        var guid = Guid.NewGuid();
+                        producto.Imagen_tres = "~\\Imagenes\\productos\\" + guid + extension;
+                        FU_Foto3.PostedFile.SaveAs(Server.MapPath("~\\Imagenes\\productos\\") + guid + extension);
+                    }
+                    else
+                    {
+                        this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Imagen de perfil no valida: tipo de archivo erroneo');</script>");
+                        return;
+                    }
+                }
+                else
+                {
+                    producto.Imagen_tres = "~\\Imagenes\\pagina_web\\sin_imagen.jpg";
+                }
 
-            if (extension.Equals(".jpg") || extension.Equals(".jpeg") || extension.Equals(".png"))
-            {
-                var guid = Guid.NewGuid();//generar un nombre al azar.
-                producto.Imagen_uno = "~\\Imagenes\\productos\\" + guid + extension;
-                FU_Foto.PostedFile.SaveAs(Server.MapPath("~\\Imagenes\\productos\\") + guid + extension);
-            }
-            else
-            {
-                this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Imagen de perfil no valida: tipo de archivo erroneo');</script>");
-                return;
-            }
-            if (FU_Foto2.HasFile)
-            {
-                extension = System.IO.Path.GetExtension(FU_Foto2.PostedFile.FileName);
                 if (extension.Equals(".jpg") || extension.Equals(".jpeg") || extension.Equals(".png"))
                 {
-                    var guid = Guid.NewGuid();
-                    producto.Imagen_dos = "~\\Imagenes\\productos\\" + guid + extension;
-                    FU_Foto2.PostedFile.SaveAs(Server.MapPath("~\\Imagenes\\productos\\") + guid + extension);
+                    var guid = Guid.NewGuid();//generar un nombre al azar.
+                    producto.Imagen_uno = "~\\Imagenes\\productos\\" + guid + extension;
+                    FU_Foto.PostedFile.SaveAs(Server.MapPath("~\\Imagenes\\productos\\") + guid + extension);
                 }
                 else
                 {
                     this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Imagen de perfil no valida: tipo de archivo erroneo');</script>");
                     return;
                 }
-            }
-            else
-            {
-                producto.Imagen_dos = "~\\Imagenes\\pagina_web\\sin_imagen.jpg";
-            }
-            if (FU_Foto3.HasFile)
-            {
-                extension = System.IO.Path.GetExtension(FU_Foto3.PostedFile.FileName);
-                if (extension.Equals(".jpg") || extension.Equals(".jpeg") || extension.Equals(".png"))
+                if (FU_Foto2.HasFile)
                 {
-                    var guid = Guid.NewGuid();
-                    producto.Imagen_tres = "~\\Imagenes\\productos\\" + guid + extension;
-                    FU_Foto3.PostedFile.SaveAs(Server.MapPath("~\\Imagenes\\productos\\") + guid + extension);
+                    extension = System.IO.Path.GetExtension(FU_Foto2.PostedFile.FileName);
+                    if (extension.Equals(".jpg") || extension.Equals(".jpeg") || extension.Equals(".png"))
+                    {
+                        var guid = Guid.NewGuid();
+                        producto.Imagen_dos = "~\\Imagenes\\productos\\" + guid + extension;
+                        FU_Foto2.PostedFile.SaveAs(Server.MapPath("~\\Imagenes\\productos\\") + guid + extension);
+                    }
+                    else
+                    {
+                        this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Imagen de perfil no valida: tipo de archivo erroneo');</script>");
+                        return;
+                    }
                 }
                 else
                 {
-                    this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Imagen de perfil no valida: tipo de archivo erroneo');</script>");
-                    return;
+                    producto.Imagen_dos = "~\\Imagenes\\pagina_web\\sin_imagen.jpg";
                 }
+                if (FU_Foto3.HasFile)
+                {
+                    extension = System.IO.Path.GetExtension(FU_Foto3.PostedFile.FileName);
+                    if (extension.Equals(".jpg") || extension.Equals(".jpeg") || extension.Equals(".png"))
+                    {
+                        var guid = Guid.NewGuid();
+                        producto.Imagen_tres = "~\\Imagenes\\productos\\" + guid + extension;
+                        FU_Foto3.PostedFile.SaveAs(Server.MapPath("~\\Imagenes\\productos\\") + guid + extension);
+                    }
+                    else
+                    {
+                        this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Imagen de perfil no valida: tipo de archivo erroneo');</script>");
+                        return;
+                    }
+                }
+                else
+                {
+                    producto.Imagen_tres = "~\\Imagenes\\pagina_web\\sin_imagen.jpg";
+                }
+                new DAOProducto().insertarProducto(producto);
+                TB_Nombre.Text = "";
+                TB_Descripcion.Text = "";
+                TB_Precio_venta.Text = "";
+                TB_Precio_Compra.Text = "";
+                DropDownList3.SelectedValue = "0";
+                TB_Cantidad.Text = "";
+                Response.Redirect("CRUD.aspx");
+
+
             }
             else
             {
-                producto.Imagen_tres = "~\\Imagenes\\pagina_web\\sin_imagen.jpg";
+                producto = new DAOProducto().obtenerProducto(int.Parse(DropDownList2.SelectedValue));
+                producto.Cantidad_inventario += int.Parse(TB_Cantidad2.Text);
+                producto.Precio_venta = double.Parse(TB_PCmpra2.Text);
+                producto.precio_compra = double.Parse(TB_Precio_venta2.Text);
+                producto.Fecha_modificacion = DateTime.Now;
+                producto.Estado = true;
+                producto.Session = ((EUsuario)Session["user"]).Nombre;
+                new DAOProducto().actualizar(producto);
             }
-            new DAOProducto().insertarProducto(producto);
-            TB_Nombre.Text = "";
-            TB_Descripcion.Text = "";
-            TB_Precio_venta.Text = "";
-            TB_Precio_Compra.Text = "";
-            DropDownList3.SelectedValue = "0";
-            TB_Cantidad.Text = "";
-            Response.Redirect("CRUD.aspx");
-
-
+            GV_Inventario.DataBind();
+            MultiView1.ActiveViewIndex = 0;
         }
         else
         {
-            producto = new DAOProducto().obtenerProducto(int.Parse(DropDownList2.SelectedValue));
-            producto.Cantidad_inventario += int.Parse(TB_Cantidad2.Text);
-            producto.Precio_venta = double.Parse(TB_PCmpra2.Text);
-            producto.precio_compra = double.Parse(TB_Precio_venta2.Text);
-            producto.Fecha_modificacion = DateTime.Now;
-            producto.Estado = true;
-            producto.Session = ((EUsuario)Session["user"]).Nombre;
-            new DAOProducto().actualizar(producto);
+            this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Seleccione si es un nuevo producto o existente');</script>");
+           
         }
-        GV_Inventario.DataBind();
-        MultiView1.ActiveViewIndex = 0;
     }
 
     protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
