@@ -30,16 +30,19 @@ public partial class Vista_InterfazProveedores : System.Web.UI.Page
 
     protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
     {
-        EProveedor Proveedor = new DAOProveedor().ObtenerProveedor(e.CommandArgument.ToString());
-        if(Proveedor.Id_estado == 1)
+        if(e.CommandName == "Cambio")
         {
-            Proveedor.Id_estado = 2;
+            EProveedor Proveedor = new DAOProveedor().ObtenerProveedor(e.CommandArgument.ToString());
+            if (Proveedor.Id_estado == 1)
+            {
+                Proveedor.Id_estado = 2;
+            }
+            else
+            {
+                Proveedor.Id_estado = 1;
+            }
+            new DAOProveedor().actualizarproveedor(Proveedor);
+            GridView1.DataBind();
         }
-        else
-        {
-            Proveedor.Id_estado = 1;
-        }
-        new DAOProveedor().actualizarproveedor(Proveedor);
-        GridView1.DataBind();
     }
 }
