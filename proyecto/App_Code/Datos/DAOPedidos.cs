@@ -8,7 +8,7 @@ public class DAOPedidos
     public List<Pedido> ObtenerPedidosPendientes()
     {
         List<Pedido> pedidos_pendientes = new List<Pedido>();
-        var grupo = new DAOCompra().ObtenerCompras().Where(x=> x.Compra.Id_estado.Equals(2)).GroupBy(x=>x.Id_compra);
+        var grupo = new DAOCompra().ObtenerCompras().Where(x=> x.Compra.Id_estado.Equals(2)|| x.Compra.Id_estado.Equals(3)).GroupBy(x=>x.Id_compra);
         foreach (var item in grupo)
         {
             Pedido auxiliar = new Pedido();
@@ -52,6 +52,29 @@ public class DAOPedidos
     {
         List<Pedido> pedidos = new List<Pedido>();
         var grupo = new DAOCompra().ObtenerCompras().Where(x=>x.Compra.Id_comprador.Equals(usuario.Cedula)).GroupBy(x => x.Id_compra);
+        foreach (var item in grupo)
+        {
+            Pedido auxiliar = new Pedido();
+            int i = 0;
+            string producto_cantidad = "";
+            auxiliar.Total = item.First().Compra.Total; auxiliar.Factura = item.Key;
+            foreach (var detalles in item)
+            {
+                for (; i < 1; i++) auxiliar.Comprador = detalles.Compra.Usuario.Nombre;
+                auxiliar.Estado = detalles.Compra.Estado.Estado;
+                producto_cantidad += detalles.Producto.Nombre + "  " + detalles.Cantidad + "\n";
+            }
+            auxiliar.Productos_Cantidades = producto_cantidad;
+            pedidos.Add(auxiliar);
+        }
+        return pedidos.OrderBy(x => x.Factura).ToList();
+    }
+    public List<Pedido> ObtenerComprasQuejas(EUsuario usuario)
+    {
+        DateTime li = DateTime.Now.AddHours(-24);
+        DateTime ls = DateTime.Now;
+        List<Pedido> pedidos = new List<Pedido>();
+        var grupo = new DAOCompra().ObtenerCompras().Where(x => x.Compra.Id_comprador.Equals(usuario.Cedula) && (x.Compra.Fecha_compra >= li && x.Compra.Fecha_compra <= ls)).GroupBy(x => x.Id_compra);
         foreach (var item in grupo)
         {
             Pedido auxiliar = new Pedido();

@@ -10,6 +10,7 @@ public partial class Vista_Vista_ReporteProveedores : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["user"] == null || ((EUsuario)Session["user"]).Id_rol != 1) Response.Redirect("Inicio.aspx");
         CargarReporte();
     }
     protected void CargarReporte()
@@ -32,7 +33,7 @@ public partial class Vista_Vista_ReporteProveedores : System.Web.UI.Page
         if (estado == 0) proveedores = new DAOProveedor().ObtenerProveedores();
         else
         {
-            if(estado == 1) proveedores = new DAOProveedor().ObtenerProveedores().Where(x=> x.Id_estado.Equals(1)).ToList();
+            if (estado == 1) proveedores = new DAOProveedor().ObtenerProveedores().Where(x => x.Id_estado.Equals(1)).ToList();
             else proveedores = new DAOProveedor().ObtenerProveedores().Where(x => x.Id_estado.Equals(2)).ToList();
         }
         foreach (var item in proveedores)

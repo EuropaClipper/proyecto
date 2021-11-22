@@ -31,6 +31,11 @@
                     </tr>
                     <tr>
                         <td style="text-align: end" colspan="2">
+                            <asp:LinkButton ID="LB_Nombre" runat="server">LinkButton</asp:LinkButton>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: end" colspan="2">
                             <asp:Button ID="B_CerrarSesion" runat="server" Text="Cerrar sesion" ForeColor="#000099" OnClick="B_CerrarSesion_Click" Visible="False" />
                         </td>
                     </tr>
@@ -70,8 +75,9 @@
                                 <Items>
                                     <asp:MenuItem NavigateUrl="~/Vista/Inicio.aspx" Text="Inicio" Value="Inicio"></asp:MenuItem>
                                     <asp:MenuItem Text="Ver perfil" Value="Ver perfil" NavigateUrl="~/Vista/Informacion_Usuario.aspx"></asp:MenuItem>
-                                    <asp:MenuItem Text="Historial de compras" Value="Ver historial de compras" NavigateUrl="~/Vista/HistorialCompras.aspx"></asp:MenuItem>
                                     <asp:MenuItem NavigateUrl="~/Vista/Catalogo.aspx" Text="Catalogo" Value="Catalogo"></asp:MenuItem>
+                                    <asp:MenuItem Text="Historial de compras" Value="Ver historial de compras" NavigateUrl="~/Vista/HistorialCompras.aspx"></asp:MenuItem>
+                                    <asp:MenuItem NavigateUrl="~/Vista/QuejasReclamos.aspx" Text="Realizar quejas y reclamos" Value="Realizar quejas y reclamos"></asp:MenuItem>
                                     <asp:MenuItem NavigateUrl="~/Vista/Quienes_somos.aspx" Text="Quienes somos" Value="Quienes somos"></asp:MenuItem>
                                     <asp:MenuItem NavigateUrl="~/Vista/ubicacion.aspx" Text="Ubicación" Value="Ubicación"></asp:MenuItem>
                                 </Items>
@@ -93,7 +99,7 @@
                                     <asp:MenuItem Text="Admin. proveedores" Value="Admin. proveedores" NavigateUrl="~/Vista/InterfazProveedores.aspx"></asp:MenuItem>
                                     <asp:MenuItem Text="Inventario" Value="Inventario" NavigateUrl="~/Vista/CRUD.aspx"></asp:MenuItem>
                                     <asp:MenuItem Text="Consular reportes" Value="Consular reportes" NavigateUrl="~/Vista/VistaReportes.aspx"></asp:MenuItem>
-                                    <asp:MenuItem Text="Ver quejas y reclamos" Value="Ver quejas y reclamos"></asp:MenuItem>
+                                    <asp:MenuItem Text="Ver quejas y reclamos" Value="Ver quejas y reclamos" NavigateUrl="~/Vista/verQR.aspx"></asp:MenuItem>
                                     <asp:MenuItem Text="Informacion del negocio" Value="Modificar informacion del negocio" NavigateUrl="~/Vista/InformacionNegocio.aspx"></asp:MenuItem>
                                 </Items>
                                 <StaticHoverStyle BackColor="#284E98" ForeColor="White" />

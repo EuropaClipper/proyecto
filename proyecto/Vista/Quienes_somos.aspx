@@ -23,17 +23,29 @@
         <article>
             <p class="auto-style5">&nbsp;</p>
             <p class="auto-style6">QUIENES SOMOS</p>
-            <p class="auto-style5">MISÏON</p>
+            <p class="auto-style5">MISION</p>
             <p class="auto-style5">Nuestra misión es poner al alcance de nuestros clientes los mejores productos para sus necesidades diarias, su bienestar y su salud. Nos diferencia la calidad de nuestros productos frescos. Bajo el eslogan "ventas en línea JP&M" resumimos nuestro compromiso fundamental: proporcionar un servicio cercano, atento y de confianza..</p>
         </article>
     </div>
     <div class="contenedor_Vision">
         <article>
-            <p class="auto-style4">VISÏON</p>
+            <p class="auto-style4">VISION</p>
         </article>
     </div>
     <article>
         <p class="auto-style4">La micro tienda “ventas en línea JP&M” será reconocida a nivel nacional e internacional por la calidad de sus productos y su aporte a las personas a las cuales deleitaremos cada vez más, ser una de las mejores tiendas en toda el área.</p>
     </article>
+    <table style="width:100%">
+        <tr>
+            <td style="width:100%">
+
+            </td>
+        </tr>
+        <tr>
+            <td style="width:100%;text-align:center">
+                <asp:Button ID="B_MasInfo" runat="server" Text="Ver más información del negocio" PostBackUrl="~/Vista/InformacionNegocio.aspx" />
+            </td>
+        </tr>
+    </table>
 </asp:Content>
 

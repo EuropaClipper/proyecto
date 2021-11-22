@@ -23,7 +23,7 @@
             <td>
 
                 <CR:CrystalReportSource ID="CRS_RDia" runat="server">
-                    <Report FileName="C:\Users\Benzoil M\source\repos\EuropaClipper\proyecto\proyecto\Reportes\ReporteDia.rpt">
+                    <Report FileName="~\Reportes\ReporteDia.rpt">
                     </Report>
                 </CR:CrystalReportSource>
 

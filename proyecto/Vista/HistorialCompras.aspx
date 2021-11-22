@@ -1,6 +1,12 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vista/MasterPage.master" AutoEventWireup="true" CodeFile="HistorialCompras.aspx.cs" Inherits="Vista_HistorialCompras" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vista/MasterPage.master" AutoEventWireup="true" CodeFile="~/Controlador/HistorialCompras.aspx.cs" Inherits="Vista_HistorialCompras" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+
+    <style type="text/css">
+        .auto-style1 {
+            text-align: center;
+        }
+    </style>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -13,14 +19,15 @@
         </tr>
         <tr>
             <td style="width:100%">
-                <asp:GridView ID="GV_HCompras" runat="server" AutoGenerateColumns="False" DataSourceID="ODSCompras" CellPadding="4" ForeColor="#333333" GridLines="None" Width="90%" HorizontalAlign="Center">
+                <asp:GridView ID="GV_HCompras" runat="server" AutoGenerateColumns="False" DataSourceID="ODSCompras" CellPadding="4" ForeColor="#333333" GridLines="None" Width="90%" HorizontalAlign="Center" OnRowCommand="GV_HCompras_RowCommand">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <Columns>
-                        <asp:BoundField DataField="Factura" HeaderText="Factura" SortExpression="Factura" />
+                        <asp:TemplateField HeaderText="Factura" SortExpression="Factura">
+                            <ItemTemplate>
+                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("Factura") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Productos_Cantidades" SortExpression="Productos_Cantidades">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="TextBox1" runat="server" Columns="30" Rows="5" Text='<%# Bind("Productos_Cantidades") %>' TextMode="MultiLine"></asp:TextBox>
-                            </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:TextBox ID="TextBox1" runat="server" Columns="50" ReadOnly="True" Rows="5" Text='<%# Bind("Productos_Cantidades") %>' TextMode="MultiLine"></asp:TextBox>
                             </ItemTemplate>
@@ -31,8 +38,17 @@
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="Estado" HeaderText="Estado" SortExpression="Estado" />
+                        <asp:TemplateField HeaderText="Ver factura">
+                            <ItemTemplate>
+                                <asp:Button ID="Button1" runat="server" CausesValidation="false" CommandArgument='<%# Bind("Factura") %>' CommandName="Select" Text="Ver" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                     <EditRowStyle BackColor="#999999" />
+                    <EmptyDataTemplate>
+                        <div class="auto-style1">
+                            No ha realizado compras.</div>
+                    </EmptyDataTemplate>
                     <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
                     <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
                     <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />

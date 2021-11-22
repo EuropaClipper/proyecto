@@ -10,8 +10,8 @@ public partial class Vista_ReporteDia : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
-            cargarReporte();
+        if (Session["user"] == null || ((EUsuario)Session["user"]).Id_rol != 1) Response.Redirect("Inicio.aspx");
+        cargarReporte();
 
     }
     protected void cargarReporte()
@@ -35,11 +35,6 @@ public partial class Vista_ReporteDia : System.Web.UI.Page
         List<EDetallesCompra> compras = new DAOCompra().ObtenerCompras().Where(x => x.Compra.Fecha_compra.Date.Equals(fecha.Date)).ToList();
         List<EInventario> inventario = new DAOInventario().ObtenerInventario();
         List<EInventario> gastos_hoy = inventario.Where(x => x.Fecha_modificacion.Date.Equals(fecha.Date)).ToList();
-        double utilidad = 0.0;
-        //double ingresos = compras.Sum(x => x.Total);
-        //double costos = gastos.Sum(x => x.Precio_compra * x.Cantidad);//modificar
-        //double utilidad = ingresos - costos;
-        //fila["utilidad"] = utilidad;
         detalles_informe.Rows.Add(fila);
  
         DataTable detalles_ventas = reporte.reporte_ventas_dia;
