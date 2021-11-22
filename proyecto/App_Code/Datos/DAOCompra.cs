@@ -57,7 +57,7 @@ public class DAOCompra
         using(var db = new Mapeo())
         {
             ECompra auxiliar = ObtenerCompra(id_factura);
-            auxiliar.Id_estado = 1;
+            auxiliar.Id_estado = (auxiliar.Id_estado == 2) ? 3 : 1;
             db.compra.Attach(auxiliar);
             var entry = db.Entry(auxiliar);
             entry.State = EntityState.Modified;

@@ -10,11 +10,7 @@ public partial class Vista_VistaReportes : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //if (Session["user"] != null)
-        //{
-        //    cargarReporte();
-        //}
-        //else Response.Redirect("Inicio.aspx");
+        if (Session["user"] == null || ((EUsuario)Session["user"]).Id_rol != 1) Response.Redirect("Inicio.aspx");
     }
     protected void B_GInforme_Click(object sender, EventArgs e)
     {

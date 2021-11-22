@@ -1,22 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vista/MasterPage.master" AutoEventWireup="true" CodeFile="~/Controlador/IniciarSesion.aspx.cs" Inherits="Vista_IniciarSesion" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <style type="text/css">
+        .auto-style1 {
+            text-align: center;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <table class="auto-style1">
+    <table style="width:100%">
         <tr>
-            <td style="width: 100%" colspan="3">&nbsp;</td>
-        </tr>
-        <tr>
-            <td style="width: 100%" colspan="3">&nbsp;</td>
-        </tr>
-        <tr>
-            <td style="width: 100%" colspan="3">&nbsp;</td>
-        </tr>
-        <tr>
-            <td style="width: 33%">&nbsp;</td>
-            <td style="width: 33%; justify-items: center">
-                <asp:Login ID="Login" runat="server" BackColor="#F7F6F3" BorderColor="#E6E2D8" BorderPadding="4" BorderStyle="Solid" BorderWidth="1px" CssClass="auto-style2" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#333333" OnAuthenticate="Login_Authenticate" Width="100%">
+            <td style="width:33%"></td>
+            <td style="width:33%" class="auto-style1">
+                <asp:Login ID="Login" runat="server" BackColor="#F7F6F3" BorderColor="#E6E2D8" BorderPadding="4" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#333333" OnAuthenticate="Login_Authenticate">
                     <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
                     <LayoutTemplate>
                         <table cellpadding="4" cellspacing="0" style="border-collapse: collapse;">
@@ -60,6 +56,9 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td align="center" colspan="2" style="color: Red;">&nbsp;</td>
+                                        </tr>
+                                        <tr>
                                             <td align="right" colspan="2">
                                                 <asp:Button ID="LoginButton" runat="server" BackColor="#FFFBFF" BorderColor="#CCCCCC" BorderStyle="Solid" BorderWidth="1px" CommandName="Login" Font-Names="Verdana" Font-Size="Small" ForeColor="#284775" Text="Inicio de sesión" ValidationGroup="Login" />
                                             </td>
@@ -73,15 +72,30 @@
                     <TextBoxStyle Font-Size="0.8em" />
                     <TitleTextStyle BackColor="#5D7B9D" Font-Bold="True" Font-Size="0.9em" ForeColor="White" />
                 </asp:Login>
-            </td>
-            <td style="width: 33%">&nbsp;</td>
-        </tr>
-        <tr>
-            <td style="width: 100%" colspan="3">&nbsp;</td>
-        </tr>
-        <tr>
-            <td style="width: 100%" colspan="3">
 
+            </td>
+            <td style="width:33%"></td>
+        </tr>
+    </table>
+    <table style="width:100%">
+        <tr>
+            <td style="width: 100%" colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+            <td style="width: 100%;text-align:center" colspan="2">
+                <asp:Label ID="L_Advertencia" runat="server" ForeColor="#CC0000" Text="tiene una sesion activa ¿desea cerrarla?" Visible="False"></asp:Label>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 50%;text-align:right">
+               <asp:Button ID="B_Si" runat="server" Text="SÍ" Visible="False" OnClick="B_Si_Click" />    
+            </td>
+            <td style="width: 50%;text-align:left">
+                <asp:Button ID="B_No" runat="server" Text="NO" Visible="False" OnClick="B_No_Click" />
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 100%" colspan="2">
                 <asp:Panel ID="P_RContrasena" runat="server" Width="100%" Visible="False">
                     <table style="width: 100%">
                         <tr>
@@ -110,11 +124,10 @@
                         </tr>
                     </table>
                 </asp:Panel>
-
             </td>
         </tr>
         <tr>
-            <td style="width: 100%" colspan="3">&nbsp;</td>
+            <td style="width: 100%" colspan="2">&nbsp;</td>
         </tr>
     </table>
 </asp:Content>

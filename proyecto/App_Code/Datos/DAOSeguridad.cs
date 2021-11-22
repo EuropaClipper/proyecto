@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -26,6 +27,31 @@ public class DAOSeguridad
         using (var db = new Mapeo())
         {
             return db.token.Where(x => x.Token_generado.Equals(token)).FirstOrDefault();
+        }
+    }
+    public void InsertarAutenticacion(EAutenticacion autenticacion)
+    {
+        using (var db = new Mapeo())
+        {
+            db.autenticacion.Add(autenticacion);
+            db.SaveChanges();
+        }
+    }
+    public void CerrarSesion(EAutenticacion autentificacion)
+    {
+        using (var db = new Mapeo())
+        {
+            db.autenticacion.Attach(autentificacion);
+            var entry = db.Entry(autentificacion);
+            entry.State = EntityState.Modified;
+            db.SaveChanges();
+        }
+    }
+    public EAutenticacion BuscarAutentificacion(string id_usuario, DateTime fecha_inicio)
+    {
+        using (var db = new Mapeo())
+        {
+            return db.autenticacion.Where(x => x.UserId.Equals(id_usuario) && x.FechaInicio.Equals(fecha_inicio) && (x.FechaFin == null)).FirstOrDefault();
         }
     }
 }

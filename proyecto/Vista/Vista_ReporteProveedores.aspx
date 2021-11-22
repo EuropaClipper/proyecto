@@ -13,7 +13,7 @@
         <tr>
             <td style="width:100%">
                 <CR:CrystalReportSource ID="CRS_Proveedores" runat="server">
-                    <Report FileName="C:\Users\equipo\source\repos\EuropaClipper\proyecto\proyecto\Reportes\ReporteProveedores.rpt">
+                    <Report FileName="~\Reportes\ReporteProveedores.rpt">
                     </Report>
                 </CR:CrystalReportSource>
                 <CR:CrystalReportViewer ID="CRV_Proveedores" runat="server" AutoDataBind="true" ReportSourceID="CRS_Proveedores" ToolPanelView="None" />

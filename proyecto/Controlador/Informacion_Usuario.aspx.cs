@@ -9,9 +9,11 @@ public partial class Vista_Informacion_Usuario : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["user"] == null) Response.Redirect("Inicio.aspx");
         EUsuario user=(EUsuario)Session["user"];
         if (!IsPostBack)
         {
+            L_Cedula.Text = user.Cedula;
             TB_nombreE.Text = user.Nombre;
             TB_correoE.Text = user.Correo;
             TB_telefonoE.Text = user.Telefono;
@@ -38,6 +40,7 @@ public partial class Vista_Informacion_Usuario : System.Web.UI.Page
     protected void B_restaurar_Click(object sender, EventArgs e)
     {
         EUsuario user = (EUsuario)Session["user"];
+        L_Cedula.Text = user.Cedula;
         TB_nombreE.Text = user.Nombre;
         TB_correoE.Text = user.Correo;
         TB_telefonoE.Text = user.Telefono;

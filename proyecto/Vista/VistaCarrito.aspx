@@ -21,7 +21,7 @@
         <tr>
             <td style="width: 10%">&nbsp;</td>
             <td style="width: 80%; text-align: center">
-                &nbsp;</td>
+                Tiene 5 minutos para completar su compra</td>
             <td style="width: 10%">&nbsp;</td>
         </tr>
         <tr>

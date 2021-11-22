@@ -14,7 +14,7 @@ public partial class Vista_Vista_Compra : System.Web.UI.Page
         if (Session["user"] != null)
         {
             ECompra compra = new DAOCompra().ObtenerCompra(int.Parse(Request.QueryString["factura"]));
-            if (Request.QueryString["factura"] != null && compra != null && compra.Id_comprador.Equals(((EUsuario)Session["user"]).Cedula)) CargarFactura();
+            if (Request.QueryString["factura"] != null && compra != null && (compra.Id_comprador.Equals(((EUsuario)Session["user"]).Cedula) || ((EUsuario)Session["user"]).Id_rol == 1)) CargarFactura();
             else Response.Redirect("Inicio.aspx");
         }
         else Response.Redirect("Inicio.aspx");

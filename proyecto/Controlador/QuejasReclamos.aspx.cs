@@ -9,32 +9,52 @@ public partial class Vista_QuejasReclamos : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Session["user"] == null || ((EUsuario)Session["user"]).Id_rol != 2) Response.Redirect("Inicio.aspx");
+    }
+    protected void GV_Quejas_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        if(e.CommandName == "Select") Response.Redirect("Vista_Compra.aspx?factura=" + e.CommandArgument);
+        if (e.CommandName == "HQueja")
+        {
+            L_NFactura.Text = e.CommandArgument.ToString();
+            PQuejas.Visible = true; 
+            PQuejas.Focus();
+        }
     }
 
-    protected void Button_guardar_Click(object sender, EventArgs e)
+    protected void B_Enviar_Click(object sender, EventArgs e)
     {
-
-        ClientScriptManager cm = this.ClientScript;
-        var guid = Guid.NewGuid();
-        string extension = System.IO.Path.GetExtension(FileUpload1.PostedFile.FileName);
-        string SaveLocation = Server.MapPath("~\\Imagenes\\") + guid + extension;
-        EquejasReclamos obj = new EquejasReclamos();
-        obj.Nombre = TextBox_nombre.Text;
-        obj.Email = TextBox_email.Text; ;
-        obj.Mensaje = TextBox_mensaje.Text; ;
-        if (!(extension.Equals(".jpg") || extension.Equals(".png")))
+        EquejasReclamos nueva_queja = new EquejasReclamos() {
+            Id_Factura = int.Parse(L_NFactura.Text),
+            Descripcion = TB_Descripcion.Text,
+            Estado = true
+        };
+        if (FU_Img.HasFile)
         {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('No se permite este archivo');</script> ");
-            return;
+            string extension = System.IO.Path.GetExtension(FU_Img.PostedFile.FileName);
+
+            if (extension.Equals(".jpg") || extension.Equals(".jpeg") || extension.Equals(".png"))
+            {
+                var guid = Guid.NewGuid();//generar un nombre al azar.
+                nueva_queja.Imagen= "~\\Imagenes\\productos\\" + guid + extension;
+                FU_Img.PostedFile.SaveAs(Server.MapPath("~\\Imagenes\\productos\\") + guid + extension);
+            }
+            else
+            {
+                this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Imagen no valida: tipo de archivo erroneo');</script>");
+                return;
+            }
         }
-        obj.Imagen = "~\\Imagenes\\" + guid + extension;
-
-
-        FileUpload1.PostedFile.SaveAs(SaveLocation);
-        new DAOQuejasReclamos().guardarQuejasreclamos(obj);
-        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Se guardo Correctamente');</script> ");
-
+        else
+        {
+            nueva_queja.Imagen = "~\\Imagenes\\pagina_web\\sin_imagen.jpg";
+        }
+        nueva_queja.Fecha = DateTime.Now;
+        new DAOQuejasReclamos().guardarQuejasreclamos(nueva_queja);
+        this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Se guardo su queja con exito');window.location.href=\"QuejasReclamos.aspx\";</script> ");
+        L_NFactura.Text = "";
+        TB_Descripcion.Text = "";
+        PQuejas.Visible = false;
     }
 
 

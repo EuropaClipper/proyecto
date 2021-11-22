@@ -11,11 +11,10 @@ public partial class Vista_Inicio : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         ArrayList lista = new ArrayList();
-        string[] Archivos = System.IO.Directory.GetFiles(Server.MapPath("~\\Imagenes\\productos\\"),"*.*");
-
-        foreach(string archivos in Archivos)
+        List<EProducto> Archivos = new DAOProducto().obtenerProductosCatalogo();
+        foreach(var archivos in Archivos)
         {
-            lista.Add("\\Imagenes\\productos\\" + System.IO.Path.GetFileName(archivos));
+            lista.Add(archivos.Imagen_uno.Substring(1));
         }
         Repeater1.DataSource = lista;
         Repeater1.DataBind();

@@ -13,6 +13,18 @@
         <tr>
             <td class="col20">&nbsp;</td>
             <td class="col80">
+                &nbsp;</td>
+            <td class="col10">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="col20">&nbsp;</td>
+            <td class="col80">
+                &nbsp;</td>
+            <td class="col10">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="col20">&nbsp;</td>
+            <td class="col80">
                 <div id="rondellCarousel" class="col70">
                     <asp:Repeater ID="Repeater1" runat="server">
                         <ItemTemplate>
@@ -23,6 +35,12 @@
                     </asp:Repeater>
                 </div>
             </td>
+            <td class="col10">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="col20">&nbsp;</td>
+            <td class="col80">
+                &nbsp;</td>
             <td class="col10">&nbsp;</td>
         </tr>
     </table>

@@ -9,7 +9,7 @@ public partial class Vista_VistaCarrito : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        if (Session["user"] == null || ((EUsuario)Session["user"]).Id_rol != 2) Response.Redirect("Inicio.aspx");
     }
     protected void LV_Carrito_DataBound(object sender, EventArgs e)
     {
@@ -52,14 +52,13 @@ public partial class Vista_VistaCarrito : System.Web.UI.Page
                 detalles.Total = item.Precio_venta;
                 new DAOCompra().InsertarDetallesCompra(detalles);
                 new DAOProducto().ModificarCantidad(item.Id, item.Cantidad_inventario);
-                new DAOCarrito().EliminarCarrito(new DAOCarrito().Existe(item.Id, ((EUsuario)Session["user"]).Cedula));            
+                new DAOCarrito().EliminarCarrito(new DAOCarrito().Existe(item.Id, ((EUsuario)Session["user"]).Cedula));
             }
+            new Correos().EnviarCorreoCompra(((EUsuario)Session["user"]).Correo, nueva_compra.Id, nueva_compra.Id_estado);
             Response.Redirect("Vista_Compra.aspx?factura="+nueva_compra.Id);
         }
         else{
-            ClientScriptManager cm = this.ClientScript;
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('¡MAS DESPACIO VELOCISTA!\\nAgregue almenos un producto al carrito');</script>");
-
+            this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('¡MAS DESPACIO VELOCISTA!\\nAgregue almenos un producto al carrito');</script>");
         }
     }
 }

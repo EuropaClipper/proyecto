@@ -9,7 +9,7 @@ public partial class Vista_InterfazProveedores : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Session["user"] == null || ((EUsuario)Session["user"]).Id_rol != 1) Response.Redirect("Inicio.aspx");
     }
 
     protected void Button1_Click(object sender, EventArgs e)

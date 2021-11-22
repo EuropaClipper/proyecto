@@ -46,9 +46,14 @@
                                 <asp:Label ID="Label5" runat="server" Text='<%# Bind("Estado") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Ver factura">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="false" CommandArgument='<%# Bind("Factura") %>' CommandName="Select" Text="Ver"></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Cambiar estado" ShowHeader="False">
                             <ItemTemplate>
-                                <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="false" CommandName="" Text="Editar" CommandArgument='<%# Bind("Factura") %>'></asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="false" CommandName="cambioEstado" Text="Cambiar estado" CommandArgument='<%# Bind("Factura") %>'></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -80,7 +85,7 @@
         </tr>
         <tr>
             <td>
-                <asp:GridView ID="GV_HPedidos" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="ODSHPedidos" ForeColor="#333333" GridLines="None" HorizontalAlign="Center" Width="90%" AllowPaging="True">
+                <asp:GridView ID="GV_HPedidos" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="ODSHPedidos" ForeColor="#333333" GridLines="None" HorizontalAlign="Center" Width="90%" AllowPaging="True" OnRowCommand="GV_HPedidos_RowCommand">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <Columns>
                         <asp:TemplateField HeaderText="#Factura" SortExpression="Factura">
@@ -106,6 +111,11 @@
                         <asp:TemplateField HeaderText="Estado" SortExpression="Estado">
                             <ItemTemplate>
                                 <asp:Label ID="Label9" runat="server" Text='<%# Bind("Estado") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Ver factura" ShowHeader="False">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="false" CommandArgument='<%# Bind("Factura") %>' CommandName="verFactura" Text="Ver"></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

@@ -9,11 +9,11 @@ using System.Web;
 /// </summary>
 public class DAONegocio
 {
-    public List<ENegocio> obtener(ENegocio InformacionNegocio)
+    public ENegocio obtenerInformacion()
     {
         using (var db = new Mapeo())
         {
-            return db.negocio.ToList();
+            return db.negocio.First();
         }
     }
     public void actualizarInformacion(ENegocio InformacionNegocio)

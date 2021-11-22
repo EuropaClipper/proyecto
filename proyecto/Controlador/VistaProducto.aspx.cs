@@ -13,11 +13,13 @@ public partial class Vista_VistaProducto : System.Web.UI.Page
         {
             EProducto eProducto = new DAOProducto().obtenerProducto((int)Session["producto"]);
             img1.ImageUrl = Image1.ImageUrl = eProducto.Imagen_uno;
-            img2.ImageUrl =Image2.ImageUrl = eProducto.Imagen_dos;
-            img3.ImageUrl =Image3.ImageUrl = eProducto.Imagen_dos;
+            img2.ImageUrl = Image2.ImageUrl = eProducto.Imagen_dos;
+            img3.ImageUrl = Image3.ImageUrl = eProducto.Imagen_dos;
             L_nombre.Text = eProducto.Nombre;
-            L_precio.Text =eProducto.Precio_venta.ToString();
+            L_precio.Text = eProducto.Precio_venta.ToString();
             L_des.Text = eProducto.Descripcion;
+            L_Cantidad.Text = eProducto.Cantidad_inventario.ToString();
+            RV_Cantidad.MaximumValue = eProducto.Cantidad_inventario.ToString();
             MultiView1.ActiveViewIndex = 0;
         }
     }
@@ -41,9 +43,10 @@ public partial class Vista_VistaProducto : System.Web.UI.Page
     {
         if (Session["user"] != null)
         {
+            if (Session["user"] == null) this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Inicie sesion para agregar productos al carrito');window.location.href=\"IniciarSesion.aspx\";</script>");
             EProducto eProducto = new DAOProducto().obtenerProducto((int)Session["producto"]);
             int id_producto = eProducto.Id;
-            int cantidadReservada = int.Parse(TB_Cantidad.Text);
+            int cantidadReservada = int.Parse(TextBox1.Text);
             int disponible = new DAOCarrito().CantidadDisponible(id_producto);
             if (disponible < cantidadReservada)
             {
@@ -74,5 +77,4 @@ public partial class Vista_VistaProducto : System.Web.UI.Page
             this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Inicie sesion para agregar productos al carrito');window.location.href=\"IniciarSesion.aspx\";</script>");
         }
     }
-       
 }

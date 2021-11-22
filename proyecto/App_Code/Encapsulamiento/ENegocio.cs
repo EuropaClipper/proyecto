@@ -24,4 +24,6 @@ public class ENegocio
     public string Session { get => session; set => session = value; }
     [Column("fecha_modificacion")]
     public DateTime Fecha_modificacion { get => fecha_modificacion; set => fecha_modificacion = value; }
+    [Column("correo")]
+    public string  Correo { get; set; }
 }

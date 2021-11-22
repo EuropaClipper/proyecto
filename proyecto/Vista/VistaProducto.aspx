@@ -104,6 +104,19 @@
                             <asp:Label ID="L_des" runat="server" CssClass="auto-style14" Text="Coca-Colaes una bebida gaseosa con sabor a cola, de color caramelo oscuro, sin sedimentos ni turbidez. Sabor a cola y está fabricada con saborizantes naturales, incluyendo cafeína"></asp:Label>
                         </td>
                     </tr>
+                    <tr>
+                        <td class="auto-style7">
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style12">
+                            Cantidad disponible</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center">
+                            <asp:Label ID="L_Cantidad" runat="server"></asp:Label>
+                        </td>
+                    </tr>
                 </table>
             </td>
         </tr>
@@ -114,15 +127,17 @@
             <td class="col20">
                 &nbsp;</td>
             <td class="col20" colspan="2">
-                <span class="auto-style14">Cantidad</span><asp:TextBox ID="TB_Cantidad" runat="server" CssClass="auto-style14" Width="100px" TextMode="Number"></asp:TextBox>
-                <br />
+                <span class="auto-style14">Cantidad</span><asp:TextBox ID="TextBox1" runat="server" CssClass="auto-style14" Width="100px" TextMode="Number"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox1" CssClass="auto-style14" ErrorMessage="*" ValidationGroup="validar"></asp:RequiredFieldValidator>
             </td>
             <td class="col20">
                 <asp:Button ID="Button1" runat="server" CssClass="buttonAgg" OnClick="Button1_Click" Text="Agregar Carrito " ValidationGroup="validar" />
             </td>
         </tr>
         <tr>
-            <td class="auto-style3" colspan="5">&nbsp;</td>
+            <td class="auto-style3" colspan="5">
+                <asp:RangeValidator ID="RV_Cantidad" runat="server" ControlToValidate="TextBox1" ErrorMessage="No es posible agegar esta cantidad al carrito. ¡¡¡verifique!!!" ForeColor="Red" MaximumValue='<%# Eval("Cantidad_inventario") %>' MinimumValue="1" Type="Integer" ValidationGroup="validar"></asp:RangeValidator>
+            </td>
         </tr>
     </table>
 </asp:Content>
