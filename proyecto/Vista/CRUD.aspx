@@ -236,7 +236,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Proveedor" SortExpression="nombre_proveedor">
                             <EditItemTemplate>
-                                <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="ODSProveedor" DataTextField="Nombre" DataValueField="Id" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                                <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="ODSProveedor" DataTextField="Nombre" DataValueField="Id" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
                                 </asp:DropDownList>
                                 <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="DropDownList1" ErrorMessage="Editar" ForeColor="Red" MaximumValue="100" MinimumValue="1" Type="Integer" ValidationGroup="val"></asp:RangeValidator>
                                 <asp:ObjectDataSource ID="ODSProveedor" runat="server" SelectMethod="obtenerProvedoresDDL" TypeName="DAOProveedor"></asp:ObjectDataSource>
@@ -248,7 +248,6 @@
                         <asp:TemplateField HeaderText="Imagen" SortExpression="Imagen_uno">
                             <EditItemTemplate>
                                 <asp:FileUpload ID="FU_Imagen1" runat="server" />
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="FU_Imagen1" ErrorMessage="*" ForeColor="Red" ValidationGroup="val"></asp:RequiredFieldValidator>
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("Imagen_uno") %>' Width="40%" />

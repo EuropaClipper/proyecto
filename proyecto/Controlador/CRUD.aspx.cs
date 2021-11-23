@@ -174,6 +174,8 @@ public partial class Vista_CRUD : System.Web.UI.Page
 
     protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
+        TextBox TBCantidad = (TextBox)GV_Inventario.Rows[e.RowIndex].FindControl("TextBox5");
+        e.NewValues[5] = TBCantidad.Text;
         for (int i = 0; i < 3; i++)
         {
             string fileupload = "FU_Imagen" + (i + 1);

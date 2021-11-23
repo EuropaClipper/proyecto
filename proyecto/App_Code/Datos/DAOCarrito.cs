@@ -48,7 +48,7 @@ public class DAOCarrito
             db.SaveChanges();
         }
     }
-    public ECarrito Existe(int id_producto,string cedula)
+    public ECarrito Existe(int id_producto, string cedula)
     {
         using (var db = new Mapeo())
         {
@@ -70,8 +70,8 @@ public class DAOCarrito
                         Id = m.producto.Id,
                         Imagen_uno = m.producto.Imagen_uno,
                         Nombre = m.producto.Nombre,
-                        precio_pagar = (m.producto.Precio_venta * m.carrito.Cantidad),
-                        cantidad_carrito = m.carrito.Cantidad
+                        Precio_venta = (m.producto.Precio_venta * m.carrito.Cantidad),
+                        Cantidad_inventario = m.carrito.Cantidad
                     }).ToList();
         }
     }
