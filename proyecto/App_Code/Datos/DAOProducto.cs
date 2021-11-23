@@ -89,7 +89,7 @@ public class DAOProducto
             db.SaveChanges();
         }
     }
-    public void ModificarCantidad(int productoId, int cantidad)
+    public void ModificarCantidad(int productoId, int cantidad)//modifica la cantidad del carrito cuando se compra
     {
         using (var db = new Mapeo())
         {
@@ -102,18 +102,6 @@ public class DAOProducto
             db.SaveChanges();
         }
 
-    }
-    public void estado(string nombre)
-    {
-        using (var db = new Mapeo())
-        {
-            EProducto producto = db.producto.First(x => x.Nombre == nombre);
-            producto.Estado = !producto.Estado;
-            db.producto.Attach(producto);
-            var entry = db.Entry(producto);
-            entry.State = EntityState.Modified;
-            db.SaveChanges();
-        }
     }
     public void actualizar(EProducto producto)
     {
@@ -144,7 +132,7 @@ public class DAOProducto
             db.SaveChanges();
         }
     }
-    public List<EProducto> obtenerProductoDDL(string idProveedor)
+    public List<EProducto> obtenerProductoDDL(string idProveedor)//pintar lista de productos de un proveedor
     {
         using (var db = new Mapeo())
         {
