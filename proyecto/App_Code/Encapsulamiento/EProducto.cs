@@ -49,13 +49,15 @@ public class EProducto
     [Column("imagen_tres")]
     public string Imagen_tres { get => imagen_tres; set => imagen_tres = value; }
     [NotMapped]
-    public string Nombre_categoria { get => nombre_categoria; set => nombre_categoria = value; }
+    public EInventario inventario { get { return new DAOInventario().obtenenerInvanetario(Id); }set { } }
     [NotMapped]
-    public int Cantidad_inventario { get => cantidad_inventario; set => cantidad_inventario = value; }
+    public string Nombre_categoria { get { return Categoria.Categoria; } set => nombre_categoria = value; }
     [NotMapped]
-    public int id_inventario{ get; set; }
+    public int Cantidad_inventario { get { return inventario.Cantidad; } set => cantidad_inventario = value; }
     [NotMapped]
-    public string nombre_proveedor { get; set; }
+    public int id_inventario{ get { return inventario.Id; } set { } }
     [NotMapped]
-    public double precio_compra { get; set; }
+    public string nombre_proveedor { get { return proveedor.Nombre; } set { } }
+    [NotMapped]
+    public double precio_compra { get { return inventario.Precio_compra; } set { } }
 }

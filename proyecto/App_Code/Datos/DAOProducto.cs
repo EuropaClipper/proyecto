@@ -8,104 +8,21 @@ public class DAOProducto
     {
         using (var db = new Mapeo())
         {
-            return (from producto in db.producto
-                    join categoria in db.categoria on producto.Id_categoria equals categoria.Id
-                    join inventario in db.inventario on producto.Id equals inventario.Id_producto
-
-                    select new
-                    {
-                        producto,
-                        categoria,
-                        inventario
-                    }).Where(x=> x.producto.Id.Equals(id_producto)).ToList().Select(m => new EProducto
-                    {
-                        Id = m.producto.Id,
-                        Nombre = m.producto.Nombre,
-                        Precio_venta = m.producto.Precio_venta,
-                        Descripcion = m.producto.Descripcion,
-                        Imagen_uno = m.producto.Imagen_uno,
-                        Imagen_dos = m.producto.Imagen_dos,
-                        Imagen_tres = m.producto.Imagen_tres,
-                        Id_categoria = m.producto.Id_categoria,
-                        Nombre_categoria = m.categoria.Categoria,
-                        Estado = m.producto.Estado,
-                        Cantidad_inventario = m.inventario.Cantidad,
-                        Id_proveedor = m.producto.Id_proveedor,
-                        id_inventario = m.inventario.Id
-                    }).First();
+            return db.producto.Where(x => x.Id == id_producto).FirstOrDefault();
         }
     }
     public List<EProducto> obtenerProductos()
     {
         using (var db = new Mapeo())
         {
-            return (from producto in db.producto
-                    join categoria in db.categoria on producto.Id_categoria equals categoria.Id
-                    join inventario in db.inventario on producto.Id equals inventario.Id_producto
-                    join proveedor in db.proveedor on producto.Id_proveedor equals proveedor.Id
-                    select new
-                    {
-                        producto,
-                        categoria,
-                        inventario,
-                        proveedor
-                    }).ToList().Select(m => new EProducto
-                    {
-                        Id = m.producto.Id,
-                        Nombre = m.producto.Nombre,
-                        Precio_venta = m.producto.Precio_venta,
-                        Descripcion = m.producto.Descripcion,
-                        Imagen_uno = m.producto.Imagen_uno,
-                        Imagen_dos = m.producto.Imagen_dos,
-                        Imagen_tres = m.producto.Imagen_tres,
-                        Id_categoria = m.producto.Id_categoria,
-                        Nombre_categoria = m.categoria.Categoria,
-                        Estado = m.producto.Estado,
-                        Session = m.producto.Session,
-                        Cantidad_inventario = m.inventario.Cantidad,
-                        Id_proveedor = m.producto.Id_proveedor,
-                        id_inventario = m.inventario.Id,
-                        Fecha_modificacion = m.inventario.Fecha_modificacion,
-                        nombre_proveedor = m.proveedor.Nombre,
-                        precio_compra = m.inventario.Precio_compra
-                    }).OrderBy(x => x.Nombre).ToList();
-            
+            return db.producto.ToList();
         }
     }
     public List<EProducto> obtenerProductosCatalogo()
     {
         using (var db = new Mapeo())
         {
-            return (from producto in db.producto
-                    join categoria in db.categoria on producto.Id_categoria equals categoria.Id
-                    join inventario in db.inventario on producto.Id equals inventario.Id_producto
-                    join proveedor in db.proveedor on producto.Id_proveedor equals proveedor.Id
-                    select new
-                    {
-                        producto,
-                        categoria,
-                        inventario,
-                        proveedor
-                    }).ToList().Select(m => new EProducto
-                    {
-                        Id = m.producto.Id,
-                        Nombre = m.producto.Nombre,
-                        Precio_venta = m.producto.Precio_venta,
-                        Descripcion = m.producto.Descripcion,
-                        Imagen_uno = m.producto.Imagen_uno,
-                        Imagen_dos = m.producto.Imagen_dos,
-                        Imagen_tres = m.producto.Imagen_tres,
-                        Id_categoria = m.producto.Id_categoria,
-                        Nombre_categoria = m.categoria.Categoria,
-                        Estado = m.producto.Estado,
-                        Session = m.producto.Session,
-                        Cantidad_inventario = m.inventario.Cantidad,
-                        Id_proveedor = m.producto.Id_proveedor,
-                        id_inventario = m.inventario.Id,
-                        Fecha_modificacion = m.inventario.Fecha_modificacion,
-                        nombre_proveedor = m.proveedor.Nombre
-                    }).OrderBy(x => x.Nombre).ToList().Where(x=> x.Cantidad_inventario>0).ToList();
-
+            return db.producto.ToList().OrderBy(x=>x.Nombre).Where(x=>x.Cantidad_inventario>0).ToList();
         }
     }
     public List<EProducto> obtenerProductosFiltrados(string nombre, int[] precio, int categoria)
@@ -170,7 +87,7 @@ public class DAOProducto
             db.SaveChanges();
         }
     }
-    public void ModificarCantidad(int productoId, int cantidad)
+    public void ModificarCantidad(int productoId, int cantidad)//modifica la cantidad del carrito cuando se compra
     {
         using (var db = new Mapeo())
         {
@@ -183,18 +100,6 @@ public class DAOProducto
             db.SaveChanges();
         }
 
-    }
-    public void estado(string nombre)
-    {
-        using (var db = new Mapeo())
-        {
-            EProducto producto = db.producto.First(x => x.Nombre == nombre);
-            producto.Estado = !producto.Estado;
-            db.producto.Attach(producto);
-            var entry = db.Entry(producto);
-            entry.State = EntityState.Modified;
-            db.SaveChanges();
-        }
     }
     public void actualizar(EProducto producto)
     {
@@ -225,7 +130,7 @@ public class DAOProducto
             db.SaveChanges();
         }
     }
-    public List<EProducto> obtenerProductoDDL(string idProveedor)
+    public List<EProducto> obtenerProductoDDL(string idProveedor)//pintar lista de productos de un proveedor
     {
         using (var db = new Mapeo())
         {
