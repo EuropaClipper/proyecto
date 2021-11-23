@@ -70,8 +70,8 @@ public class DAOCarrito
                         Id = m.producto.Id,
                         Imagen_uno = m.producto.Imagen_uno,
                         Nombre = m.producto.Nombre,
-                        Precio_venta = (m.producto.Precio_venta * m.carrito.Cantidad),
-                        Cantidad_inventario = m.carrito.Cantidad
+                        precio_pagar = (m.producto.Precio_venta * m.carrito.Cantidad),
+                        cantidad_carrito = m.carrito.Cantidad
                     }).ToList();
         }
     }

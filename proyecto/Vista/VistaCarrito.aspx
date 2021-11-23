@@ -49,10 +49,10 @@
                                         <br />
                                         <br />
                                         Precio:
-                                        <asp:Label ID="precio" runat="server" Text='<%# Eval("Precio_venta", "{0:C}") %>'></asp:Label>
+                                        <asp:Label ID="precio" runat="server" Text='<%# Eval("precio_pagar", "{0:C}") %>'></asp:Label>
                                         <br />
                                         Cantidad:
-                                        <asp:Label ID="cantidad" runat="server" Text='<%# Eval("Cantidad_inventario") %>'></asp:Label>
+                                        <asp:Label ID="cantidad" runat="server" Text='<%# Eval("cantidad_carrito") %>'></asp:Label>
                                     </td>
                                     <td style="width: 60%">
                                         <asp:Image ID="imagen" runat="server" ImageUrl='<%# Eval("Imagen_uno") %>' Width="40%" />

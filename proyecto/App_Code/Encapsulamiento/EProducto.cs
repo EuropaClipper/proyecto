@@ -60,4 +60,8 @@ public class EProducto
     public int Cantidad_inventario { get { return Inventario.Cantidad; } set => cantidad_inventario = value; }
     [NotMapped]
     public double precio_compra { get { return Inventario.Precio_compra; } set { } }
+    [NotMapped]
+    public int cantidad_carrito { get; set; }
+    [NotMapped]
+    public double precio_pagar { get; set; }
 }
