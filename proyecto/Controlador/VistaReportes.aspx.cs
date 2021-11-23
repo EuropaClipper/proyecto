@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 public partial class Vista_VistaReportes : System.Web.UI.Page
 {
@@ -14,7 +8,7 @@ public partial class Vista_VistaReportes : System.Web.UI.Page
     }
     protected void B_GInforme_Click(object sender, EventArgs e)
     {
-        Session["fecha_informe"] = TB_FReporte.Text;
+        Session["fecha_informe"] = (TB_FReporte.Text != "") ?TB_FReporte.Text :DateTime.Now.ToString("d");
         Response.Redirect("ReporteDia.aspx");
     }
 

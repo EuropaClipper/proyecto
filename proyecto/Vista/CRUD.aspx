@@ -116,6 +116,7 @@
                                                     <ContentTemplate>
                                                         Producto<asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="ODSProducto" DataTextField="Nombre" DataValueField="Id">
                                             </asp:DropDownList>
+                                                        <asp:RangeValidator ID="RangeValidator3" runat="server" ControlToValidate="DropDownList2" ErrorMessage="Seleccionar" ForeColor="Red" MaximumValue="100" MinimumValue="1" Type="Integer" ValidationGroup="validar"></asp:RangeValidator>
                                                 <asp:ObjectDataSource ID="ODSProducto" runat="server" SelectMethod="obtenerProductoDDL" TypeName="DAOProducto">
                                                     <SelectParameters>
                                                         <asp:SessionParameter Name="idProveedor" SessionField="id" Type="String" />

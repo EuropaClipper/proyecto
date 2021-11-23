@@ -32,5 +32,5 @@ public class EProveedor
     [NotMapped]
     public EEstadoProveedor Estado { get { return new DAOProveedor().EstadoProveedor(Id_estado); } set { } }
     [NotMapped]
-    public string estado_proveedor { get; set; }
+    public string estado_proveedor { get { return Estado.Estado; } set { } }
 }

@@ -12,5 +12,11 @@ public class DAOInventario
             return db.inventario.ToList();
         }
     }
-
+    public EInventario ObtenerDeInventario(int id_producto)
+    {
+        using (var db = new Mapeo())
+        {
+            return db.inventario.ToList().Where(x=> x.Id_producto.Equals(id_producto)).First();
+        }
+    }
 }

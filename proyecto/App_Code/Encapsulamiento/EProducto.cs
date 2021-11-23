@@ -20,7 +20,7 @@ public class EProducto
     private DateTime fecha_modificacion;
     private string nombre_categoria;
     private int cantidad_inventario;
-    [Key,Column("id")]
+    [Key, Column("id")]
     public int Id { get => id; set => id = value; }
     [Column("nombre")]
     public string Nombre { get => nombre; set => nombre = value; }
@@ -49,13 +49,15 @@ public class EProducto
     [Column("imagen_tres")]
     public string Imagen_tres { get => imagen_tres; set => imagen_tres = value; }
     [NotMapped]
-    public string Nombre_categoria { get => nombre_categoria; set => nombre_categoria = value; }
+    public string nombre_proveedor { get { return proveedor.Nombre; } set { } }
     [NotMapped]
-    public int Cantidad_inventario { get => cantidad_inventario; set => cantidad_inventario = value; }
+    public string Nombre_categoria { get { return Categoria.Categoria; } set => nombre_categoria = value; }
     [NotMapped]
-    public int id_inventario{ get; set; }
+    public EInventario Inventario { get { return new DAOInventario().ObtenerDeInventario(Id); } set { } }
     [NotMapped]
-    public string nombre_proveedor { get; set; }
+    public int id_inventario{ get { return Inventario.Id; } set { } }
     [NotMapped]
-    public double precio_compra { get; set; }
+    public int Cantidad_inventario { get { return Inventario.Cantidad; } set => cantidad_inventario = value; }
+    [NotMapped]
+    public double precio_compra { get { return Inventario.Precio_compra; } set { } }
 }

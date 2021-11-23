@@ -11,22 +11,7 @@ public class DAOProveedor
     {
         using(var db = new Mapeo())
         {
-            return (from proveedor in db.proveedor
-                    join estado in db.estado_proveedor on proveedor.Id_estado equals estado.Id
-                    select new
-                    {
-                        proveedor, estado
-                    }).ToList().Select(x => new EProveedor {
-                        Empresa = x.proveedor.Empresa,
-                        estado_proveedor = x.estado.Estado,
-                        Fecha_modificacion = x.proveedor.Fecha_modificacion,
-                        Id = x.proveedor.Id,
-                        Id_estado = x.proveedor.Id_estado,
-                        Nombre = x.proveedor.Nombre,
-                        Session = x.proveedor.Session,
-                        Telefono = x.proveedor.Telefono
-                    }).ToList();
-                    //db.proveedor.ToList();
+            return db.proveedor.ToList();
         }
     }
     public EProveedor ObtenerProveedor(string id)
@@ -46,7 +31,6 @@ public class DAOProveedor
 
             db.SaveChanges();
         }
-
     }
     public void elimnarProveedor(EProveedor proveedor)
     {

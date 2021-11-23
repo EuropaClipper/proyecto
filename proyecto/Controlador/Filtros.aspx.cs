@@ -117,8 +117,7 @@ public partial class Vista_Filtros : System.Web.UI.Page
         {
             if(Session["user"] == null)
             {
-                ClientScriptManager cm = this.ClientScript;
-                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Inicie sesion para poder agregar productos a carrito.');</script>");
+                this.ClientScript.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Inicie sesion para agregar productos al carrito');window.location.href=\"IniciarSesion.aspx\";</script>");
                 return;
             }
             //agregar a carrito
